@@ -1,0 +1,123 @@
+.wrapper {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack children vertically */
+  height: 100%; /* Full height of the parent */
+  padding-bottom: 100px; /* Space at the bottom for footer */
+  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+}
+.main {
+  flex: 1; /* Allow main content to grow and take available space */
+  padding: 20px; /* Space around the main content */
+  text-align: center; /* Center text within the main area */
+  position: relative; /* Positioning context for overlay */
+}
+.videoContainer {
+  position: relative; /* Positioning context for overlay */
+  width: 100%; /* Full width of the parent */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Hide overflow to prevent scrollbars */
+}
+.videoContainer video {
+  position: absolute; /* Position the video absolutely */
+  top: 0%; /* Center vertically */
+  left: 0%; /* Center horizontally */
+  min-width: 100%; /* Ensure the video covers the width */
+  min-height: 100%; /* Ensure the video covers the height */
+  width: auto; /* Allow width to adjust */
+  height: auto; /* Allow height to adjust */
+  transform: translate(-50%, -50%); /* Center the video */
+  z-index: 1; /* Ensure the video is behind the overlay */
+}
+
+
+.overlay {
+  position: absolute; /* Position overlay on top of video */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  right: 0; /* Align to the right */
+  bottom: 0; /* Align to the bottom */
+  display: flex; /* Use flexbox for centering child elements */
+  flex-direction: column; /* Stack text and button vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  color: white; /* Text color for visibility */
+  z-index: 2; /* Ensure overlay is above the video */
+  background-color: rgba(186, 168, 168, 0.5); /* Optional: semi-transparent background for contrast */
+}
+.overlay h1{
+  font-size: 2rem;
+}
+.overlay p{
+  font-size: 1.2rem;
+}
+.Home {
+  width: 100%; /* Full width of the parent */
+  padding: 20px; /* Padding for the section */
+  text-align: center; /* Center text */
+}
+
+.Home_beauty {
+  width: 100%; /* Full width of the parent */
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 20px; /* Space below this section */
+}
+
+.Home_beauty h2 {
+  font-size: 1.5rem; /* Font size for headings */
+  font-weight: bold; /* Bold text */
+  border-radius: 10px; /* Rounded corners */
+  padding: 30px; /* Padding around the text */
+}
+.Home_beauty h3 {
+  font-size: 1.5rem; /* Font size for headings */
+  font-weight: bold; /* Bold text */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Padding around the text */
+}
+.Home_beauty h2 {
+  color: aqua; /* Color for the heading */
+  background-color: #180909; /* Dark background color */
+}
+
+.Home_beauty h2:hover {
+  background-color: blue; /* Change background on hover */
+}
+
+.Home_beauty h3 {
+  background-color: darkorange; /* Background color */
+  text-align: right; /* Align text to the right */
+  margin-left: 65%; /* Space from the left */
+}
+
+.Home_beauty h3:hover {
+  background-color: blue; /* Change background on hover */
+}
+
+.both h1 {
+  font-size: 2.5rem; /* Larger font size for the title */
+  color: #459628; /* Dark color for the title */
+}
+
+.both p {
+  font-size: 1.2rem; /* Medium font size for the description */
+  color: #666; /* Gray color for the description */
+}
+
+.wrapper button {
+  background-color: #da5112; /* Button background color */
+  padding: 10px 20px; /* Padding for the button */
+  font-size: 1rem; /* Font size for the button text */
+  color: azure; /* Text color */
+  cursor: pointer; /* Change cursor on hover */
+  display: block; /* Block display */
+  border-radius: 10px; /* Rounded corners */
+  max-width: 300px; /* Maximum width for the button */
+  margin: 0 auto; /* Center the button horizontally */
+  text-align: center; /* Center text within the button */
+}
+
+.wrapper button:hover {
+  background-color: #4b0cb0; /* Change button color on hover */
+}

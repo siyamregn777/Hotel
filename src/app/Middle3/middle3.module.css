@@ -1,0 +1,46 @@
+.middle3 {
+    background-color: aliceblue;
+}
+  .middle3 h2 {
+    font-size: 2rem; /* Size for main title */
+    margin-bottom: 10px; /* Space below the title */
+    color: black;
+    margin-left: 30%;
+  }
+  .middle3 h5 {
+    font-size: 1.2rem; /* Size for subtitle */
+    color: #130e0e; /* Subtle color for the subtitle */
+    margin-bottom: 20px; /* Space below the subtitle */
+    color: black;
+
+  }
+  .middle3  p {
+    font-size: 1rem; /* Size for the paragraph text */
+    color: #666; /* Gray color for the text */
+    margin-bottom: 20px; /* Space below the paragraph */
+    color: black;
+  }
+  .faqContainer {
+    margin-top: 20px; /* Space above the FAQ section */
+    padding: 10px; /* Padding around the container */
+    border-radius: 8px; /* Rounded corners */
+    max-width: 900px; /* Limit the width of the FAQ section */
+    margin: 20px auto; /* Center the container */
+  }
+  .faqItem {
+    background-color: #fff; /* White background for each FAQ item */
+    border: 1px solid #e3e3e3; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Padding inside each FAQ item */
+    margin-bottom: 10px; /* Space below each FAQ item */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  .question {
+    font-size: 1.1rem; /* Slightly larger size for question */
+    margin: 0; /* Remove default margin */
+    color: #130e0e;
+  }
+  .answer {
+    margin-top: 5px; /* Space above the answer text */
+    color: #333; /* Dark color for the answer */
+  }

@@ -1,0 +1,18 @@
+.header {
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space between title and navbar */
+  background-color: #24e0a5; /* Dark background color */
+  color: white; /* White text color */
+  padding: 1rem; /* Padding around the header */
+  
+}
+
+.title {
+ background-color: rgb(10, 120, 245);
+  font-size: 2rem; /* Font size for the hotel name */
+  border-radius: 10px;
+  margin-left: 5%;
+  margin-right: 40%;
+  padding: 10px;
+}
