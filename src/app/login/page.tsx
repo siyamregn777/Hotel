@@ -1,6 +1,6 @@
 'use client'; // Add this line
 import Header from '@/components/header/Header';
-// import Footer from '@/components/footer/Footer';
+import Footer from '@/components/footer/Footer';
 
 import { useState } from 'react';
 import styles from './login.module.css'; // Importing CSS module
@@ -60,7 +60,7 @@ export default function Login() {
         
       </form>
     </div>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
     
   );
