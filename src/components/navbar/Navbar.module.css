@@ -4,7 +4,7 @@
   background-color: #0f2422; /* Dark background color */
   padding: 1rem 2rem; /* Padding on the navbar */
   display: flex;
-  justify-content: center; /* Center the navbar items */
+  justify-content: center; /*Center the navbar items*/
 }
 
 .navList {
