@@ -8,10 +8,10 @@ const Navbar = () => {
         <li className={styles.navItem}>
           <Link href="/">Home</Link>
         </li>
-        <li className={styles.navItem}><Link href="#">About</Link>
+        <li className={styles.navItem}>
+          <Link href="#">About</Link>
           <ul className={styles.dropdown}>
             <li><Link href="/about">About Us</Link></li>
-            <li><Link href="/ourstories">Our Stories</Link></li>
           </ul>
         </li>
         <li className={styles.navItem}>
@@ -22,6 +22,9 @@ const Navbar = () => {
         </li>
         <li className={styles.navItem}>
           <Link href="/login">Login</Link> {/* Ensure this path is correct */}
+        </li>
+        <li className={styles.navItem}>
+          <Link href="/activities">activities</Link>
         </li>
         <li className={styles.navItem}>
             <Link href="/booking">Booking</Link>

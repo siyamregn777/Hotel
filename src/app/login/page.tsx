@@ -3,18 +3,20 @@ import Header from '@/components/header/Header';
 import Footer from '@/components/footer/Footer';
 import Link from 'next/link';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation'; // For app directory usage
 import styles from './login.module.css'; // Importing CSS module
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter(); // Initialize useRouter
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(''); // Clear previous errors
 
-    const response = await fetch('api/login', {
+    const response = await fetch('/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -30,6 +32,10 @@ export default function Login() {
 
     const data = await response.json(); // Getting the response from the server
     console.log(data); // Log the response (either success or error)
+
+    // Redirect to the homepage on successful login
+    console.log('Login successful, redirecting...');
+    router.push('/'); // Redirect to the home page immediately
   };
 
   return (
@@ -44,7 +50,7 @@ export default function Login() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             required
-            className={styles.input} 
+            className={styles.input}
           />
           <input
             type="password"
