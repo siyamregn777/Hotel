@@ -23,21 +23,17 @@ export default function Login() {
       },
       body: JSON.stringify({ email, password }), // Sending user data to the API
     });
-
     if (!response.ok) {
       const errorData = await response.json();
       setError(errorData.message || 'Something went wrong!'); // Set error message
       return;
     }
-
     const data = await response.json(); // Getting the response from the server
     console.log(data); // Log the response (either success or error)
-
     // Redirect to the homepage on successful login
     console.log('Login successful, redirecting...');
     router.push('/'); // Redirect to the home page immediately
   };
-
   return (
     <div className={styles.login}>
       <Header />
