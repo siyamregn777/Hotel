@@ -1,7 +1,6 @@
 'use client'; // Marking this file as a client component
 
-import Header from '@/components/header/Header';
-import Footer from '@/components/footer/Footer';
+
 import { useState } from 'react';
 import styles from './contact.module.css'; // Assuming you have CSS in a separate file
 
@@ -25,7 +24,6 @@ export default function Contact() {
 
   return (
     <div>
-      <Header />
       <div className={styles.back}>
       <main className={styles.container}>
         <h1>Contact Us</h1>
@@ -67,7 +65,6 @@ export default function Contact() {
         </form>
       </main>
       </div>
-      <Footer />
     </div>
   );
 }

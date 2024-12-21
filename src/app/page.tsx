@@ -1,5 +1,4 @@
-import Header from '@/components/header/Header'; // Import Header
-import Footer from '@/components/footer/Footer'; // Import Footer
+
 import styles from './page.module.css'; // Import the CSS module
 import Middle1 from './Middle1/page';
 import Middle2 from './Middle2/page';
@@ -10,7 +9,6 @@ import video2 from '../../videos/1321208-uhd_3840_2160_30fps.mp4';
 export default function Home() {
   return (
     <div className={styles.wrapper}>
-      <Header /> {/* Include Header */}
       <main className={styles.main}>
         <div className={styles.videoContainer}>
           <Video src={video2} autoPlay muted loop controls={false} />
@@ -31,7 +29,6 @@ export default function Home() {
       <Middle2 />
       <Middle3 />
       <Comques />
-      <Footer />
     </div>
   );
 }

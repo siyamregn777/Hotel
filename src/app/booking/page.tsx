@@ -1,7 +1,5 @@
 "use client"; // Ensure this is a client component
-import Footer from '@/components/footer/Footer';
 import styles from './Booking.module.css';
-import Header from '@/components/header/Header';
 import { useState } from 'react';
 const Booking = () => {
     const [formData, setFormData] = useState({
@@ -25,7 +23,6 @@ const Booking = () => {
 
     return (
         <div>
-            <Header />
             <div className={styles.Booking}>
                 <h1>Book Your Adventure</h1>
                 <form onSubmit={handleSubmit} className={styles.bookingForm}>
@@ -91,7 +88,6 @@ const Booking = () => {
                     </button>
                 </form>
             </div>
-            <Footer />
         </div>
     );
 };

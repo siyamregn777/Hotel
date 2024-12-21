@@ -1,12 +1,10 @@
-import Header from '@/components/header/Header';
-import Footer from '@/components/footer/Footer';
 import styles from './abouts.module.css'; // Assuming you have CSS in a separate file
 import image1 from '../../../public/images/pexels-chanwalrus-958546.jpg';
 import Image from 'next/image';
 export default function AboutUs() {
   return (
     <div>
-      <Header />
+     
       <main className={styles.container}>
         <h1>About Us</h1>
         <p>Discover our story, mission, and values.</p>
@@ -36,7 +34,6 @@ export default function AboutUs() {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }

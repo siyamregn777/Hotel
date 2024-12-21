@@ -1,6 +1,5 @@
 'use client'; // Add this line
-import Header from '@/components/header/Header';
-import Footer from '@/components/footer/Footer';
+
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'; // For app directory usage
@@ -36,7 +35,6 @@ export default function Login() {
   };
   return (
     <div className={styles.login}>
-      <Header />
       <div className={styles.login}>
         <h1 className={styles.title}>Login</h1>
         <form onSubmit={handleSubmit} className={styles.loginContainer}>
@@ -70,7 +68,6 @@ export default function Login() {
           </ul>
         </form>
       </div>
-      <Footer />
     </div>
   );
 }

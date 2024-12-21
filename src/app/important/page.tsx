@@ -1,8 +1,7 @@
 import styles from './important.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import Header from '@/components/header/Header';
-import Footer from '@/components/footer/Footer';
+
 import Decide from '../decide/decide';
 import image0 from '../../../public/images/DALL·E 2024-12-16 00.14.42 - A breathtaking natural landscape featuring a crystal-clear river flowing through a lush green valley. Majestic mountains rise in the background, with .webp';
 import image1 from '../../../public/images/DALL·E 2024-12-16 00.14.39 - A luxurious and cozy bedroom with a modern design. The room features a large, plush bed with soft, layered bedding in neutral tones, accented by decor.webp';
@@ -12,7 +11,6 @@ import image3 from '../../../public/images/DALL·E 2024-12-16 00.14.46 - A seren
 const Important = () => {
     return (
         <div>
-            <Header />
             <div className={styles.important}>
                 <h1 className={styles.title}>Begin from Here</h1>
                 <div className={styles.imageorder}>
@@ -97,7 +95,6 @@ const Important = () => {
                 </div>
             </div>
             <Decide/>
-            <Footer />
         </div>
     );
 };

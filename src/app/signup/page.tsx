@@ -1,8 +1,7 @@
 'use client';
 import { useState } from "react";
 import styles from "./signup.module.css";
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
+
 import Router from "next/router";
 
 export default function Signup() {
@@ -42,7 +41,6 @@ export default function Signup() {
 
     return (
         <div className={styles.sign}>
-            <Header />
             <div className={styles.signupContainer}>
                 <h1 className={styles.signupTitle}>Sign Up</h1>
                 <form onSubmit={handleSubmit} className={styles.signupForm}>
@@ -104,7 +102,6 @@ export default function Signup() {
                     <button type="submit" className={styles.button}>Sign Up</button>
                 </form>
             </div>
-            <Footer />
         </div>
     );
 }

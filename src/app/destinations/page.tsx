@@ -1,6 +1,5 @@
 'use client';
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
+
 import styles from './destinations.module.css';
 import { useState } from "react";
 
@@ -27,7 +26,6 @@ export default function Destination() {
 
     return (
         <div>
-            <Header />
             <div className={styles.destination}>
                 <h1>Destination</h1>
                 <form onSubmit={handleSubmit} className={styles.formDestination}>
@@ -92,7 +90,6 @@ export default function Destination() {
                     </fieldset>
                 </form>
             </div>
-            <Footer />
         </div>
     );
 }

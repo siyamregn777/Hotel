@@ -1,6 +1,5 @@
 'use client';
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
+
 import styles from './payments.module.css';
 import { useState } from "react";
 
@@ -32,7 +31,6 @@ export default function Payments() {
 
     return (
         <div>
-            <Header />
             <div className={styles.payments}>
                 <h1 className={styles.payment}>Payment</h1>
                 <form onSubmit={handleSubmit} className={styles.payment}>
@@ -105,7 +103,6 @@ export default function Payments() {
                     </button>
                 </form>
             </div>
-            <Footer />
         </div>
     );
 }
