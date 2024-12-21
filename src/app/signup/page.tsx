@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styles from "./signup.module.css";
 
-import Router from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Signup() {
     const [username, setUsername] = useState('');
@@ -11,6 +11,7 @@ export default function Signup() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -32,7 +33,7 @@ export default function Signup() {
         if (response.ok) {
             setSuccess("Signup successful! Please log in.");
             setTimeout(() => {
-                Router.push('/login'); // Redirect after success
+                router.push('/login'); // Redirect after success
             }, 2000);
         } else {
             setError(data.message || "Signup failed. Please try again.");
