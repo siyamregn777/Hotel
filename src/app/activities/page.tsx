@@ -21,11 +21,12 @@ export default function Activities() {
     };
 
     return (
-        <div>
+        <div className={Styles.active}>
             <div className={Styles.activities}>
+                <h1 className={Styles.act}>Activities</h1>
                 <form onSubmit={handleSubmit} className={Styles.activit}>
                     <div className={Styles.formGroup}>
-                        <label htmlFor="name" className={Styles.label}>Name</label>
+                        <label htmlFor="name" className={Styles.label}>Name </label>
                         <input
                             id="name"
                             type="text"
@@ -38,7 +39,7 @@ export default function Activities() {
                     </div>
 
                     <div className={Styles.formGroup}>
-                        <label htmlFor="description" className={Styles.label}>Description</label>
+                        <label htmlFor="description" className={Styles.label}>Description </label>
                         <textarea
                             id="description"
                             value={description}

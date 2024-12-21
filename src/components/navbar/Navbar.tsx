@@ -1,18 +1,36 @@
 import Link from 'next/link';
-import styles from './Navbar.module.css'; // Correct import of CSS module
+import styles from './Navbar.module.css';
 
-const Navbar = () => {
+interface User {
+  role: 'admin' | 'user'; // Define allowed roles
+  username: string;
+}
+
+interface NavbarProps {
+  user?: User; // The user prop is optional because it might not exist for logged-out users
+}
+const Navbar: React.FC<NavbarProps> = ({ user }) => {
+  const isLoggedIn = !!user;
+  const isAdmin = isLoggedIn && user?.role === 'admin';
+
   return (
-    <nav className={styles.navbar}>  {/* Apply styles via styles object */}
+    <nav className={styles.navbar}>
       <ul className={styles.navList}>
         <li className={styles.navItem}>
           <Link href="/">Home</Link>
         </li>
+        {isLoggedIn && (
+          <>
+            <li className={styles.navItem}>
+              <Link href="/booking">Booking</Link>
+            </li>
+            <li className={styles.navItem}>
+              <Link href="/payments">Payment</Link>
+            </li>
+          </>
+        )}
         <li className={styles.navItem}>
-          <Link href="#">About</Link>
-          <ul className={styles.dropdown}>
-            <li><Link href="/about">About Us</Link></li>
-          </ul>
+          <Link href="/about">About</Link>
         </li>
         <li className={styles.navItem}>
           <Link href="/contact">Contact</Link>
@@ -20,21 +38,36 @@ const Navbar = () => {
         <li className={styles.navItem}>
           <Link href="/important">Visit</Link>
         </li>
+
+        {!isLoggedIn && (
+          <li className={styles.navItem}>
+            <Link href="/login">Login</Link>
+          </li>
+        )}
+
+        
+
         <li className={styles.navItem}>
-          <Link href="/login">Login</Link> {/* Ensure this path is correct */}
+          <Link href="/activities">Activities</Link>
         </li>
+
         <li className={styles.navItem}>
-          <Link href="/activities">activities</Link>
+          <Link href="/destinations">Destinations</Link>
         </li>
-        <li className={styles.navItem}>
-            <Link href="/booking">Booking</Link>
-        </li>
-        <li className={styles.navItem}>
-          <Link href="/destinations"> Destination</Link>
-        </li>
-        <li className={styles.navItem}>
-          <Link href="/payments">Payment</Link>
-        </li>
+
+        {isAdmin && (
+          <>
+            <li className={styles.navItem}>
+              <Link href="/manage-destinations">Manage Destinations</Link>
+            </li>
+            <li className={styles.navItem}>
+              <Link href="/view-payments">View Payments</Link>
+            </li>
+            <li className={styles.navItem}>
+              <Link href="/manage-users">Manage Users</Link>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );

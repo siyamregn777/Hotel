@@ -1,0 +1,20 @@
+.active{
+    background-color: white;
+    overflow: hidden;
+}
+.activities{
+    max-width: 100%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 10px;
+
+}
+.activit{
+    color: black;
+}
+.formGroup{
+    border-color: black;
+}
+.act{
+    color: black;
+}
