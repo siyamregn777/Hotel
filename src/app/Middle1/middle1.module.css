@@ -25,7 +25,6 @@
   justify-content: center;
   gap: 20px;
 }
-
 .imageList {
   list-style: none;
   padding: 0;
@@ -34,21 +33,17 @@
   justify-content: center;
   gap: 20px; /* Space between items */
 }
-
 .imageItem {
   text-align: center; /* Center the text under each image */
 }
-
 .image {
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
 }
-
 .image:hover {
   transform: scale(1.05); /* Slight zoom on hover */
 }
-
 .imageDescription {
   margin-top: 8px;
   font-size: 14px;
@@ -56,4 +51,8 @@
   color: white;
   background-color: #555;
   border-radius: 5px;
+
+}
+.imageDescription:hover{
+  transform: scale(1.1);
 }
