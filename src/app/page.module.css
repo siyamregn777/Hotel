@@ -4,32 +4,20 @@
   height: 100%; /* Full height of the parent */
   padding-bottom: 100px; /* Space at the bottom for footer */
   overflow-y: auto; /* Allow vertical scrolling if content overflows */
+  
 }
 .main {
   flex: 1; /* Allow main content to grow and take available space */
-  padding: 20px; /* Space around the main content */
+  padding: 0; /* Space around the main content */
   text-align: center; /* Center text within the main area */
   position: relative; /* Positioning context for overlay */
 }
-.videoContainer {
+.imageContainer {
   position: relative; /* Positioning context for overlay */
   width: 100%; /* Full width of the parent */
   height: 100vh; /* Full viewport height */
   overflow: hidden; /* Hide overflow to prevent scrollbars */
 }
-.videoContainer video {
-  position: absolute; /* Position the video absolutely */
-  top: 0%; /* Center vertically */
-  left: 0%; /* Center horizontally */
-  min-width: 100%; /* Ensure the video covers the width */
-  min-height: 100%; /* Ensure the video covers the height */
-  width: auto; /* Allow width to adjust */
-  height: auto; /* Allow height to adjust */
-  transform: translate(-50%, -50%); /* Center the video */
-  z-index: 1; /* Ensure the video is behind the overlay */
-}
-
-
 .overlay {
   position: absolute; /* Position overlay on top of video */
   top: 0; /* Align to the top */
@@ -40,15 +28,15 @@
   flex-direction: column; /* Stack text and button vertically */
   justify-content: center; /* Center vertically */
   align-items: center; /* Center horizontally */
-  color: white; /* Text color for visibility */
+  color: rgb(0, 0, 0); /* Text color for visibility */
   z-index: 2; /* Ensure overlay is above the video */
-  background-color: rgba(186, 168, 168, 0.5); /* Optional: semi-transparent background for contrast */
+  /* background-color: rgba(186, 168, 168, 0.5); Optional: semi-transparent background for contrast */
 }
 .overlay h1{
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 .overlay p{
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 .Home {
   width: 100%; /* Full width of the parent */
@@ -65,44 +53,44 @@
 }
 
 .Home_beauty h2 {
-  font-size: 1.5rem; /* Font size for headings */
+  font-size: 1.2rem; /* Font size for headings */
   font-weight: bold; /* Bold text */
   border-radius: 10px; /* Rounded corners */
   padding: 30px; /* Padding around the text */
 }
 .Home_beauty h3 {
-  font-size: 1.5rem; /* Font size for headings */
+  font-size: 1.2rem; /* Font size for headings */
   font-weight: bold; /* Bold text */
   border-radius: 10px; /* Rounded corners */
   padding: 20px; /* Padding around the text */
 }
 .Home_beauty h2 {
   color: aqua; /* Color for the heading */
-  background-color: #180909; /* Dark background color */
+  background-color: #513b3b; /* Dark background color */
 }
 
 .Home_beauty h2:hover {
-  background-color: blue; /* Change background on hover */
+  background-color: rgb(45, 45, 202); /* Change background on hover */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: scale(1.1);
+  color: black;
+  background-color: aliceblue;
+  opacity: 0.8;
 }
 
 .Home_beauty h3 {
-  background-color: darkorange; /* Background color */
+  color: aqua;
+  background-color: rgb(94, 80, 62); /* Background color */
   text-align: right; /* Align text to the right */
   margin-left: 65%; /* Space from the left */
 }
 
 .Home_beauty h3:hover {
-  background-color: blue; /* Change background on hover */
-}
-
-.both h1 {
-  font-size: 2.5rem; /* Larger font size for the title */
-  color: #459628; /* Dark color for the title */
-}
-
-.both p {
-  font-size: 1.2rem; /* Medium font size for the description */
-  color: #666; /* Gray color for the description */
+  background-color: rgb(186, 186, 232); /* Change background on hover */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: scale(1.1);
+  color: black;
+  opacity: 0.8;
 }
 
 .wrapper button {
