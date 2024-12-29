@@ -1,21 +1,46 @@
 import styles from './middle2.module.css';
-import video1 from '../../../videos/1168716-uhd_3840_2160_30fps.mp4';
-import Video from 'next-video';
+import imagge1 from '../../../public/back/Africa_(orthographic_projection).svg.png';
+import image2 from '../../../public/back/ostrich.jpg';
+import Image from 'next/image';
+import Link from 'next/link';
+
 const Middle2 = () => {
   return (
     <div className={styles.middle2}>
-      <div className={styles.videoContainer}>
-        <Video
-          src={video1}
-          autoPlay
-          muted
-          controls={false} // Hide controls for background video
-          loop
-          style={{ width: '100%', height: '100%' }} // Make video fill the container
+      {/* Background image */}
+      <div className={styles.backgroundImage}>
+        <Image
+          src={image2}
+          alt="Background Image"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
         />
-        <div className={styles.overlay}>
-          <h1>Your Overlay Text Here</h1>
-          <p>Additional text or description can go here.</p>
+      </div>
+
+      {/* Overlay Content */}
+      <div className={styles.overlayContainer}>
+        {/* Top-left image */}
+        <div className={styles.topLeft}>
+          <Image
+            src={imagge1}
+            alt="Overlay Image"
+            width={200}
+            height={300}
+            className={styles.overlayImage}
+          />
+          <Link href="/important"> <h3>Visit Africa</h3></Link>
+          
+
+        </div>
+
+        {/* Bottom-right text */}
+        <div className={styles.bottomRight}>
+          <h1>This is africa</h1>
+          <p>Visit  And Enjoy The Moment</p>
+            <Link href="/gallary" className={styles.bottom}>
+              Show Our Gallary
+            </Link>
         </div>
       </div>
     </div>
