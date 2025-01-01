@@ -1,7 +1,7 @@
 'use client';
-
 import styles from './payments.module.css';
 import { useState } from "react";
+import ProtectedPageWrapper from '../../components/ProtectedPageWrapper';
 
 export default function Payments() {
     const [booking_id, setBooking_id] = useState('');
@@ -30,6 +30,7 @@ export default function Payments() {
     };
 
     return (
+        <ProtectedPageWrapper>
         <div>
             <div className={styles.payments}>
                 <h1 className={styles.payment}>Payment</h1>
@@ -104,5 +105,6 @@ export default function Payments() {
                 </form>
             </div>
         </div>
+        </ProtectedPageWrapper>
     );
 }
