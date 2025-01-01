@@ -1,20 +1,90 @@
-.active{
-    background-color: white;
-    overflow: hidden;
-}
-.activities{
-    max-width: 100%;
-    margin-left: 20%;
-    margin-right: 20%;
+/* Container for the activities page */
+.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f7f7f7;
+    min-height: 100vh;
+  }
+  
+  /* Inner container for the form */
+  .activities {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  /* Title of the page */
+  .act {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Form styles */
+  .activit {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Individual form group (input and label) */
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  /* Label styling */
+  .label {
+    font-size: 14px;
+    color: #555;
+    font-weight: 600;
+  }
+  
+  /* Input fields and textarea */
+  .input {
     padding: 10px;
-
-}
-.activit{
-    color: black;
-}
-.formGroup{
-    border-color: black;
-}
-.act{
-    color: black;
-}
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* On focus, input fields and textarea change border color */
+  .input:focus {
+    border-color: #007bff;
+  }
+  
+  /* Button styling */
+  .button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Button hover effect */
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Error message styling */
+  .errorMessage {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  

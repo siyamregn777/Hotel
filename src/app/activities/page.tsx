@@ -1,32 +1,50 @@
 'use client';
-import { useState } from "react";
-import Styles from "./activities.module.css";
+import { useState } from 'react';
+import Styles from './activities.module.css';
+
 export default function Activities() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [duration, setDuration] = useState('');
+    const [feedback, setFeedback] = useState<string | null>(null); // To show notifications
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const response = await fetch('/api/activities', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name, description, price, duration }),
-        });
-        const data = await response.json();
-        console.log(data);
+        setFeedback(null); // Clear previous feedback
+
+        try {
+            const response = await fetch('/api/activities', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, description, price, duration }),
+            });
+
+            if (response.ok) {
+                setFeedback('Activity added successfully!');
+                setName('');
+                setDescription('');
+                setPrice('');
+                setDuration('');
+            } else {
+                const errorData = await response.json(); // Log error details if necessary
+                setFeedback(`Error: ${errorData.error || 'Failed to add activity.'}`);
+            }
+        } catch {
+            setFeedback('An unexpected error occurred. Please try again.');
+        }
     };
 
     return (
         <div className={Styles.active}>
             <div className={Styles.activities}>
                 <h1 className={Styles.act}>Activities</h1>
+                {feedback && <p className={Styles.feedback}>{feedback}</p>} {/* Display feedback */}
                 <form onSubmit={handleSubmit} className={Styles.activit}>
                     <div className={Styles.formGroup}>
-                        <label htmlFor="name" className={Styles.label}>Name </label>
+                        <label htmlFor="name" className={Styles.label}>Name</label>
                         <input
                             id="name"
                             type="text"
@@ -37,9 +55,8 @@ export default function Activities() {
                             className={Styles.input}
                         />
                     </div>
-
                     <div className={Styles.formGroup}>
-                        <label htmlFor="description" className={Styles.label}>Description </label>
+                        <label htmlFor="description" className={Styles.label}>Description</label>
                         <textarea
                             id="description"
                             value={description}
@@ -49,7 +66,6 @@ export default function Activities() {
                             className={Styles.input}
                         />
                     </div>
-
                     <div className={Styles.formGroup}>
                         <label htmlFor="price" className={Styles.label}>Price</label>
                         <input
@@ -62,7 +78,6 @@ export default function Activities() {
                             className={Styles.input}
                         />
                     </div>
-
                     <div className={Styles.formGroup}>
                         <label htmlFor="duration" className={Styles.label}>Duration</label>
                         <input
@@ -75,7 +90,6 @@ export default function Activities() {
                             className={Styles.input}
                         />
                     </div>
-
                     <ul>
                         <li>
                             <button type="submit" className={Styles.button}>Submit</button>
