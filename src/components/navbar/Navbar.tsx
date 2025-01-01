@@ -1,17 +1,20 @@
+// src/components/navbar/Navbar.tsx
+'use client';
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useUser } from '@/context/userContext'; // Import the User Context
 import styles from './Navbar.module.css';
 
-interface User {
-  role: 'admin' | 'user'; // Define allowed roles
-  username: string;
-}
+const Navbar: React.FC = () => {
+  const router = useRouter();
+  const { user, setUser } = useUser(); // Access user context
 
-interface NavbarProps {
-  user?: User; // The user prop is optional because it might not exist for logged-out users
-}
-const Navbar: React.FC<NavbarProps> = ({ user }) => {
-  const isLoggedIn = !!user;
-  const isAdmin = isLoggedIn && user?.role === 'admin';
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Clear the token
+    setUser({ email: null, isAuthenticated: false }); // Update context
+    router.push('/login'); // Redirect to login page
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -19,16 +22,6 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
         <li className={styles.navItem}>
           <Link href="/">Home</Link>
         </li>
-        {isLoggedIn && (
-          <>
-            <li className={styles.navItem}>
-              <Link href="/booking">Booking</Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link href="/payments">Payment</Link>
-            </li>
-          </>
-        )}
         <li className={styles.navItem}>
           <Link href="/about">About</Link>
         </li>
@@ -38,35 +31,40 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
         <li className={styles.navItem}>
           <Link href="/important">Visit</Link>
         </li>
-
-        {!isLoggedIn && (
+        {user.isAuthenticated && (
+          <>
+            <li className={styles.navItem}>
+              <Link href="/activities">Activities</Link>
+            </li>
+            <li className={styles.navItem}>
+              <Link href="/destinations">Destinations</Link>
+            </li>
+            {/* <li className={styles.navItem}>
+              <Link href="/manage-destinations">Manage Destinations</Link>
+            </li> */}
+            {/* <li className={styles.navItem}>
+              <Link href="/view-payments">View Payments</Link>
+            </li> */}
+            {/* <li className={styles.navItem}>
+              <Link href="/manage-users">Manage Users</Link>
+            </li> */}
+            <li className={styles.navItem}>
+              <Link href="/booking">Booking</Link>
+            </li>
+            <li className={styles.navItem}>
+              <Link href="/payments">Payment</Link>
+            </li>
+            <li className={styles.navItem}>
+              <button onClick={handleLogout} className={styles.logoutButton}>
+                Logout
+              </button>
+            </li>
+          </>
+        )}
+        {!user.isAuthenticated && (
           <li className={styles.navItem}>
             <Link href="/login">Login</Link>
           </li>
-        )}
-
-        
-
-        <li className={styles.navItem}>
-          <Link href="/activities">Activities</Link>
-        </li>
-
-        <li className={styles.navItem}>
-          <Link href="/destinations">Destinations</Link>
-        </li>
-
-        {isAdmin && (
-          <>
-            <li className={styles.navItem}>
-              <Link href="/manage-destinations">Manage Destinations</Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link href="/view-payments">View Payments</Link>
-            </li>
-            <li className={styles.navItem}>
-              <Link href="/manage-users">Manage Users</Link>
-            </li>
-          </>
         )}
       </ul>
     </nav>
@@ -74,3 +72,83 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // src/components/navbar/Navbar.tsx
+// 'use client'
+// import Link from 'next/link';
+// import { useRouter } from 'next/navigation';
+// import styles from './Navbar.module.css';
+// const Navbar: React.FC = () => {
+//   const router = useRouter();
+//   const handleLogout = () => {
+//     router.push('/login');  // Redirect to login page
+//   };
+//   return (
+//     <nav className={styles.navbar}>
+//       <ul className={styles.navList}>
+//          <Link href="/">Home</Link>
+//         <li className={styles.navItem}>
+//           <Link href="/about">About</Link>
+//         </li>
+//         <li className={styles.navItem}>
+//           <Link href="/contact">Contact</Link>
+//         </li>
+//         <li className={styles.navItem}>
+//           <Link href="/important">Visit</Link>
+//         </li>
+//         <li className={styles.navItem}>
+//           <Link href="/activities">Activities</Link>
+//         </li>
+//         <li className={styles.navItem}>
+//           <Link href="/destinations">Destinations</Link>
+//         </li>
+//         <li className={styles.navItem}>
+//             <Link href="/manage-destinations">Manage Destinations</Link>
+//           </li>
+//           <li className={styles.navItem}>
+//              <Link href="/view-payments">View Payments</Link>
+//           </li>
+//           <li className={styles.navItem}>
+//             <Link href="/manage-users">Manage Users</Link>
+//           </li>
+//           <li className={styles.navItem}>
+//             <Link href="/booking">Booking</Link>
+//           </li>
+//           <li className={styles.navItem}>
+//              <Link href="/payments">Payment</Link>
+//           </li>
+//           <li className={styles.navItem}>
+//           <Link href="/login">Login</Link>
+//         </li>
+//           <li className={styles.navItem}>
+//              <button onClick={handleLogout} className={styles.logoutButton}>
+//               Logout
+//             </button> 
+//          </li>
+//       </ul>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;

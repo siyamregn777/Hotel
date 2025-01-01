@@ -32,7 +32,10 @@
     ".next/types/**/*.ts",
     "src/app/page.tsx",
     "lib/**/*",
-    "src/app/layout.js"
-, "src/lib/mongodb.ts", "src/pages/api/users.js", "next.config.ts"  ],
+    "src/app/layout.js",
+    "src/lib/mongodb.ts",
+    "src/pages/api/users.js", 
+    "next.config.ts",
+    "global.d.ts"   ],
   "exclude": ["node_modules"]
 }

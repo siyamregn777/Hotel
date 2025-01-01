@@ -1,37 +1,44 @@
 .back{
   background-color: white;
+  width: 100%;
+  height: 100%;
 }
 
 .container {
   background-color: white; /* Set background color to white */
 }
-.container h1{
+.ha{
+  color: rgb(0, 255, 187);
+  margin-left: 40%;
+  font-weight: bold;
+  font-size: larger;
+  /* margin-top: 20px; */
+}
+.container p{
   color: black;
-  margin-left: 30%;
+  font-weight: bold;
+  font-size: 2rem;
 }
 .container p{
   color: black;
 }
-
 .contactForm {
   display: flex;
   flex-direction: column;
   background-color: white; /* Ensure form background is white */
   padding: 20px; /* Add padding to the form */
   border-radius: 8px; /* Rounded corners for the form */
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   background-color: white; /* Set background color to white */
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 .contactForm label {
   margin-bottom: 10px;
   color: black; /* Set label text color to black */
 }
-
 .input, .textarea {
   padding: 10px;
   margin-bottom: 20px;
@@ -39,24 +46,50 @@
   border: 1px solid #ccc;
   color: black; /* Set input text color to black */
   background-color: white; /* Ensure input background is white */
+  width: 45%;
+}
+
+.inputt{
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  color: black; /* Set input text color to black */
+  background-color: white; /* Ensure input background is white */
+  width: 100%;
 }
 
 .textarea {
   resize: vertical;
+  width: 100%; /* Make textarea take full width */
+  height: 150px; /* Set a specific height */
+  padding: 10px; /* Add padding */
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 4px; /* Rounded corners */
+  resize: vertical; /* Allow vertical resizing */
 }
 
 .submitButton {
   padding: 10px;
-  background-color: #0070f3; /* Change this to your desired color */
+  background-color: #34d94d; /* Change this to your desired color */
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 30%;
+  margin-right: 30%;
   display: block;
 }
 
 .submitButton:hover {
   background-color: #005bb5; /* Darker shade for hover effect */
+}
+
+.horizontalGroup label {
+  flex: 1; /* Allow inputs to grow equally */
+  margin-right: 50px; /* Space between inputs */
+}
+
+.horizontalGroup label:last-child {
+  margin-right: 0; /* Remove margin for the last input */
 }

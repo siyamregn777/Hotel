@@ -1,28 +1,21 @@
 /* Navbar.module.css */
-
 .navbar {
-  background-color: #0f2422; /* Dark background color */
-  padding: 1rem 2rem; /* Padding on the navbar */
+  background-color: #1d8177; /* Dark background color */
+  padding: 0.5rem 1rem; /* Padding on the navbar */
   display: flex;
   justify-content: center; /*Center the navbar items*/
 }
-
 .navList {
-  list-style: none; /* Remove default list styling */
-  padding: 0;
-  margin: 0;
-  display: flex; /* Display the list items in a row */
+  display: flex;/* Display the list items in a row */
 }
-
 .navItem {
-  margin-right: 20px; /* Spacing between the navigation items */
+  margin-right: 15px; /* Spacing between the navigation items */
   position: relative;
 }
-
 .navItem:last-child {
-  margin-right: 0; /* Remove margin for the last item */
+  margin-right: 0; 
+  /* Remove margin for the last item */
 }
-
 .navItem a {
   color: white; /* White text color */
   text-decoration: none; /* Remove underline */
@@ -31,7 +24,6 @@
   text-decoration: none;
   transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
-
 .navItem a:hover {
   color: #f39c12; /* Change color on hover (gold color) */
   text-decoration: underline; /* Underline text on hover */

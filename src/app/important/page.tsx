@@ -1,102 +1,107 @@
 import styles from './important.module.css';
 import Image from 'next/image';
-import Link from 'next/link';
-
 import Decide from '../decide/decide';
-import image0 from '../../../public/images/DALL·E 2024-12-16 00.14.42 - A breathtaking natural landscape featuring a crystal-clear river flowing through a lush green valley. Majestic mountains rise in the background, with .webp';
-import image1 from '../../../public/images/DALL·E 2024-12-16 00.14.39 - A luxurious and cozy bedroom with a modern design. The room features a large, plush bed with soft, layered bedding in neutral tones, accented by decor.webp';
-import image2 from '../../../public/images/DALL·E 2024-12-16 00.14.42 - A breathtaking natural landscape featuring a crystal-clear river flowing through a lush green valley. Majestic mountains rise in the background, with .webp';
-import image3 from '../../../public/images/DALL·E 2024-12-16 00.14.46 - A serene and picturesque natural scene featuring a flowing river surrounded by lush greenery and vibrant wildflowers. The water sparkles under the sun.webp';
+import Link from 'next/link';
+import image0 from '../../../public/back/pexels-julien-goettelmann-44396125-19453661.jpg'
+import image1 from '../../../public/back/pexels-julien-goettelmann-44396125-19453660.jpg'
+import image2 from '../../../public/back/pexels-julien-goettelmann-44396125-19453587.jpg'
+import image3 from '../../../public/back/pexels-cachi290-29831643.jpg'
+import image4 from '../../../public/back/pexels-julien-goettelmann-44396125-19453661.jpg'
+import image5 from '../../../public/back/pexels-julien-goettelmann-44396125-19453660.jpg'
+import image6 from '../../../public/back/pexels-julien-goettelmann-44396125-19453587.jpg'
+import image7 from '../../../public/back/pexels-cachi290-29831643.jpg'
+import image8 from '../../../public/back/pexels-cachi290-29831643.jpg'
+import image9 from '../../../public/back/pexels-cachi290-29831643.jpg'
+import image10 from '../../../public/back/pexels-cachi290-29831643.jpg'
+import image11 from '../../../public/back/pexels-cachi290-29831643 (1).jpg'
+
+
+const images = [
+  {src: image0,alt: "image1",width: 300,height: 200,
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.Asperiores
+                  vel architecto aut ea nostrum laborum dolores voluptates.`
+  },
+  {src: image1,alt: "image1", width: 300,height: 200,
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
+                   vel architecto aut ea nostrum laborum dolores voluptates.`
+  },
+  {src: image2,alt: "image2",
+    width: 300,
+    height: 200,
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores vel architecto aut ea nostrum laborum dolores voluptates.`
+  },
+  {src: image3,alt: "image3",width: 300,height: 200,
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiore
+                  vel architecto aut ea nostrum laborum dolores voluptates.`
+  },
+  {src: image4,alt: "image3",width: 300,height: 200,
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiore
+                  vel architecto aut ea nostrum laborum dolores voluptates.`
+  },
+  {src: image5,alt: "image3",width: 300,height: 200,
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiore
+                  vel architecto aut ea nostrum laborum dolores voluptates.`
+  },
+  {src: image6,alt: "image3",width: 300,height: 200,
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiore
+                  vel architecto aut ea nostrum laborum dolores voluptates.`
+  },
+  {src: image7,alt: "image3",width: 300,height: 200,
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiore
+                  vel architecto aut ea nostrum laborum dolores voluptates.`
+  },
+  {src: image8,alt: "image3",width: 300,height: 200,
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiore
+                  vel architecto aut ea nostrum laborum dolores voluptates.`
+  },
+  {src: image9,alt: "image1",width: 300,height: 200,
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.Asperiores
+                  vel architecto aut ea nostrum laborum dolores voluptates.`
+  },
+  {src: image10,alt: "image1",width: 300,height: 200,
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.Asperiores
+                  vel architecto aut ea nostrum laborum dolores voluptates.`
+  },
+  {src: image11,alt: "image1",width: 300,height: 200,
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.Asperiores
+                  vel architecto aut ea nostrum laborum dolores voluptates.`
+  },
+];
 
 const Important = () => {
-    return (
-        <div>
-            <div className={styles.important}>
-                <h1 className={styles.title}>Begin from Here</h1>
-                <div className={styles.imageorder}>
-                    <ul className={styles.important1}>
-                        <li className={styles.important2}>
-                            <Image src={image0}
-                                alt="Image 1"
-                                width={300}
-                                height={250}
-                                className={styles.image} />
-                            <h3 className={styles.imageDescription}>visit lalibela</h3>
-                            <p className={styles.imageDescription1}>Lorem ipsum dolor sit, amet consectetur <br />
-                                dfga dipisicing elit.Asperiores vel archite <br />
-                                aut ea,nostrum laborum dolores voluptat.<br />
-                                Esse neque molestias corrupti inventore <br />
-                                voluptatibus, voluptatum a dignissimos, <br />
-                                atque reprehenderit fg ererhj eter fvero.</p>
-                            <h2 className={styles.buttumm}>
-                                <Link href="../about">
-                                    <button>show More</button>
-                                </Link>
-                            </h2>
-                        </li>
-                        <li className={styles.important2}>
-                            <Image src={image1}
-                                alt="Image 1"
-                                width={300}
-                                height={250}
-                                className={styles.image} />
-                            <h3 className={styles.imageDescription}>visit lalibela</h3>
-                            <p className={styles.imageDescription1}>Lorem ipsum dolor sit, amet consectetur <br />
-                                dfga dipisicing elit.Asperiores vel archite <br />
-                                aut ea,nostrum laborum dolores voluptat.<br />
-                                Esse neque molestias corrupti inventore <br />
-                                voluptatibus, voluptatum a dignissimos, <br />
-                                atque reprehenderit fg ererhj eter fvero.</p>
-                            <h2 className={styles.buttumm}>
-                                <Link href="../about">
-                                    <button>show More</button>
-                                </Link>
-                            </h2>
-                        </li>
-                        <li className={styles.important2}>
-                            <Image src={image2}
-                                alt="Image 1"
-                                width={300}
-                                height={250}
-                                className={styles.image} />
-                            <h3 className={styles.imageDescription}>visit lalibela</h3>
-                            <p className={styles.imageDescription1}>Lorem ipsum dolor sit, amet consectetur <br />
-                                dfga dipisicing elit.Asperiores vel archite <br />
-                                aut ea,nostrum laborum dolores voluptat.<br />
-                                Esse neque molestias corrupti inventore <br />
-                                voluptatibus, voluptatum a dignissimos, <br />
-                                atque reprehenderit fg ererhj eter fvero.</p>
-                            <h2 className={styles.buttumm}>
-                                <Link href="../about">
-                                    <button>show More</button>
-                                </Link>
-                            </h2>
-                        </li>
-                        <li className={styles.important2}>
-                            <Image src={image3}
-                                alt="Image 1"
-                                width={300}
-                                height={250}
-                                className={styles.image} />
-                            <h3 className={styles.imageDescription}>visit lalibela</h3>
-                            <p className={styles.imageDescription1}>Lorem ipsum dolor sit, amet consectetur <br />
-                                dfga dipisicing elit.Asperiores vel archite <br />
-                                aut ea,nostrum laborum dolores voluptat.<br />
-                                Esse neque molestias corrupti inventore <br />
-                                voluptatibus, voluptatum a dignissimos, <br />
-                                atque reprehenderit fg ererhj eter fvero.</p>
-                            <h2 className={styles.buttumm}>
-                                <Link href="../about">
-                                    <button>show More</button>
-                                </Link>
-                            </h2>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <Decide/>
-        </div>
-    );
+  return (
+    <div>
+      <div className={styles.middle1}>
+      <h2>Visit Africa</h2>
+      <div className={styles.middle}>
+        <ul className={styles.imageList}>
+          {images.map((image, index) => (
+            <li key={index} className={styles.imageItem}>
+                <Image 
+                  src={image.src} 
+                  alt={image.alt} 
+                  width={image.width} 
+                  height={image.height} 
+                  className={styles.image} 
+                />
+               <p className={styles.imageDescription}>
+                {image.description.split('\n').map((line, i) => (
+                  <span key={i}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
+              </p>
+              <Link href="/booking" className={styles.button}>visit</Link>
+            </li>
+            
+          ))}
+        </ul>
+      </div>
+      </div>
+      <Decide />
+    </div>
+  );
 };
 
 export default Important;

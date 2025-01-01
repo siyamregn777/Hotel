@@ -9,8 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "formidable": "^3.5.2",
+    "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.12.0",
-    "next": "15.1.0",
+    "mongoose": "^8.9.2",
+    "next": "^15.1.0",
     "next-video": "^1.4.0",
     "next-videos": "^1.4.1",
     "react": "^19.0.0",
@@ -19,6 +27,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
