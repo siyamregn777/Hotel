@@ -1,7 +1,7 @@
 .middle1 {
   text-align: center;
   padding: 20px;
-  background-color: antiquewhite;
+  background-color: rgb(255, 255, 255);
 }
 .middle1 h2{
   font-size: 2rem;
@@ -32,6 +32,7 @@
   display: flex;
   justify-content: center;
   gap: 20px; /* Space between items */
+  display: flex;
 }
 .imageItem {
   text-align: center; /* Center the text under each image */

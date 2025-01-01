@@ -16,7 +16,7 @@ const images = [
                   voluptatem. Esse neque molestias corrupti inventore voluptatibus, 
                   voluptatum a dignissimos, et atque reprehenderit vero.`,
     width: 300,
-    height: 250,
+    height: 100,
   },
   {
     src: image2,
@@ -28,6 +28,7 @@ const images = [
                   voluptatum a dignissimos, et atque reprehenderit vero.`,
     width: 300,
     height: 150,
+    
   },
   {
     src: image3,
@@ -49,14 +50,14 @@ const images = [
                   voluptatem. Esse neque molestias corrupti inventore voluptatibus, 
                   voluptatum a dignissimos, et atque reprehenderit vero.`,
     width: 300,
-    height: 200,
+    height: 100,
   },
 ];
 
 const Middle1 = () => {
   return (
     <div className={styles.middle1}>
-      <h2>What do you want to see</h2>
+      <h2>Feature Destination</h2>
       <h6>Ask us!</h6>
       <div className={styles.middle}>
         <ul className={styles.imageList}>
