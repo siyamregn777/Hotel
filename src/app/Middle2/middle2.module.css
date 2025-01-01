@@ -1,38 +1,81 @@
 .middle2 {
   position: relative;
-  height: 100vh; /* Full viewport height */
-  overflow: hidden; /* Hide overflow */
+  width: 100%;
+  height: 500px; /* Adjust height as needed */
+  overflow: hidden;
 }
 
-.videoContainer {
+.backgroundImage {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1; /* Place video behind the overlay */
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* Keep it as the background */
 }
 
-.overlay {
+.overlayContainer {
+  position: relative;
+  z-index: 2; /* Bring content above the background */
+  width: 100%;
+  height: 100%;
+}
+
+.topLeft {
   position: absolute;
-  top: 70%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Adjust for centering */
-  color: rgb(31, 69, 25); /* Text color */
-  text-align: center; /* Center text */
-  z-index: 2; /* Place overlay above the video */
-  background-color: rgb(175, 208, 208);
-  display: block;
-  height: 42%;
+  top: 20px; /* Distance from the top */
+  left: 20px; /* Distance from the left */
+  z-index: 3; /* Ensure it is above the background */
 }
-
-.overlay h1 {
-  font-size: 2.5rem; /* Adjust as needed */
+.topLeft h3 {
   color: black;
+  margin-left: 25%;
+  margin-top: 10%;
+  background-color: aliceblue;
+  margin-right: 35%;
+  border-radius: 10px;
+  padding: 2px;
+}
+.topLeft h3:hover{
+  background-color: black;
+  color: white;
 }
 
-.overlay p {
-  font-size: 1.2rem; /* Adjust as needed */
-  color: black;
+.overlayImage {
+  max-width: 100%; /* Ensure image fits within the container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional: add rounded corners */
 }
 
+.bottomRight {
+  position: absolute;
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  text-align: right; /* Align text to the right */
+  color: white; /* Text color */
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: semi-transparent background for contrast */
+  padding: 20px; 
+  border-radius: 10px; /* Rounded corners */
+}
+
+.bottomRight h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  margin-left: 0;
+  padding: auto;
+  text-align: center;
+}
+
+.bottomRight p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.bottom{
+  text-align: center;
+  font-size: medium;
+  margin-right: 30%;
+  padding: auto;
+  margin-top: 50%;
+  color: burlywood;
+}
