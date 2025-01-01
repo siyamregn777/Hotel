@@ -2,7 +2,7 @@
 import styles from './Booking.module.css';
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import bgImage from '../../../public/back/pexels-cachi290-29831643 (1).jpg'; // Background image
-
+import ProtectedPageWrapper from '../../components/ProtectedPageWrapper';
 type ActivityType = 'hiking' | 'sightseeing' | 'diving';
 type RoomType = 'vip' | 'normal';
 
@@ -113,6 +113,7 @@ const BookingPage = () => {
     };
 
     return (
+        <ProtectedPageWrapper>
         <div className={styles.container} style={{ backgroundImage: `url(${bgImage.src})` }}>
             <div className={styles.header}>
                 <h1 className={styles.title}>Adventure Booking</h1>
@@ -243,6 +244,7 @@ const BookingPage = () => {
                 </div>
             )}
         </div>
+        </ProtectedPageWrapper>
     );
 };
 
