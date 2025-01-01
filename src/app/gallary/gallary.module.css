@@ -1,0 +1,64 @@
+.middle1{
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background */
+  }
+.middle1 h2{
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.middle{
+    display: flex;
+    justify-content: center;
+}
+.imageList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid; /* Use grid layout for better control */
+    grid-template-columns: repeat(4, 1fr); /* 4 images per row */
+    gap: 20px; /* Space between items */
+    justify-content: center; /* Center grid content */
+  }
+  .imageItem {
+    position: relative; /* For hover effect positioning */
+    overflow: hidden; /* Ensure hover effects stay within bounds */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+  }
+  
+  .imageItem:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+  }
+  
+  .imageItem img {
+    border-radius: 10px; /* Ensure the image matches the container's rounded corners */
+    width: 100%; /* Set to full width of the container */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .imageItem::after {
+    content: attr(alt); /* Display the alt text as a caption */
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease; /* Smooth fade-in */
+  }
+  
+  .imageItem:hover::after {
+    opacity: 1; /* Show the caption on hover */
+  }
+ 
