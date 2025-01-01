@@ -1,0 +1,176 @@
+.container {
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color:black;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    background-image: url('../../../public/back/pexels-cachi290-29831643\ \(1\).jpg');
+}
+.parallel{
+    display: inline;
+    columns: 150px;
+}
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: black;
+}
+
+.bookingFormContainer {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+
+}
+
+.bookingForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.inputField {
+    padding: 10px;
+    border: #333;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid rgb(154, 154, 154); /* Set the border to 2px solid black */
+}
+
+.button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #218838;
+}
+
+.submitButton {
+    background-color: #007bff;
+}
+
+.submitButton:hover {
+    background-color: #0056b3;
+}
+
+.activityPreview {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.activityImage {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.errorMessage {
+    color: #ff4d4d;
+    font-size: 0.9rem;
+    margin-top: -10px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #333;
+    width: 90%;
+    max-width: 400px;
+}
+
+.modalContent h2 {
+    margin-bottom: 10px;
+}
+
+.modalContent button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modalContent button:hover {
+    background-color: #0056b3;
+}
+
+.availabilityMessage, .priceMessage {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #fff;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .bookingFormContainer {
+        padding: 15px;
+    }
+
+    .inputField {
+        font-size: 0.9rem;
+    }
+
+    .button, .submitButton {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+
+    .modalContent {
+        padding: 15px;
+    }
+}
