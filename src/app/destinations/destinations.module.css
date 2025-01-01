@@ -1,0 +1,65 @@
+/* styles/destinations.module.css */
+.back{
+    background-color: #f9f9f9;
+}
+.destination {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+    text-align: center;
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.formDestination {
+    display: flex;
+    flex-direction: column;
+}
+
+.fieldset {
+    border: none;
+    padding: 0;
+}
+
+.legend {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.label {
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #333;
+}
+
+.input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button {
+    padding: 10px 15px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}

@@ -1,95 +1,133 @@
 'use client';
 
+import { useState } from 'react';
 import styles from './destinations.module.css';
-import { useState } from "react";
 
 export default function Destination() {
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [region, setRegion] = useState('');
-    const [country, setCountry] = useState('');
-    const [image, setImage] = useState('');
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [region, setRegion] = useState('');
+  const [country, setCountry] = useState('');
+  const [image, setImage] = useState<File | null>(null); // Allow File or null
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-        const response = await fetch('/api/destinations', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name, description, region, country, image }),
-        });
-        const data = await response.json();
-        console.log(data);
-    };
+    if (!name || !description || !region || !country || !image) {
+      alert("Please fill all the fields!");
+      return;
+    }
 
-    return (
-        <div>
-            <div className={styles.destination}>
-                <h1>Destination</h1>
-                <form onSubmit={handleSubmit} className={styles.formDestination}>
-                    <fieldset>
-                        <legend>Add a New Destination</legend>
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('region', region);
+    formData.append('country', country);
+    formData.append('image', image); // Append the image file
 
-                        <label htmlFor="name">Name</label>
-                        <input
-                            id="name"
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder="Name"
-                            required
-                            className={styles.input}
-                        />
+    try {
+      const response = await fetch('/api/destinations', {
+        method: 'POST',
+        body: formData,
+      });
 
-                        <label htmlFor="description">Description</label>
-                        <textarea
-                            id="description"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            placeholder="Description"
-                            required
-                            className={styles.input}
-                        />
+      const data = await response.json();
+      console.log('Response from API:', data);
 
-                        <label htmlFor="region">Region</label>
-                        <input
-                            id="region"
-                            type="text"
-                            value={region}
-                            onChange={(e) => setRegion(e.target.value)}
-                            placeholder="Region"
-                            required
-                            className={styles.input}
-                        />
+      if (response.ok) {
+        if (data.success) {
+          alert('Destination added successfully!');
+          // Reset form fields
+          setName('');
+          setDescription('');
+          setRegion('');
+          setCountry('');
+          setImage(null);
+        } else {
+          alert(`Error: ${data.message}`);
+        }
+      } else {
+        throw new Error('Failed to add destination');
+      }
+    } catch (error: unknown) {
+      console.error('Error during form submission:', error);
 
-                        <label htmlFor="country">Country</label>
-                        <input
-                            id="country"
-                            type="text"
-                            value={country}
-                            onChange={(e) => setCountry(e.target.value)}
-                            placeholder="Country"
-                            required
-                            className={styles.input}
-                        />
+      if (error instanceof Error) {
+        alert(`An error occurred while submitting the form. Details: ${error.message}`);
+      } else {
+        alert('An unexpected error occurred.');
+      }
+    }
+  };
 
-                        <label htmlFor="image">Image URL</label>
-                        <input
-                            id="image"
-                            type="text"
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
-                            placeholder="Image URL"
-                            required
-                            className={styles.input}
-                        />
+  return (
+    <div className={styles.back}>
+      <div className={styles.destination}>
+        <h1 className={styles.heading}>Add Destination</h1>
+        <form onSubmit={handleSubmit} className={styles.formDestination}>
+          <fieldset className={styles.fieldset}>
+            <legend className={styles.legend}>Add a New Destination</legend>
 
-                        <button type="submit" className={styles.button}>Add</button>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-    );
+            <label htmlFor="name" className={styles.label}>Name</label>
+            <input
+              id="name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Name"
+              required
+              className={styles.input}
+            />
+
+            <label htmlFor="description" className={styles.label}>Description</label>
+            <textarea
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Description"
+              required
+              className={styles.input}
+            />
+
+            <label htmlFor="region" className={styles.label}>Region</label>
+            <input
+              id="region"
+              type="text"
+              value={region}
+              onChange={(e) => setRegion(e.target.value)}
+              placeholder="Region"
+              required
+              className={styles.input}
+            />
+
+            <label htmlFor="country" className={styles.label}>Country</label>
+            <input
+              id="country"
+              type="text"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              placeholder="Country"
+              required
+              className={styles.input}
+            />
+
+            <label htmlFor="image" className={styles.label}>Image</label>
+            <input
+              id="image"
+              type="file"
+              accept="image/*"
+              onChange={(e) => {
+                const file = e.target.files ? e.target.files[0] : null; // Safe check
+                setImage(file); // Set the image file
+              }}
+              required
+              className={styles.input}
+            />
+
+            <button type="submit" className={styles.button}>Add</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  );
 }
