@@ -5,9 +5,12 @@
     color: black;
     justify-content: center;
     margin-left: 30%;
+    font-weight: bold;
+    font-size: larger;
   }
   .container p{
     color: black;
+    font-size: large;
   }
   .content {
     display: flex;
@@ -42,3 +45,28 @@
   .textSection  li{
     color: black;
   }
+
+  .first {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px; /* Adjust spacing between elements as needed */
+  }
+  
+  .text1 {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .image2 {
+    flex-shrink: 0; /* Prevent the image from shrinking */
+    margin-right:30px;
+    width: 50%;
+    border-radius: 8px;
+    margin-left: 20px;
+  }
+  .first .text h1,
+  .first .text p {
+    margin: 0; /* Remove extra margins */
+  }
+  
