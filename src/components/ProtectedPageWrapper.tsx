@@ -1,3 +1,5 @@
+
+// src/components/ProtectedPageWrapper.tsx
 'use client';
 
 import { useUser } from '@/context/userContext';
