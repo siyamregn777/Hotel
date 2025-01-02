@@ -1,5 +1,5 @@
+// src/context/userContext.tsx
 'use client';
-
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import jwt from 'jsonwebtoken';
 
@@ -16,6 +16,7 @@ interface User {
 interface UserContextProps {
   user: User;
   setUser: React.Dispatch<React.SetStateAction<User>>;
+  logout: () => void; // Add logout function
 }
 
 const UserContext = createContext<UserContextProps | undefined>(undefined);
@@ -23,16 +24,14 @@ const UserContext = createContext<UserContextProps | undefined>(undefined);
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User>({ email: null, isAuthenticated: false });
 
+  // Effect to check for a token on initial load
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       try {
-        // Decode the token and type it as DecodedToken
         const decoded = jwt.decode(token) as DecodedToken | null;
-
         if (decoded) {
           const isExpired = decoded.exp && Date.now() >= decoded.exp * 1000;
-
           if (!isExpired) {
             setUser({ email: decoded.email, isAuthenticated: true });
             return;
@@ -45,7 +44,13 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     setUser({ email: null, isAuthenticated: false });
   }, []);
 
-  return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
+  // Logout function to clear user state and token
+  const logout = () => {
+    localStorage.removeItem('token');
+    setUser({ email: null, isAuthenticated: false });
+  };
+
+  return <UserContext.Provider value={{ user, setUser, logout }}>{children}</UserContext.Provider>;
 };
 
 export const useUser = () => {
