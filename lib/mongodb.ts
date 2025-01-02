@@ -1,30 +1,20 @@
-import { MongoClient } from "mongodb";
+import mongoose from 'mongoose';
 
-// Type for the MongoDB URI
-const uri: string = process.env.MONGODB_URI || "";
+const uri: string = process.env.MONGODB_URI || '';
 
 if (!uri) {
   throw new Error("Please define the MONGODB_URI environment variable");
 }
 
-// Ensure we only have one instance in a Node.js environment
-declare global {
-  var __dbClientPromise: Promise<MongoClient> | undefined;
-}
-
-let clientPromise: Promise<MongoClient>;
-
-if (process.env.NODE_ENV === "development") {
-  // In development mode, use a global variable to preserve the instance
-  if (!global.__dbClientPromise) {
-    const client = new MongoClient(uri);
-    global.__dbClientPromise = client.connect();
+// Connect to MongoDB
+const connectToDatabase = async () => {
+  try {
+    await mongoose.connect(uri); // Removed deprecated options
+    console.log("MongoDB connected successfully");
+  } catch (error) {
+    console.error("MongoDB connection error:", error);
+    throw error;
   }
-  clientPromise = global.__dbClientPromise;
-} else {
-  // In production, create a new instance
-  const client = new MongoClient(uri);
-  clientPromise = client.connect();
-}
+};
 
-export default clientPromise;
+export default connectToDatabase;
