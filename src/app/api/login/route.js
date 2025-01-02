@@ -1,5 +1,6 @@
 import clientPromise from '../../../../lib/mongodb';
 import jwt from 'jsonwebtoken';
+import User from '../../../models/User'; // Import User model
 
 const SECRET_KEY = process.env.JWT_SECRET || 'your-secret-key';
 
@@ -7,6 +8,7 @@ export async function POST(req) {
   try {
     const { email, password } = await req.json();
 
+    // Validate input
     if (!email || !password) {
       return new Response(
         JSON.stringify({ success: false, message: 'Email and password are required' }),
@@ -14,10 +16,13 @@ export async function POST(req) {
       );
     }
 
-    const client = await clientPromise;
-    const db = client.db('myDatabase');
-    const user = await db.collection('users').findOne({ email });
+    // Await the client promise to ensure the connection is established
+    await clientPromise;
 
+    // Use the User model to find the user
+    const user = await User.findOne({ email }); // Find the user by email
+
+    // Check if user exists
     if (!user) {
       return new Response(
         JSON.stringify({ success: false, message: 'User not found' }),
@@ -25,7 +30,8 @@ export async function POST(req) {
       );
     }
 
-    const isPasswordValid = password === user.password;
+    // Validate the password
+    const isPasswordValid = await user.comparePassword(password); // Assuming comparePassword is a method in your User model
     if (!isPasswordValid) {
       return new Response(
         JSON.stringify({ success: false, message: 'Invalid credentials' }),
@@ -33,6 +39,7 @@ export async function POST(req) {
       );
     }
 
+    // Generate JWT token
     const token = jwt.sign({ email: user.email, id: user._id }, SECRET_KEY, { expiresIn: '1h' });
 
     return new Response(
@@ -47,78 +54,3 @@ export async function POST(req) {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import clientPromise from '@/lib/mongodb';
-
-// // Define the POST handler
-// export async function POST(req) {
-//   try {
-//     const { email, password } = await req.json();
-
-//     if (!email || !password) {
-//       return new Response(
-//         JSON.stringify({ success: false, message: 'Email and password are required' }),
-//         { status: 400 }
-//       );
-//     }
-
-//     const client = await clientPromise;
-//     const db = client.db('myDatabase');
-
-//     // Check if the user exists
-//     const user = await db.collection('users').findOne({ email });
-//     if (!user) {
-//       return new Response(
-//         JSON.stringify({ success: false, message: 'User not found' }),
-//         { status: 404 }
-//       );
-//     }
-
-//     // Verify the password
-//     const isPasswordValid = password === user.password;
-//     if (!isPasswordValid) {
-//       return new Response(
-//         JSON.stringify({ success: false, message: 'Invalid credentials' }),
-//         { status: 401 }
-//       );
-//     }
-
-//     // Return success response
-//     return new Response(
-//       JSON.stringify({ success: true, message: 'Login successful', user: { email: user.email } }),
-//       { status: 200 }
-//     );
-//   } catch (error) {
-//     console.error('Error in login API:', error);
-//     return new Response(
-//       JSON.stringify({ success: false, message: 'Internal server error' }),
-//       { status: 500 }
-//     );
-//   }
-// }
