@@ -2,6 +2,7 @@
 import { useState } from "react";
 import styles from "./signup.module.css";
 import { useRouter } from "next/navigation";
+
 export default function Signup() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -17,8 +18,8 @@ export default function Signup() {
             setError("Passwords do not match!");
             return;
         }
-        setError(''); // Clear any previous errors
-        setSuccess(''); // Reset success message
+        setError('');
+        setSuccess('');
         const response = await fetch('/api/signup', {
             method: 'POST',
             headers: {
@@ -30,7 +31,7 @@ export default function Signup() {
         if (response.ok) {
             setSuccess("Signup successful! Please log in.");
             setTimeout(() => {
-                router.push('/login'); // Redirect after success
+                router.push('/login');
             }, 2000);
         } else {
             setError(data.message || "Signup failed. Please try again.");
@@ -82,7 +83,6 @@ export default function Signup() {
                             className={styles.input}
                         />
                     </div>
-
 
                     <div className={styles.formGroup}>
                         <label htmlFor="confirmPassword" className={styles.label}>Confirm Password</label>
