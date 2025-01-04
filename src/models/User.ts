@@ -45,6 +45,6 @@ UserSchema.methods.comparePassword = async function (password: string) {
   return await bcrypt.compare(password, this.password);
 };
 
-// Create and export the User model
-const User = models.User || model<IUser>('User', UserSchema);
+// Create and export the User model, specifying the collection name 'users'
+const User = models.User || model<IUser>('User', UserSchema, 'users'); // Specify collection name here
 export default User;

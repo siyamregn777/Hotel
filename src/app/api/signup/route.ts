@@ -1,16 +1,16 @@
-import clientPromise from '../../../../lib/mongodb';
-import { MongoClient } from 'mongodb';
+// src/app/api/signup/route.ts
+
+import connectToDatabase from '../../../../lib/mongodb';
+import User from '../../../models/User'; // Import User model
 
 export async function POST(req: Request) {
-  const client: MongoClient = await clientPromise; // Explicitly type client
-  const db = client.db('myDatabase');
+  await connectToDatabase('myDatabase'); // Connect to 'myDatabase'
 
-  const { email, password } = await req.json();
-  console.log("Request body:", { email, password }); // Log the request body
+  const { username, email, password } = await req.json();
 
   try {
     // Check if user already exists
-    const existingUser = await db.collection('users').findOne({ email });
+    const existingUser = await User.findOne({ email });
     if (existingUser) {
       return new Response(
         JSON.stringify({ success: false, message: 'User already exists' }),
@@ -18,14 +18,17 @@ export async function POST(req: Request) {
       );
     }
 
-    const newUser = await db.collection('users').insertOne({
+    // Create a new user instance
+    const newUser = new User({
+      username,
       email,
-      password, // Note: Password should be hashed in production
-      createdAt: new Date(),
+      password, // Password will be hashed automatically in the User model
     });
-    console.log("Inserted user:", newUser); // Log inserted user info
+
+    // Save the user to the database
+    await newUser.save(); // Use the User model's save method
     return new Response(
-      JSON.stringify({ success: true, userId: newUser.insertedId }),
+      JSON.stringify({ success: true, userId: newUser._id }),
       { status: 201 }
     );
   } catch (error) {

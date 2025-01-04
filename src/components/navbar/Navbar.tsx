@@ -39,15 +39,6 @@ const Navbar: React.FC = () => {
             <li className={styles.navItem}>
               <Link href="/destinations">Destinations</Link>
             </li>
-            {/* <li className={styles.navItem}>
-              <Link href="/manage-destinations">Manage Destinations</Link>
-            </li> */}
-            {/* <li className={styles.navItem}>
-              <Link href="/view-payments">View Payments</Link>
-            </li> */}
-            {/* <li className={styles.navItem}>
-              <Link href="/manage-users">Manage Users</Link>
-            </li> */}
             <li className={styles.navItem}>
               <Link href="/booking">Booking</Link>
             </li>
@@ -73,83 +64,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // src/components/navbar/Navbar.tsx
-// 'use client'
-// import Link from 'next/link';
-// import { useRouter } from 'next/navigation';
-// import styles from './Navbar.module.css';
-// const Navbar: React.FC = () => {
-//   const router = useRouter();
-//   const handleLogout = () => {
-//     router.push('/login');  // Redirect to login page
-//   };
-//   return (
-//     <nav className={styles.navbar}>
-//       <ul className={styles.navList}>
-//          <Link href="/">Home</Link>
-//         <li className={styles.navItem}>
-//           <Link href="/about">About</Link>
-//         </li>
-//         <li className={styles.navItem}>
-//           <Link href="/contact">Contact</Link>
-//         </li>
-//         <li className={styles.navItem}>
-//           <Link href="/important">Visit</Link>
-//         </li>
-//         <li className={styles.navItem}>
-//           <Link href="/activities">Activities</Link>
-//         </li>
-//         <li className={styles.navItem}>
-//           <Link href="/destinations">Destinations</Link>
-//         </li>
-//         <li className={styles.navItem}>
-//             <Link href="/manage-destinations">Manage Destinations</Link>
-//           </li>
-//           <li className={styles.navItem}>
-//              <Link href="/view-payments">View Payments</Link>
-//           </li>
-//           <li className={styles.navItem}>
-//             <Link href="/manage-users">Manage Users</Link>
-//           </li>
-//           <li className={styles.navItem}>
-//             <Link href="/booking">Booking</Link>
-//           </li>
-//           <li className={styles.navItem}>
-//              <Link href="/payments">Payment</Link>
-//           </li>
-//           <li className={styles.navItem}>
-//           <Link href="/login">Login</Link>
-//         </li>
-//           <li className={styles.navItem}>
-//              <button onClick={handleLogout} className={styles.logoutButton}>
-//               Logout
-//             </button> 
-//          </li>
-//       </ul>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;

@@ -1,4 +1,4 @@
-import clientPromise from '../../../../lib/mongodb';
+import connectToDatabase from '../../../../lib/mongodb'; // Adjust the import based on your file structure
 import jwt from 'jsonwebtoken';
 import User from '../../../models/User'; // Import User model
 
@@ -16,8 +16,8 @@ export async function POST(req) {
       );
     }
 
-    // Await the client promise to ensure the connection is established
-    await clientPromise;
+    // Connect to the specific database
+    await connectToDatabase('myDatabase'); // Connect to 'myDatabase'
 
     // Use the User model to find the user
     const user = await User.findOne({ email }); // Find the user by email

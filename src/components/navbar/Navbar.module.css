@@ -1,55 +1,43 @@
-/* Navbar.module.css */
+/* src/components/navbar/Navbar.module.css */
 .navbar {
-  background-color: #1d8177; /* Dark background color */
+  /* background-color: #1d8177; Dark background color */
   padding: 0.5rem 1rem; /* Padding on the navbar */
   display: flex;
-  justify-content: center; /*Center the navbar items*/
+  justify-content: flex-start; /* Align the navbar items to the left */
 }
+
 .navList {
-  display: flex;/* Display the list items in a row */
+  display: flex; /* Display the list items in a row */
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
 }
+
 .navItem {
   margin-right: 15px; /* Spacing between the navigation items */
   position: relative;
 }
-.navItem:last-child {
-  margin-right: 0; 
-  /* Remove margin for the last item */
+
+.navItem:first-child {
+  margin-left: 0; /* Remove margin for the first item */
 }
+
 .navItem a {
   color: white; /* White text color */
   text-decoration: none; /* Remove underline */
   font-size: 18px; /* Set font size */
   font-weight: bold; /* Make the text bold */
-  text-decoration: none;
   transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
+
 .navItem a:hover {
   color: #f39c12; /* Change color on hover (gold color) */
   text-decoration: underline; /* Underline text on hover */
 }
-.dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #102a2c;
-  border-radius: 5px;
-  display: none;
-  min-width: 200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
-  list-style: none;
-}
-.dropdown li{
-  padding: 10px 15px; /* Add spacing to dropdown items */
-  white-space: nowrap; /* Prevent text from wrapping */
-}
-.dropdown li a{
-  padding: 5px 15px;
-  display: block;
-  transition: background-color 0.3s ease;
-}
-.navList li:hover .dropdown{
-  display: block;
+
+.logoutButton {
+  background: none; /* Remove default button background */
+  border: none; /* Remove border */
+  color: white; /* White text color */
+  cursor: pointer; /* Pointer cursor */
 }
