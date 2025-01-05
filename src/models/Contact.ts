@@ -1,4 +1,3 @@
-// src/models/Contact.ts
 import { Schema, Document, model, models } from 'mongoose';
 
 // Define the interface for the Contact model
@@ -7,33 +6,37 @@ export interface IContact extends Document {
   email: string;
   subject: string;
   message: string;
+  createdAt: Date;
 }
 
 // Create the schema for the Contact model
-const ContactSchema: Schema = new Schema({
+const ContactSchema = new Schema({
   name: {
     type: String,
     required: true,
+    trim: true,
   },
   email: {
     type: String,
     required: true,
-    lowercase: true, // Normalize email to lowercase
-    match: /.+\@.+\..+/, // Simple regex for email validation
+    trim: true,
   },
   subject: {
     type: String,
     required: true,
+    trim: true,
   },
   message: {
     type: String,
     required: true,
+    trim: true,
   },
-}, {
-  timestamps: true, // Automatically manage createdAt and updatedAt fields
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 // Create and export the Contact model
-const Contact = models.Contact || model<IContact>('Contact', ContactSchema);
-
+const Contact = models.Contact || model<IContact>('Contact', ContactSchema, 'cont');
 export default Contact;

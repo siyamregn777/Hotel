@@ -1,102 +1,103 @@
-'use client';
+'use client'; // Marking this file as a client component
+
 import { useState } from 'react';
-import Styles from './activities.module.css';
+import styles from './activities.module.css'; // Assuming you have CSS in a separate file
 
 export default function Activities() {
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [price, setPrice] = useState('');
-    const [duration, setDuration] = useState('');
-    const [feedback, setFeedback] = useState<string | null>(null); // To show notifications
+  const [formData, setFormData] = useState({
+    name: '',
+    description: '',
+    price: '',
+    duration: '',
+  });
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setFeedback(null); // Clear previous feedback
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-        try {
-            const response = await fetch('/api/activities', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, description, price, duration }),
-            });
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-            if (response.ok) {
-                setFeedback('Activity added successfully!');
-                setName('');
-                setDescription('');
-                setPrice('');
-                setDuration('');
-            } else {
-                const errorData = await response.json(); // Log error details if necessary
-                setFeedback(`Error: ${errorData.error || 'Failed to add activity.'}`);
-            }
-        } catch {
-            setFeedback('An unexpected error occurred. Please try again.');
-        }
-    };
+    try {
+      const response = await fetch("/api/activities", { // Adjust the path as necessary
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    return (
-        <div className={Styles.active}>
-            <div className={Styles.activities}>
-                <h1 className={Styles.act}>Activities</h1>
-                {feedback && <p className={Styles.feedback}>{feedback}</p>} {/* Display feedback */}
-                <form onSubmit={handleSubmit} className={Styles.activit}>
-                    <div className={Styles.formGroup}>
-                        <label htmlFor="name" className={Styles.label}>Name</label>
-                        <input
-                            id="name"
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder="Name"
-                            required
-                            className={Styles.input}
-                        />
-                    </div>
-                    <div className={Styles.formGroup}>
-                        <label htmlFor="description" className={Styles.label}>Description</label>
-                        <textarea
-                            id="description"
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            placeholder="Description"
-                            required
-                            className={Styles.input}
-                        />
-                    </div>
-                    <div className={Styles.formGroup}>
-                        <label htmlFor="price" className={Styles.label}>Price</label>
-                        <input
-                            id="price"
-                            type="text"
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            placeholder="Price"
-                            required
-                            className={Styles.input}
-                        />
-                    </div>
-                    <div className={Styles.formGroup}>
-                        <label htmlFor="duration" className={Styles.label}>Duration</label>
-                        <input
-                            id="duration"
-                            type="text"
-                            value={duration}
-                            onChange={(e) => setDuration(e.target.value)}
-                            placeholder="Duration"
-                            required
-                            className={Styles.input}
-                        />
-                    </div>
-                    <ul>
-                        <li>
-                            <button type="submit" className={Styles.button}>Submit</button>
-                        </li>
-                    </ul>
-                </form>
-            </div>
+      const data = await response.json();
+      if (data.success) {
+        alert("Activity added successfully!");
+      } else {
+        alert("Something went wrong, please try again.");
+      }
+    } catch (error) {
+      console.error("Error sending activity:", error);
+      alert("An error occurred, please try again.");
+    }
+    setFormData({
+      name: '',
+      description: '',
+      price: '',
+      duration: '',
+    });
+  };
+
+  return (
+    <div className={styles.back}>
+        <div className={styles.container}>
+          <h1 className={styles.ha}>Add Activity</h1>
+          <p>Provide the details of the new activity!</p>
+          <form onSubmit={handleSubmit} className={styles.activityForm}>
+            <label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Activity Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className={styles.input}
+              />
+            </label>
+            <label>
+              <textarea
+                name="description"
+                placeholder='Activity Description'
+                value={formData.description}
+                onChange={handleChange}
+                required
+                className={styles.textarea}
+              />
+            </label>
+            <label>
+              <input
+                type="text"
+                name="price"
+                placeholder='Price'
+                value={formData.price}
+                onChange={handleChange}
+                required
+                className={styles.input}
+              />
+            </label>
+            <label>
+              <input
+                type="text"
+                name="duration"
+                placeholder='Duration (in minutes)'
+                value={formData.duration}
+                onChange={handleChange}
+                required
+                className={styles.input}
+              />
+            </label>
+            <button type="submit" className={styles.submitButton}>Add Activity</button>
+          </form>
         </div>
-    );
+    </div>
+  );
 }

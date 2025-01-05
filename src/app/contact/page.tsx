@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 import styles from './contact.module.css'; // Assuming you have CSS in a separate file
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject:'',
+    subject: '',
     message: '',
   });
 
@@ -19,7 +20,7 @@ export default function Contact() {
     e.preventDefault();
 
     try {
-      const response = await fetch("../api/contact", {
+      const response = await fetch("/api/contact", { // Note: Adjusted the relative path
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,39 +55,41 @@ export default function Contact() {
             <div className={styles.horizontalGroup}>
               <ul className={styles.devv}>
               <li className={styles.lii}>
-              <label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className={styles.input}
-              />
-            </label>
-            <label>
-              <input
-                type="email"
-                name="email"
-                placeholder='Email'
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className={styles.input}
-              />
-            </label>
+                <label>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className={styles.input}
+                  />
+                </label>
+                <label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder='Email'
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className={styles.input}
+                  />
+                </label>
               </li>
               </ul>
             </div>
             <label>
-              <input type="text"
+              <input 
+                type="text"
                 name="subject"
                 placeholder='Subject'
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className={styles.inputt} />
+                className={styles.inputt} 
+              />
             </label>
             
             <label>

@@ -1,90 +1,78 @@
-/* Container for the activities page */
-.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #f7f7f7;
-    min-height: 100vh;
+.back {
+  background-color: #f0f4f8; /* Light background color */
+  padding: 20px;
+  min-height: 100vh; /* Full height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: #ffffff; /* White background for the form */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 500px; /* Max width for the form */
+}
+
+.ha {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.activityForm {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+}
+
+.label {
+  margin-bottom: 15px; /* Space between form fields */
+}
+
+.input,
+.textarea {
+  width: 100%; /* Full width */
+  padding: 10px;
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}
+
+.textarea {
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 100px; /* Minimum height */
+}
+
+.submitButton {
+  background-color: #007bff; /* Primary button color */
+  color: white; /* Text color */
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px;
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.submitButton:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px; /* Adjust padding for smaller screens */
   }
-  
-  /* Inner container for the form */
-  .activities {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
+
+  .ha {
+    font-size: 20px; /* Slightly smaller title */
   }
-  
-  /* Title of the page */
-  .act {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Form styles */
-  .activit {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  /* Individual form group (input and label) */
-  .formGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  /* Label styling */
-  .label {
-    font-size: 14px;
-    color: #555;
-    font-weight: 600;
-  }
-  
-  /* Input fields and textarea */
-  .input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #333;
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-  
-  /* On focus, input fields and textarea change border color */
-  .input:focus {
-    border-color: #007bff;
-  }
-  
-  /* Button styling */
-  .button {
-    padding: 12px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Button hover effect */
-  .button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Error message styling */
-  .errorMessage {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-    text-align: center;
-  }
-  
+}

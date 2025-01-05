@@ -1,4 +1,3 @@
-// src/app/login/page.tsx
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -36,13 +35,24 @@ export default function Login() {
     }
 
     const data = await response.json();
-    localStorage.setItem('token', data.token);
-    setUser({ email, isAuthenticated: true }); // Update user context
+    const { token, role } = data;
+
+    // Save the token and role in localStorage or cookies
+    localStorage.setItem('token', token);
+    localStorage.setItem('role', role); // Save the role to manage redirection
+
+    setUser({ email, isAuthenticated: true, role }); // Include role when updating the user context
 
     console.log('Login successful, redirecting...');
     setEmail('');
     setPassword('');
-    router.push('/');
+
+    // Redirect based on the role (admin or user)
+    if (role === 'admin') {
+      router.push('/adminDashboard'); // Redirect admin to the dashboard
+    } else {
+      router.push('/'); // Redirect regular user to home page
+    }
   };
 
   return (

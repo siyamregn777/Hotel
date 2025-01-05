@@ -1,34 +1,24 @@
-//lib/mongodb.js file
 import { NextResponse } from "next/server";
-import clientPromise from "../../../../lib/mongodb"; // JavaScript module
-import { MongoClient } from "mongodb";
-
-// Define the expected shape of the request body
-interface ContactForm {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+import connectToDatabase from '../../../../lib/mongodb'; // Ensure you import your database connection
+import Contact from '../../../models/Contact'; // Import the Contact model
 
 export async function POST(req: Request) {
+  await connectToDatabase('Contact'); // Connect to the specified database
+
   try {
-    // Typecast the imported clientPromise to avoid TypeScript errors
-    const client: MongoClient = await (clientPromise as Promise<MongoClient>);
-    const db = client.db("Contact");
-    const collection = db.collection("cont");
-
     // Parse request body
-    const { name, email, subject, message }: ContactForm = await req.json();
+    const { name, email, subject, message } = await req.json();
 
-    // Insert data into MongoDB
-    await collection.insertOne({
+    // Create a new contact document using the Mongoose model
+    const newContact = new Contact({
       name,
       email,
       subject,
       message,
-      createdAt: new Date(),
     });
+
+    // Save the contact data to the database
+    await newContact.save();
 
     return NextResponse.json({
       success: true,

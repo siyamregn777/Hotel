@@ -1,3 +1,5 @@
+//src/app/signup/page.tsx
+
 'use client';
 import { useState } from "react";
 import styles from "./signup.module.css";
