@@ -1,95 +1,189 @@
-.back{
-  background-color: white;
-  width: 100%;
-  height: 100%;
+/* .back: The outer container of the entire page */
+.back {
+  background-color: white; /* Set the background color to white */
+  width: 100%; /* Full width of the viewport */
+  height: 100%; /* Full height of the viewport */
+  display: flex; /* Use flexbox to align the content */
+  flex-wrap: wrap; /* Allow the content to wrap if needed */
+  justify-content: space-between; /* Distribute content evenly with space between */
+  align-items: flex-start; /* Align items to the top of the container */
+  padding: 20px; /* Add padding inside the container */
 }
 
+/* .container: Used to wrap the form section */
 .container {
-  background-color: white; /* Set background color to white */
-}
-.ha{
-  color: rgb(0, 255, 187);
-  margin-left: 40%;
-  font-weight: bold;
-  font-size: larger;
-  /* margin-top: 20px; */
-}
-.container p{
-  color: black;
-  font-weight: bold;
-  font-size: 2rem;
-}
-.container p{
-  color: black;
-}
-.contactForm {
-  display: flex;
-  flex-direction: column;
-  background-color: white; /* Ensure form background is white */
-  padding: 20px; /* Add padding to the form */
-  border-radius: 8px; /* Rounded corners for the form */
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: white; /* Set background color to white */
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-.contactForm label {
-  margin-bottom: 10px;
-  color: black; /* Set label text color to black */
-}
-.input, .textarea {
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  color: black; /* Set input text color to black */
-  background-color: white; /* Ensure input background is white */
-  width: 45%;
+  background-color: white; /* White background for the container */
+  flex: 1; /* Allow the container to take up available space */
+  padding: 20px; /* Add padding inside the container */
+  margin: 10px; /* Add margin around the container */
+  border-radius: 8px; /* Rounded corners for the container */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow around the container */
 }
 
-.inputt{
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  color: black; /* Set input text color to black */
-  background-color: white; /* Ensure input background is white */
+/* .ha: Heading style inside the container */
+.ha {
+  color: rgb(0, 255, 187); /* Set the text color */
+  text-align: center; /* Center the text */
+  font-weight: bold; /* Make the text bold */
+  font-size: 1.8rem; /* Set font size */
+}
+
+/* .container p: Styling for paragraph text inside the container */
+.container p {
+  color: black; /* Black text color */
+  font-weight: bold; /* Make the text bold */
+  font-size: 1.2rem; /* Set font size */
+}
+
+/* .contactForm: The form styling */
+.contactForm {
+  display: flex; /* Use flexbox for the form layout */
+  flex-direction: column; /* Stack form elements vertically */
+  gap: 15px; /* Space between the form fields */
+  background-color: rgb(239, 242, 196); /* White background for the form */
+  padding: 20px; /* Padding inside the form */
+  border-radius: 8px; /* Rounded corners for the form */
+  max-width: 600px; /* Set a max width for the form */
+  margin: 0 auto; /* Center the form */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow around the form */
+}
+
+/* .contactForm label: Styling for the labels inside the form */
+.contactForm label {
+  margin-bottom: 10px; /* Space below the label */
+  color: black; /* Black text color */
+}
+
+/* .input, .textarea: Input and textarea styles */
+.input,
+.inputt,
+.textarea {
+  padding: 10px; /* Add padding inside input fields */
+  border-radius: 10px; /* Rounded corners for the inputs */
+  border: 1px solid #ccc; /* Light border color */
+  background-color: white; /* White background for input fields */
+  color: black; /* Black text color */
+  width: 100%; /* Make inputs take full width */
+  margin-top: 1%;
+}
+
+/* Specific input width for "name" and "email" fields inside a horizontal group */
+.input {
+  flex: 1; /* Allow inputs to grow equally */
+  margin-right: 15px; /* Space between name and email inputs */
+}
+
+/* .textarea: Styling for the textarea */
+.textarea {
+  resize: vertical; /* Allow vertical resizing of the textarea */
+  height: 150px; /* Set a fixed height for the textarea */
+}
+
+/* .submitButton: Button styling for the submit button */
+.submitButton {
+  padding: 12px; /* Add padding inside the button */
+  background-color: #34d94d; /* Set background color to green */
+  color: white; /* White text color */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners for the button */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  text-align: center; /* Center the text inside the button */
+  max-width: 200px; /* Max width for the button */
+  margin: 0 auto; /* Center the button horizontally */
+}
+
+/* Hover effect for the submit button */
+.submitButton:hover {
+  background-color: #28a745; /* Darker green on hover */
+}
+
+/* .horizontalGroup: Styling for the group of form fields (name and email) */
+.horizontalGroup {
+  display: flex; /* Use flexbox for the horizontal layout */
+  gap: 20px; /* Space between inputs */
+  flex-wrap: wrap; /* Allow inputs to wrap if needed */
+  justify-content: space-between; /* Distribute inputs evenly */
+}
+
+/* .more: Section that wraps the contact information (phone, email, etc.) */
+.more {
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  gap: 5px; /* Reduced gap between items */
+  margin: 0 0 10px; /* Reduced margin at the bottom */
+  color: black;
+}
+
+/* .make h1 and .make h6: Styling for the headings inside the "make" section */
+.make h1 {
+  font-size: 2rem; /* Font size for the heading */
+  font-weight: bold; /* Make the text bold */
+  margin: 0; /* Remove margin */
+}
+
+.make h6 {
+  font-size: 1rem; /* Font size for the subheading */
+  margin: 10px 0; /* Add margin above and below the subheading */
+}
+
+/* .beuty: Section that holds the contact details */
+.beuty {
+  margin: 10px 0; /* Reduced margin to decrease gap between sections */
+}
+
+/* .lablle: Container for the contact details list */
+.lablle {
+  display: flex; /* Use flexbox to arrange items inside the box */
+  flex-direction: column; /* Stack list items vertically */
+  gap: 10px; /* Space between list items */
+  background-color: #f9f9f9; /* Light background color for the box */
+  padding: 15px; /* Padding inside the box */
+  border-radius: 8px; /* Rounded corners for the box */
+  border: 1px solid #ddd; /* Light border around the box */
+}
+
+/* .lablle ul: Styling for the list container inside the label box */
+.lablle ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+}
+
+/* .lablle ul li: Styling for each list item inside the label box */
+.lablle ul li {
+  background-color: #e0e0e0; /* Light gray background for each list item */
+  padding: 10px; /* Padding inside the list item */
+  border-radius: 8px; /* Rounded corners for list items */
+  margin-bottom: 10px; /* Space between list items */
+  border: 1px solid #ccc; /* Light border around each list item */
+  font-weight: bold; /* Make the text bold */
+  color: black; /* Set text color to black */
+}
+.lablle ul li h1{
+  color: #28a745;
+}
+
+
+
+/* Add this CSS to contact.module.css */
+.imageWrapper {
+  position: relative;
   width: 100%;
 }
 
-.textarea {
-  resize: vertical;
-  width: 100%; /* Make textarea take full width */
-  height: 150px; /* Set a specific height */
-  padding: 10px; /* Add padding */
-  border: 1px solid #ccc; /* Add border */
-  border-radius: 4px; /* Rounded corners */
-  resize: vertical; /* Allow vertical resizing */
+.upper {
+  width: 100%;
+  height: auto;
 }
 
-.submitButton {
-  padding: 10px;
-  background-color: #34d94d; /* Change this to your desired color */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 30%;
-  margin-right: 30%;
-  display: block;
+.contactHeading {
+  position: absolute;
+  top: 50%; /* Vertically center the heading */
+  left: 50%; /* Horizontally center the heading */
+  transform: translate(-50%, -50%); /* Adjust to center precisely */
+  color: white; /* Change text color to make it visible on the image */
+  font-size: 3rem; /* Adjust font size as needed */
+  text-align: center;
+  z-index: 10; /* Ensure the heading is above the image */
 }
 
-.submitButton:hover {
-  background-color: #005bb5; /* Darker shade for hover effect */
-}
-
-.horizontalGroup label {
-  flex: 1; /* Allow inputs to grow equally */
-  margin-right: 50px; /* Space between inputs */
-}
-
-.horizontalGroup label:last-child {
-  margin-right: 0; /* Remove margin for the last input */
-}

@@ -1,32 +1,48 @@
-import styles from './abouts.module.css'; // Assuming you have CSS in a separate file
+import styles from './abouts.module.css'; 
 import image1 from '../../../public/back/pexels-jess-vide-4601423.jpg';
 import image2 from '../../../public/back/pexels-carlos-santos-892832-19064811.jpg';
+import image3 from '../../../public/back/new1pexels-jackson-jacob-143967477-20584923.jpg'
 import Image from 'next/image';
+import image4 from '../../../public/back/g1.jpg'
+import image5 from '../../../public/back/g2.jpg'
+import image6 from '../../../public/back/g3.jpg'
+import image7 from '../../../public/back/g4.jpg'
+
+const images=[
+  {src:image4 ,alt:"Meareg Tesema",width:200,height:200,description:`Meareg Tesema, our fearless leader, believes in the power of dreams and dedication.`},
+  {src:image5 ,alt:"Teshome Mekonen",width:200,height:200,description:`Teshome Mekonen, guiding us with his wisdom and passion for adventure.`},
+  {src:image6 ,alt:"Siyamregn Yeshi",width:200,height:200,description:`Siyamregn Yeshi, dedicated to turning your journeys into unforgettable experiences.`},
+  {src:image7 ,alt:"Mesifin Alemayehu",width:200,height:200,description:`Mesifin Alemayehu, creating beautiful moments for travelers to cherish forever.`}
+]
+
 export default function AboutUs() {
   return (
-    <div>
+    <div className={styles.backcolor}>
+      <div className={styles.imageWrapper}>
+        <Image src={image3}
+        alt="Our team working together"
+        height={100}
+        width={1600}
+        className={styles.upp}/>
+         <h1 className={styles.image3}>About Us</h1>
+      </div>
       <main className={styles.container}>
-        <h1>About Us</h1>
-        <p>Discover our story, mission, and values.</p>
-        <div className={styles.content}>
+        <p>We are a passionate team, driven by our love for travel and discovery. Our mission is to create meaningful experiences that bring people together.</p>
+        
+        {/* First section with image on the left and text on the right */}
+        <div className={`${styles.content} ${styles.firstSection}`}>
           <Image 
                 src={image1}
-                alt="Image 1" 
+                alt="The story of our team" 
                 width={300} 
                 height={250} 
                 className={styles.aboutImage}
           />
           <div className={styles.textSection}>
             <h2>Our Story</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-              Sed do eiusmod tempor incididunt ut labore et dolore magna 
-              aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-               ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>We started with a dream to help people connect with the world in deeper, more meaningful ways. Our founders, passionate about exploring new places, believe that travel is one of the best ways to learn, grow, and connect with people from all walks of life.</p>
             <h2>Our Mission</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-               Accusamus perferendis id beatae. Reiciendis laborum cupiditate
-               voluptas atque optio porro numquam! Dolores aperiam vel nesciunt!
-               Odit odio voluptatem nisi porro illo!</p>
+            <p>Our mission is to create unique travel experiences that inspire adventure, spark curiosity, and create lasting memories. We are here to bring the world closer to you and make every journey unforgettable.</p>
             <h2>Our Values</h2>
             <ul>
               <li>Integrity</li>
@@ -36,25 +52,36 @@ export default function AboutUs() {
             </ul>
           </div>
         </div>
-        <div className={styles.text}>
-            <h1>Our Goal</h1>
-            <p>Lorem ipsum dolor sit amet consectetur.</p>
-          </div>
-        <div className={styles.first}>
-          <div className={styles.text1}>
-            <h2>Our Goal</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Nostrum excepturi modi ut deserunt in maiores. Ab molestias 
-              possimus eaque numquam consequatur. Enim, libero rem! Mollitia 
-              excepturi nesciunt incidunt quibusdam repellat?</p>
+
+        {/* Second section with image on the right and text on the left */}
+        <div className={`${styles.content} ${styles.secondSection}`}>
+          <div className={styles.textSection}>
+            <h2>Our Vision</h2>
+            <p>We envision a world where travel is not just a journey, but a way to enrich lives and create lasting bonds between people and cultures. Our goal is to empower travelers to explore the world with confidence and curiosity.</p>
           </div>
           <Image
             src={image2}
-            alt="image 2"
+            alt="Exploring new horizons"
             width={300}
             height={400}
             className={styles.image2}
           />
+        </div>
+
+        <div className={styles.travel}>
+          <h1 className={styles.guide}>Our Travel Guides</h1>
+          <ul className={styles.immage}>
+            {images.map((image,index)=>(<li key={index} className={styles.imageli}>
+                <Image 
+                src={image.src}
+                alt={image.alt}
+                height={image.height}
+                width={image.width}/>
+                <p className={styles.description}>
+                  {image.description.split('\n').map((line,i)=>(<span key={i}>{line}<br /></span>))}
+                </p>
+            </li>))}
+          </ul>
         </div>
       </main>
     </div>

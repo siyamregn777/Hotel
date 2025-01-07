@@ -1,72 +1,182 @@
-.container {
-    background-color: white;
-  }
-  .container h1{
-    color: black;
-    justify-content: center;
-    margin-left: 30%;
-    font-weight: bold;
-    font-size: larger;
-  }
-  .container p{
-    color: black;
-    font-size: large;
-  }
-  .content {
-    display: flex;
-    flex-direction: row;
-    margin: 20px 0;
-  }
-  
-  .aboutImage {
-    width: 50%;
-    border-radius: 8px;
-    margin-right: 20px;
-  }
-  
-  .textSection {
-    width: 50%;
-  }
-  
-  .textSection h2 {
-    color: #333;
-  }
-  
-  .textSection p {
-    color: #555;
-    line-height: 1.6;
-  }
-  
-  .textSection ul {
-    list-style-type: disc;
-    margin: 10px 0;
-    padding-left: 20px;
-  }
-  .textSection  li{
-    color: black;
-  }
+/* Wrapper for the image and text */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+}
 
-  .first {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px; /* Adjust spacing between elements as needed */
-  }
-  
-  .text1 {
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  .image2 {
-    flex-shrink: 0; /* Prevent the image from shrinking */
-    margin-right:30px;
-    width: 50%;
-    border-radius: 8px;
-    margin-left: 20px;
-  }
-  .first .text h1,
-  .first .text p {
-    margin: 0; /* Remove extra margins */
-  }
-  
+.upp {
+  width: 100%;
+  height: auto;
+}
+
+/* Title styling over the image */
+.image3 {
+  position: absolute;
+  top: 50%; /* Vertically center the heading */
+  left: 50%; /* Horizontally center the heading */
+  transform: translate(-50%, -50%); /* Adjust to center precisely */
+  color: white; /* Change text color to make it visible on the image */
+  font-size: 3rem; /* Adjust font size as needed */
+  text-align: center;
+  z-index: 10; /* Ensure the heading is above the image */
+  font-weight: bold;
+}
+
+/* Main content section styling */
+.container {
+  background-color: white;
+  padding: 20px;
+}
+.container p{
+  color: black;
+}
+.container h1 {
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.textSection {
+  width: 50%;
+  padding: 20px;
+}
+
+.textSection h2 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.textSection p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.textSection ul {
+  list-style-type: disc;
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.textSection li {
+  color: black;
+}
+
+/* First section with image on the left and text on the right */
+.firstSection {
+  flex-direction: row;
+  display: flex;
+  margin: 20px 0;
+}
+
+.firstSection .aboutImage {
+  order: 1;
+}
+
+.firstSection .textSection {
+  order: 2;
+}
+
+/* Second section with image on the right and text on the left */
+.secondSection {
+  flex-direction: row-reverse;
+  display: flex;
+  margin: 20px 0;
+}
+
+.secondSection .aboutImage {
+  order: 2;
+}
+
+.secondSection .textSection {
+  order: 1;
+}
+
+.aboutImage {
+  width: 50%;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.image2 {
+  width: 50%;
+  border-radius: 8px;
+  margin-left: 20px;
+}
+
+/* Travel section */
+.travel {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.guide {
+  font-size: 2.5rem;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Styling for the images list */
+.immage {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+/* Each individual image in the gallery */
+.imageli {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: #008c45;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Image inside circular container */
+.imageli img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Description styling */
+.description {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+  background-color: rgba(173, 217, 78, 0.7);
+  padding: 5px;
+  border-radius: 5px;
+  width: 100%;
+  font-weight: bold;
+}
+
+/* Hover effects for images */
+.imageli:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.imageli:hover .description {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #fff;
+}

@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import styles from './contact.module.css'; // Assuming you have CSS in a separate file
-
+import image1 from '../../../public/back/new pexels-67117688-8566670.jpg';
+import Image from 'next/image';
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -47,12 +48,51 @@ export default function Contact() {
   };
 
   return (
+    <div>
+       <div className={styles.imageWrapper}>
+        {/* Image with responsive layout */}
+        <Image
+          src={image1}
+          alt="Background Image"
+          layout="responsive" /* Makes the image responsive */
+          height={200} /* Set the height to 200px */
+          width={1600} /* Set the width to a large value (to ensure it's wide enough) */
+          className={styles.upper}
+        />
+        {/* "Contact Us" heading positioned on top of the image */}
+        <h1 className={styles.contactHeading}>Contact Us</h1>
+      </div>
     <div className={styles.back}>
+   
+      <div className={styles.more}>
+        <div className={styles.make}>
+        <h1>Any Question`s?,<br />
+           Let`s Make Your <br /> Dream Happen</h1>
+        <h6>Buy a cup of cooffee,have a seat,<br /> and chat with us about your next big journey</h6>
+        </div>
+      </div>
+      <div className={styles.beuty}>
+        <label className={styles.lablle} >
+        <ul className={styles.wow}>
+            <li> <h1>Phone</h1> 
+              <p>+2519000000000</p>
+              <p>+2519111111111</p>
+            </li>
+            <li><h1>Email Us</h1>
+              <p>Siyamregnyeshidagna@gmail.com</p>
+            </li>
+            <li><h1>Opening time</h1>
+              <p>Any Time</p>
+            </li>
+          </ul>
+        </label>
+      </div>
         <div className={styles.container}>
           <h1 className={styles.ha}>Contact Us</h1>
-          <p>Get in touch with us!</p>
+            
           <form onSubmit={handleSubmit} className={styles.contactForm}>
             <div className={styles.horizontalGroup}>
+            <p>Reach Us Anytime!</p>
               <ul className={styles.devv}>
               <li className={styles.lii}>
                 <label>
@@ -105,6 +145,7 @@ export default function Contact() {
             <button type="submit" className={styles.submitButton}>Send Message</button>
           </form>
         </div>
+    </div>
     </div>
   );
 }
