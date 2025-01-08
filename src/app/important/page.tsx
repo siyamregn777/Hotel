@@ -15,9 +15,9 @@ import image9 from '../../../public/back/pexels-cachi290-29831643.jpg'
 import image10 from '../../../public/back/pexels-cachi290-29831643.jpg'
 import image11 from '../../../public/back/pexels-cachi290-29831643 (1).jpg'
 
-
 const images = [
   {src: image0,alt: "image1",width: 300,height: 200,
+    
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.Asperiores
                   vel architecto aut ea nostrum laborum dolores voluptates.`
   },
@@ -28,15 +28,14 @@ const images = [
   {src: image2,alt: "image2",
     width: 300,
     height: 200,
-    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores vel architecto aut ea nostrum laborum dolores voluptates.`
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
+                   vel architecto aut ea nostrum laborum dolores voluptates.`
   },
   {src: image3,alt: "image3",width: 300,height: 200,
-    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiore
-                  vel architecto aut ea nostrum laborum dolores voluptates.`
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. `
   },
   {src: image4,alt: "image3",width: 300,height: 200,
-    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiore
-                  vel architecto aut ea nostrum laborum dolores voluptates.`
+    description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. `
   },
   {src: image5,alt: "image3",width: 300,height: 200,
     description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiore
@@ -67,7 +66,6 @@ const images = [
                   vel architecto aut ea nostrum laborum dolores voluptates.`
   },
 ];
-
 const Important = () => {
   return (
     <div>
