@@ -14,7 +14,6 @@ import image8 from '../../../public/back/pexels-cachi290-29831643.jpg'
 import image9 from '../../../public/back/pexels-cachi290-29831643.jpg'
 import image10 from '../../../public/back/pexels-cachi290-29831643.jpg'
 import image11 from '../../../public/back/pexels-cachi290-29831643 (1).jpg'
-
 const images = [
   {src: image0,alt: "image1",width: 300,height: 200,
     
