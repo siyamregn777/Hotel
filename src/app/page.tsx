@@ -60,7 +60,6 @@ export default function Home() {
       <Middle1 />
       <Middle2 />
       <Middle3 />
-      {/* <Comques /> */}
       <Gallary/>
     </div>
   );
