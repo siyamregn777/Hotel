@@ -1,22 +1,20 @@
-
-'use client'; // Marking this file as a client component
-import styles from './adminDashboard.module.css'; // Assuming you have CSS in a separate file
+'use client'; 
+import styles from './adminDashboard.module.css'; 
 import Link from 'next/link';
-export default function AdminDashboard(){
-  return(
-    <div className={styles.mainn}>
-      <Link href="/adminDashboard/register">register</Link>
+export default function AdminDashboard() {
+
+
+  return (
+    <div className={styles.add}>
+      Admin Dashboard
+    
+      <div className={styles.mainn}>
+      <Link href="/adminDashboard/register">Register</Link>
       <Link href="/adminDashboard/upload">Upload images</Link>
       <Link href="/buy">Buy</Link>
+      
+      </div>
+    
     </div>
   );
 }
-
-
-
-
-
-
-
-
-

@@ -25,3 +25,10 @@
     background-color: #083561; /* Darker shade on hover */
 }
 
+.add{
+    color: black;
+    text-align: center;
+    background-color: white;
+    font-weight: bolder;
+    font-size: large;
+}

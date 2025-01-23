@@ -17,7 +17,7 @@
 .title { /* Local class for the title */
   text-align: center;
   color: #333;
-  margin-top: 2%;
+  /* margin-top: 2%; */
 }
 
 .input {

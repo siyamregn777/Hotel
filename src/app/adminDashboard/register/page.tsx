@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useRouter } from "next/navigation";
 import styles from './register.module.css'; // Assuming you have CSS in a separate file
-
+import Link from 'next/link';
 export default function Register() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -36,17 +36,21 @@ export default function Register() {
     if (response.ok) {
       setSuccess("Signup successful! Please log in.");
       setTimeout(() => {
-        router.push('/login');
+        router.push('/adminDashboard/register');
       }, 2000);
+      setUsername('');
+      setConfirmPassword('');
+      setEmail('');
+      setPassword('');
     } else {
       setError(data.message || "Signup failed. Please try again.");
     }
   }
-
   return (
     <div className={styles.sign}>
+      <Link href="/adminDashboard" className={styles.dash}>Dashboard</Link>
       <div className={styles.signupContainer}>
-        <h1 className={styles.signupTitle}>Sign Up</h1>
+        <h1 className={styles.signupTitle}>Register Admin</h1>
         <form onSubmit={handleSubmit} className={styles.signupForm}>
           {error && <p className={styles.error}>{error}</p>}
           {success && <p className={styles.success}>{success}</p>}
