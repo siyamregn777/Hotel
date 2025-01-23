@@ -1,0 +1,27 @@
+.mainn {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    height: 20vh; /* Full height of the viewport */
+    background-color: #f4f4f4; /* Light background color */
+    padding: 20px;
+    font-family: Arial, sans-serif; /* Font style */
+}
+
+.mainn a {
+    text-decoration: none; /* Remove underline from links */
+    color: #fff; /* Link color */
+    background-color: #0070f3; /* Link background color */
+    padding: 10px 20px; /* Padding around the links */
+    margin: 10px 100px; /* Margin between links */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+    width: 200px; /* Fixed width for links */
+    text-align: center; /* Center text */
+}
+
+.mainn a:hover {
+    background-color: #083561; /* Darker shade on hover */
+}
+

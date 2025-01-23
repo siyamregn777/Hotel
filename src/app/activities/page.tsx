@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import styles from './activities.module.css'; // Assuming you have CSS in a separate file
-
+import Image from 'next/image';
+import image1 from '../../../public/back/imag2.jpg'
 export default function Activities() {
   const [formData, setFormData] = useState({
     name: '',
@@ -48,6 +49,15 @@ export default function Activities() {
 
   return (
     <div className={styles.back}>
+      <div className={styles.image11}>
+         <Image src={image1}
+         alt="image1"
+         width={200}
+         height={150}
+         className={styles.imageback}
+         />
+         <h1 className={styles.words}>Add Your Experiance For Others</h1>
+      </div>
         <div className={styles.container}>
           <h1 className={styles.ha}>Add Activity</h1>
           <p>Provide the details of the new activity!</p>
@@ -88,7 +98,7 @@ export default function Activities() {
               <input
                 type="text"
                 name="duration"
-                placeholder='Duration (in minutes)'
+                placeholder='Duration (in Days)'
                 value={formData.duration}
                 onChange={handleChange}
                 required

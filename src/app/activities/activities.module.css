@@ -5,8 +5,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  display: flex;
 }
-
+.words{
+  color: black;
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  color: white; 
+  font-size: 3rem;
+  text-align: center;
+  z-index: 10; 
+  font-weight: bold;
+}
+.image11{
+  position: relative;
+  width: 100%;
+  margin-right: 10px;
+}
+.imageback{
+  height: 10%;
+  width: 100%;
+  margin-right: 10px;
+}
 .container {
   background-color: #ffffff; /* White background for the form */
   border-radius: 8px;
@@ -15,22 +37,21 @@
   width: 100%;
   max-width: 500px; /* Max width for the form */
 }
-
+.container p{
+  color: black;
+}
 .ha {
   font-size: 24px;
   margin-bottom: 10px;
   color: #333;
 }
-
 .activityForm {
   display: flex;
   flex-direction: column; /* Align items vertically */
 }
-
 .label {
   margin-bottom: 15px; /* Space between form fields */
 }
-
 .input,
 .textarea {
   width: 100%; /* Full width */
@@ -39,19 +60,18 @@
   border-radius: 4px;
   font-size: 16px;
   transition: border-color 0.3s; /* Smooth transition for border color */
+  margin-bottom: 10px;
+  color: black;
 }
-
 .input:focus,
 .textarea:focus {
   border-color: #007bff; /* Change border color on focus */
   outline: none; /* Remove default outline */
 }
-
 .textarea {
   resize: vertical; /* Allow vertical resizing */
   min-height: 100px; /* Minimum height */
 }
-
 .submitButton {
   background-color: #007bff; /* Primary button color */
   color: white; /* Text color */
@@ -62,11 +82,9 @@
   font-size: 16px;
   transition: background-color 0.3s; /* Smooth transition for background color */
 }
-
 .submitButton:hover {
   background-color: #0056b3; /* Darker shade on hover */
 }
-
 @media (max-width: 600px) {
   .container {
     padding: 20px; /* Adjust padding for smaller screens */

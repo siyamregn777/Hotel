@@ -41,3 +41,36 @@
   color: white; /* White text color */
   cursor: pointer; /* Pointer cursor */
 }
+
+
+
+
+
+
+
+.dropdownMenu {
+  position: absolute; /* Position it absolutely */
+  top: 100%; /* Align it below the parent item */
+  left: 0;
+  background-color: white; /* Background color for dropdown */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow */
+  display: none; /* Initially hidden */
+  flex-direction: column; /* Stack items vertically */
+}
+
+.navItem:hover .dropdownMenu {
+  display: flex; /* Show dropdown on hover */
+}
+
+.dropdownMenu li {
+  padding: 10px 15px; /* Padding for dropdown items */
+}
+
+.dropdownMenu li a {
+  text-decoration: none; /* Remove underline */
+  color: black; /* Text color */
+}
+
+.dropdownMenu li:hover {
+  background-color: #f0f0f0; /* Change background on hover */
+}
