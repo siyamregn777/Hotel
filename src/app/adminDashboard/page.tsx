@@ -11,7 +11,7 @@ export default function AdminDashboard() {
       <div className={styles.mainn}>
       <Link href="/adminDashboard/register">Register</Link>
       <Link href="/adminDashboard/upload">Upload images</Link>
-      <Link href="/adminDashboard/DeleteImage">Delete</Link>
+      <Link href="/adminDashboard/deleteImage">Delete</Link>
       
       </div>
     
