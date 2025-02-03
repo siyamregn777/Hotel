@@ -8,12 +8,11 @@ export default function Destination() {
   const [description, setDescription] = useState('');
   const [region, setRegion] = useState('');
   const [country, setCountry] = useState('');
-  const [image, setImage] = useState<File | null>(null); // Allow File or null
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!name || !description || !region || !country || !image) {
+    if (!name || !description || !region || !country ) {
       alert("Please fill all the fields!");
       return;
     }
@@ -23,7 +22,6 @@ export default function Destination() {
     formData.append('description', description);
     formData.append('region', region);
     formData.append('country', country);
-    formData.append('image', image); // Append the image file
 
     try {
       const response = await fetch('/api/destinations', {
@@ -42,7 +40,6 @@ export default function Destination() {
           setDescription('');
           setRegion('');
           setCountry('');
-          setImage(null);
         } else {
           alert(`Error: ${data.message}`);
         }
@@ -107,19 +104,6 @@ export default function Destination() {
               value={country}
               onChange={(e) => setCountry(e.target.value)}
               placeholder="Country"
-              required
-              className={styles.input}
-            />
-
-            <label htmlFor="image" className={styles.label}>Image</label>
-            <input
-              id="image"
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                const file = e.target.files ? e.target.files[0] : null; // Safe check
-                setImage(file); // Set the image file
-              }}
               required
               className={styles.input}
             />

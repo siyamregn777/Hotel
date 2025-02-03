@@ -1,11 +1,25 @@
 import { NextResponse } from "next/server";
-import clientPromise from "../../../../lib/mongodb";
+import connectToDatabase from "../../../../lib/mongodb"; // Ensure this points to your connection file
+import Booking from "../../../models/Booking"; // Ensure you have a Booking model defined
 
+// Define an interface for the expected booking request data
+interface BookingRequest {
+    name: string;
+    email: string;
+    checkInDate: string; // Adjust type if using Date
+    checkOutDate: string; // Adjust type if using Date
+    activity: string;
+    participants: number;
+    roomType: string;
+    roomNumber: string;
+}
+
+  
 export async function POST(req: Request) {
     try {
-        const client = await clientPromise;
-        const db = client.db("Booking");
-        const collection = db.collection("books");
+        await connectToDatabase("Booking"); // Connect to the database using Mongoose
+
+        const bookingData: BookingRequest = await req.json(); // Parse incoming JSON data
 
         const {
             name,
@@ -16,10 +30,10 @@ export async function POST(req: Request) {
             participants,
             roomType,
             roomNumber,
-        } = await req.json();
+        } = bookingData;
 
-        // Check if room is available
-        const existingBooking = await collection.findOne({
+        // Check if the room is available
+        const existingBooking = await Booking.findOne({
             roomType,
             roomNumber,
             $or: [
@@ -42,7 +56,7 @@ export async function POST(req: Request) {
         }
 
         // Proceed with the booking
-        await collection.insertOne({
+        await Booking.create({
             name,
             email,
             checkInDate,
