@@ -36,6 +36,6 @@
     "src/lib/mongodb.ts",
     "src/pages/api/users.js", 
     "next.config.ts",
-    "global.d.ts", "src/app/api/upload/route.tsx"   ],
+    "global.d.ts", "src/app/api/upload/route.tsx", "src/app/api/destinations/route.ts"   ],
   "exclude": ["node_modules"]
 }

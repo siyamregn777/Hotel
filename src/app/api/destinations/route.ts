@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import formidable, { Fields, Files } from 'formidable';
 import fs from 'fs';
-import clientPromise from '../../../../lib/mongodb'; // Ensure this imports correctly
+import connectToDatabase from '../../../../lib/mongodb'; // MongoDB connection
+import Destination from '../../../models/Destination'; // Mongoose model
 
 // Disable Next.js body parsing to handle file uploads
 export const config = {
@@ -10,7 +11,6 @@ export const config = {
   },
 };
 
-// Function to insert data into MongoDB
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const form = new formidable.IncomingForm();
@@ -21,32 +21,30 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
 
       const { name, description, region, country } = fields;
-      const imageFile = files.image[0]; // Access the uploaded image
+      const imageFile = files.image?.[0];
 
-      // Validate required fields
       if (!name || !description || !region || !country || !imageFile) {
         return res.status(400).json({ success: false, message: 'All fields are required' });
       }
 
       try {
-        const client = await clientPromise;
-        const db = client.db('Destination');
-        const collection = db.collection('destinat');
+        await connectToDatabase('Destination'); // Connect to MongoDB using Mongoose
 
-        // Read the file and convert to base64 or save it directly to cloud storage
         const imageData = fs.readFileSync(imageFile.filepath);
 
-        // Insert the destination into the database
-        const result = await collection.insertOne({
+        // Create a new destination document
+        const newDestination = new Destination({
           name,
           description,
           region,
           country,
-          imagePath: imageData.toString('base64'), // Convert to base64 for storage
+          imagePath: imageData.toString('base64'),
           createdAt: new Date(),
         });
 
-        return res.status(200).json({ success: true, id: result.insertedId });
+        const savedDestination = await newDestination.save();
+
+        return res.status(200).json({ success: true, id: savedDestination._id });
       } catch (error: unknown) {
         console.error('Error inserting data into the database:', error);
 
