@@ -1,0 +1,32 @@
+.uploadContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.uploadForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.uploadButton {
+    margin-top: 10px;
+    background-color: #0070f3; /* Blue background */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.uploadButton:hover {
+    background-color: #005bb5; /* Darker shade on hover */
+}
+
+.message {
+    margin-top: 10px;
+    color: green; /* Success message color */
+}

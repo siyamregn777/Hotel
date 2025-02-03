@@ -1,7 +1,7 @@
 'use client'; // Marking this file as a client component
 import { useState } from 'react';
 import { useRouter } from "next/navigation";
-import styles from './register.module.css'; // Assuming you have CSS in a separate file
+import styles from './register.module.css';
 import Link from 'next/link';
 export default function Register() {
   const [username, setUsername] = useState('');
@@ -27,7 +27,7 @@ export default function Register() {
     const response = await fetch('/api/adminRegister', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json', // Correct header case
+        'Content-Type': 'application/json', 
       },
       body: JSON.stringify({ username, email, password }),
     });

@@ -1,8 +1,7 @@
 import connectToDatabase from '../../../../lib/mongodb'; // Adjust the path as necessary
-import Image from '../../../models/Image'; // Import Image model
+import { GridFSBucket } from 'mongodb';
 import formidable, { IncomingForm, Fields, Files } from 'formidable'; // Import formidable types
-import fs from 'fs';
-import path from 'path';
+import fs from 'fs'; // Import fs
 import { IncomingMessage } from 'http'; // Import IncomingMessage from http
 
 // Disable body parsing for file uploads
@@ -11,14 +10,14 @@ export const config = {
     bodyParser: false,
   },
 };
-
 export async function POST(req: Request) {
-  await connectToDatabase('myDatabase'); // Connect to your database
+  const mongoose = await connectToDatabase('myDatabase'); // Connect to your database
+  const db = mongoose.connection.getClient().db('myDatabase'); // Get the underlying Db instance from the Mongoose connection
+  const bucket = new GridFSBucket(db); // Create a GridFS bucket
 
   const form = new IncomingForm();
 
   return new Promise<Response>((resolve) => {
-    // Cast req to the correct type for formidable
     const incomingMessage = req as unknown as IncomingMessage;
 
     form.parse(incomingMessage, async (err: Error | null, fields: Fields, files: Files) => {
@@ -29,7 +28,6 @@ export async function POST(req: Request) {
           { status: 500 }
         ));
       }
-
       const fileArray = files.file as formidable.File[]; // Cast to File array
       if (!fileArray || fileArray.length === 0) {
         return resolve(new Response(
@@ -37,38 +35,34 @@ export async function POST(req: Request) {
           { status: 400 }
         ));
       }
-
       const file = fileArray[0]; // Get the first file
-      const uploadPath = path.join(process.cwd(), 'uploads', file.originalFilename || file.newFilename); // Use originalFilename or newFilename
+      const uploadStream = bucket.openUploadStream(file.originalFilename || file.newFilename); // Create upload stream
 
-      // Ensure the uploads directory exists
-      fs.mkdirSync(path.dirname(uploadPath), { recursive: true });
+      // Pipe the file data to GridFS
+      const readStream = fs.createReadStream(file.filepath);
+      readStream.pipe(uploadStream);
 
-      try {
-        await fs.promises.rename(file.filepath, uploadPath); // Move the file to the upload path
-
-        // Create a new Image instance
-        const newImage = new Image({
-          filename: file.originalFilename || file.newFilename, // Use originalFilename or newFilename
-          path: uploadPath,
-        });
-
-        // Save the image metadata to the database
-        await newImage.save(); // Use the Image model's save method
+      uploadStream.on('error', (error: Error) => {
+        console.error("Error uploading to GridFS:", error);
         return resolve(new Response(
-          JSON.stringify({ success: true, imageId: newImage._id }),
-          { status: 201 }
-        ));
-      } catch (error) {
-        console.error("Error saving file or metadata:", error);
-        return resolve(new Response(
-          JSON.stringify({
-            success: false,
-            message: error instanceof Error ? error.message : 'An unknown error occurred',
-          }),
+          JSON.stringify({ success: false, message: 'Error uploading file.' }),
           { status: 500 }
         ));
-      }
+      });
+      uploadStream.on('finish', async () => {
+        const newImage = {
+          filename: file.originalFilename || file.newFilename,
+          contentType: file.mimetype,
+          uploadDate: new Date(),
+          length: file.size,
+          id: uploadStream.id,
+        };
+        await db.collection('images').insertOne(newImage);
+        return resolve(new Response(
+          JSON.stringify({ success: true, imageId: newImage.id }),
+          { status: 201 }
+        ));
+      });
     });
   });
 }

@@ -21,7 +21,7 @@ export default function Activities() {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/activities", { // Adjust the path as necessary
+      const response = await fetch("/api/activities", { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
