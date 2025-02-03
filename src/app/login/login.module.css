@@ -1,65 +1,80 @@
-.login{
-  background-color: rgb(255, 255, 255);
+/* login.module.css */
+.login {
+  background: linear-gradient(to right, #c1b6cb, #94aedb); /* Gradient background */
+  height: 60vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-/* login.module.css */
 .loginContainer {
   max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  background-color: #fef6f6;
+  margin: 20px; /* Reduced margin for better spacing */
+  padding: 30px; /* Increased padding for a more spacious feel */
+  border: none; /* Removed border for a cleaner look */
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
+  background-color: #ffffff; /* White background for the form */
 }
 
-.title { /* Local class for the title */
+.title {
   text-align: center;
   color: #333;
-  /* margin-top: 2%; */
+  font-size: 24px; /* Larger font size for the title */
+  margin-bottom: 20px; /* Space below the title */
 }
 
 .input {
   width: 100%;
-  padding: 10px;
+  padding: 12px; /* Increased padding */
   margin: 10px 0;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px; /* Slightly more rounded corners */
   box-sizing: border-box;
   color: black;
+  outline: none; /* Remove outline on focus */
+  transition: border-color 0.3s ease; /* Smooth transition for border color */
 }
 
-.donot{
+.input:focus {
+  border-color: #007BFF; /* Change border color on focus */
+}
+
+.donot {
   color: black;
   display: flex;
-  gap: 10px;
+  justify-content: center; /* Center the text */
+  flex-direction: column; /* Stack elements vertically */
+  gap: 5px;
 }
 
 .signup {
-  color:rgb(57, 107, 160);
+  color: rgb(57, 107, 160);
   text-decoration: underline;
 }
 
-
-
 .createAccountLink {
   display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  color: #007BFF; /* Blue link color */
+  margin-top: 15px; /* Increased margin for spacing */
+  padding: 12px 20px; /* Increased padding */
+  color: #fff; /* White text color */
+  background-color: #007BFF; /* Blue background */
   font-size: 16px;
   font-weight: bold;
-  text-decoration: none;
-  border: 2px solid #007BFF;
-  border-radius: 4px;
+  border: none; /* No border for a cleaner button */
+  border-radius: 6px; /* More rounded corners */
   text-align: center;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform transition */
+  cursor: pointer;
 }
 
 .createAccountLink:hover {
-  background-color: #007BFF; /* Blue background on hover */
-  color: #fff; /* White text on hover */
-  text-decoration: none;
-  cursor: pointer;
+  background-color: #adbecf; /* Dark blue background on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.error {
+  color: red; /* Error message color */
+  text-align: center; /* Center error messages */
+  margin: 10px 0; /* Space around error messages */
 }

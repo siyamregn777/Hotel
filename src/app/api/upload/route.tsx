@@ -1,68 +1,54 @@
-import connectToDatabase from '../../../../lib/mongodb'; // Adjust the path as necessary
-import { GridFSBucket } from 'mongodb';
-import formidable, { IncomingForm, Fields, Files } from 'formidable'; // Import formidable types
-import fs from 'fs'; // Import fs
-import { IncomingMessage } from 'http'; // Import IncomingMessage from http
+import { NextRequest, NextResponse } from 'next/server';
+import connectToDatabase from '../../../../lib/mongodb';
 
-// Disable body parsing for file uploads
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-export async function POST(req: Request) {
-  const mongoose = await connectToDatabase('myDatabase'); // Connect to your database
-  const db = mongoose.connection.getClient().db('myDatabase'); // Get the underlying Db instance from the Mongoose connection
-  const bucket = new GridFSBucket(db); // Create a GridFS bucket
+export async function POST(req: NextRequest) {
+  try {
+    // Ensure the database connection is established with a dbName
+    const dbName = 'myDatabase'; // Provide your actual database name
+    const mongoose = await connectToDatabase(dbName);
+    const db = mongoose.connection; // Get the db from the mongoose connection
 
-  const form = new IncomingForm();
+    // Parse the form data
+    const formData = await req.formData();
+    const imageUrl = formData.get('imageUrl') as string;
 
-  return new Promise<Response>((resolve) => {
-    const incomingMessage = req as unknown as IncomingMessage;
+    // Check if the image URL is provided
+    if (!imageUrl) {
+      return NextResponse.json({ success: false, message: 'No image URL provided.' }, { status: 400 });
+    }
 
-    form.parse(incomingMessage, async (err: Error | null, fields: Fields, files: Files) => {
-      if (err) {
-        console.error("Error parsing the file:", err);
-        return resolve(new Response(
-          JSON.stringify({ success: false, message: 'Error uploading file.' }),
-          { status: 500 }
-        ));
-      }
-      const fileArray = files.file as formidable.File[]; // Cast to File array
-      if (!fileArray || fileArray.length === 0) {
-        return resolve(new Response(
-          JSON.stringify({ success: false, message: 'No file uploaded.' }),
-          { status: 400 }
-        ));
-      }
-      const file = fileArray[0]; // Get the first file
-      const uploadStream = bucket.openUploadStream(file.originalFilename || file.newFilename); // Create upload stream
+    // Validate the image URL (simple check for URL format)
+    if (!isValidUrl(imageUrl)) {
+      return NextResponse.json({ success: false, message: 'Invalid image URL.' }, { status: 400 });
+    }
 
-      // Pipe the file data to GridFS
-      const readStream = fs.createReadStream(file.filepath);
-      readStream.pipe(uploadStream);
-
-      uploadStream.on('error', (error: Error) => {
-        console.error("Error uploading to GridFS:", error);
-        return resolve(new Response(
-          JSON.stringify({ success: false, message: 'Error uploading file.' }),
-          { status: 500 }
-        ));
-      });
-      uploadStream.on('finish', async () => {
-        const newImage = {
-          filename: file.originalFilename || file.newFilename,
-          contentType: file.mimetype,
-          uploadDate: new Date(),
-          length: file.size,
-          id: uploadStream.id,
-        };
-        await db.collection('images').insertOne(newImage);
-        return resolve(new Response(
-          JSON.stringify({ success: true, imageId: newImage.id }),
-          { status: 201 }
-        ));
-      });
+    // Insert the image URL into the database
+    const result = await db.collection('images').insertOne({
+      imageUrl,
+      uploadDate: new Date(),
+      source: 'external',
     });
-  });
+
+    return NextResponse.json({ success: true, imageId: result.insertedId }, { status: 201 });
+
+  } catch (error: unknown) {
+    // Handle unexpected errors
+    if (error instanceof Error) {
+      console.error('Error:', error.message);
+      return NextResponse.json({ success: false, message: error.message }, { status: 500 });
+    }
+    console.error('An unknown error occurred');
+    return NextResponse.json({ success: false, message: 'An unexpected error occurred' }, { status: 500 });
+  }
+}
+
+// Helper function to validate the URL format
+function isValidUrl(url: string): boolean {
+  try {
+    new URL(url); // Try creating a URL object to check if it's valid
+    return true;
+  } catch (e) {
+    console.error('Invalid Url error', e);
+    return false;
+  }
 }
