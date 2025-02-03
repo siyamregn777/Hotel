@@ -1,9 +1,8 @@
 .mainn {
     display: flex;
-    /* flex-direction: column; */
     align-items: center; /* Center items horizontally */
     justify-content: center; /* Center items vertically */
-    height: 20vh; /* Full height of the viewport */
+    height: 50vh; /* Full height of the viewport */
     background-color: #f4f4f4; /* Light background color */
     padding: 20px;
     font-family: Arial, sans-serif; /* Font style */

@@ -1,56 +1,45 @@
-'use client'; // Marking this file as a client component
+'use client';
 import { useState } from 'react';
-import styles from './upload.module.css'; // Assuming you have CSS in a separate file
+import styles from './upload.module.css';
+import Link from 'next/link';
+export default function UploadImage() {
+  const [imageUrl, setImageUrl] = useState('');
 
-export default function Upload() {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [message, setMessage] = useState<string>('');
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedFile(e.target.files![0]); // Use non-null assertion since we check for file existence later
-  };
-
-  const handleUpload = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedFile) {
-      setMessage('Please select a file to upload.');
-      return;
-    }
-    
     const formData = new FormData();
-    formData.append('file', selectedFile);
+    formData.append('imageUrl', imageUrl);
 
-    try {
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
+    const response = await fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    });
 
-      const data = await response.json();
-      if (response.ok) {
-        setMessage('File uploaded successfully!');
-      } else {
-        setMessage(data.message || 'Upload failed. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error uploading file:', error);
-      setMessage('An error occurred during upload.');
+    const data = await response.json();
+    if (data.success) {
+      alert('Image URL uploaded successfully!');
+    } else {
+      alert('Error uploading image URL.');
     }
   };
 
   return (
     <div className={styles.uploadContainer}>
-      <h1>Upload Image</h1>
-      <form onSubmit={handleUpload} className={styles.uploadForm}>
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleFileChange}
-          required
-        />
-        <button type="submit" className={styles.uploadButton}>Upload</button>
-      </form>
-      {message && <p className={styles.message}>{message}</p>}
+      <Link href="/adminDashboard" className={styles.dash}>Dashboard</Link>
+      <form onSubmit={handleUpload}>
+      <input
+        type="text"
+        placeholder="Enter Image URL"
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
+        className={styles.border_rounded}
+        required
+      />
+      <button type="submit" className={styles.uploadd}>
+        Upload URL
+      </button>
+    </form>
     </div>
+    
   );
 }
