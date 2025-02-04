@@ -26,7 +26,6 @@ const destinationSchema = new Schema<IDestination>({
     type: String, 
     required: true
  },
-  imagePath: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
 });
 
