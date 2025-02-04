@@ -4,7 +4,7 @@
   height: 100%; /* Full height of the parent */
   padding-bottom: 100px; /* Space at the bottom for footer */
   overflow-y: auto; /* Allow vertical scrolling if content overflows */
-  
+  background-color: #f0f0f0;
 }
 .main {
   flex: 1; /* Allow main content to grow and take available space */
