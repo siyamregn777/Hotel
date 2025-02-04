@@ -2,53 +2,44 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './middle1.module.css';
 
-import image1 from '../../../public/back/pexels-carlos-santos-892832-19064811.jpg';
-import image2 from '../../../public/back/pexels-67117688-8566670.jpg';
-import image3 from '../../../public/back/pexels-arthousestudio-4338021.jpg';
-import image4 from '../../../public/back/pexels-catalin-m-1839309-6550285.jpg';
+import image1 from '../../../public/images/ethiopia1.jpg';
+import image2 from '../../../public/images/egy1.jpg';
+import image3 from '../../../public/images/congo1.jpg';
+import image4 from '../../../public/images/sothAfrica1.jpg';
 const images = [
   {
     src: image1,
     alt: "Image 1",
-    link: "../about",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                  Asperiores vel architecto aut ea, nostrum laborum dolores 
-                  voluptatem. Esse neque molestias corrupti inventore voluptatibus, 
-                  voluptatum a dignissimos, et atque reprehenderit vero.`,
+    link: "../important",
+    description: `Ethiopia - Timket is celebrated on January 19th, honoring the baptism of Jesus with vibrant processions. This festival features priests in traditional attire and reenactments, showcasing rich cultural heritage and Orthodox traditions.!`,
     width: 300,
     height: 100,
   },
   {
     src: image2,
     alt: "Image 2",
-    link: "/page2",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                  Asperiores vel architecto aut ea, nostrum laborum dolores 
-                  voluptatem. Esse neque molestias corrupti inventore voluptatibus, 
-                  voluptatum a dignissimos, et atque reprehenderit vero.`,
+    link: "../important",
+    description: `Egypt - Ancient Egypt thrived along the Nile for
+     over 3,000 years. Known for its iconic pyramids and Sphinx, 
+     it features advanced knowledge and rich mythology. The legacy of divine Pharaohs continues to fascinate historians and travelers alike.`,
     width: 300,
     height: 150,
-    
   },
   {
     src: image3,
     alt: "Image 3",
-    link: "/page3",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                  Asperiores vel architecto aut ea, nostrum laborum dolores 
-                  voluptatem. Esse neque molestias corrupti inventore voluptatibus, 
-                  voluptatum a dignissimos, et atque reprehenderit vero.`,
+    link: "../important",
+    description: `Congo - The Congo, home to the vast river, 
+    boasts rich biodiversity and vibrant cultures. Known for 
+    lush rainforests, it is a haven for wildlife like gorillas. Visitors can explore stunning parks such as Virunga and Kahuzi-Biega.`,
     width: 300,
     height: 250,
   },
   {
     src: image4,
     alt: "Image 4",
-    link: "/page4",
-    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                  Asperiores vel architecto aut ea, nostrum laborum dolores 
-                  voluptatem. Esse neque molestias corrupti inventore voluptatibus, 
-                  voluptatum a dignissimos, et atque reprehenderit vero.`,
+    link: "../important",
+    description: `South Africa - This diverse nation is known for stunning landscapes and rich cultural heritage. Highlights include Table Mountain and Kruger National Park, renowned for wines and cuisine, along with the scenic Garden Route attracting many travelers.`,
     width: 300,
     height: 100,
   },
@@ -74,10 +65,9 @@ const Middle1 = () => {
               </Link>
               <p className={styles.imageDescription}>
                 {image.description.split('\n').map((line, i) => (
-                  <span key={i}>
-                    {line}
-                    <br />
-                  </span>
+                   <span key={i}>
+                   {line.trim()}
+                 </span>
                 ))}
               </p>
             </li>

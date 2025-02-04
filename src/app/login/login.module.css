@@ -1,29 +1,36 @@
-/* login.module.css */
 .login {
-  background: linear-gradient(to right, #c1b6cb, #94aedb); /* Gradient background */
-  height: 60vh; /* Full viewport height */
+  background-image: url('../../../public/uploads/jordan-1846284.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column; /* Center content vertically */
+}
+
+
+
+.title {
+  text-align: center;
+  color: white; /* Make the title white for better contrast */
+  font-size: 36px; /* Larger font size */
+  font-weight: bold; /* Bold text */
+  margin-bottom: 30px; /* Space below the title */
+  margin-top: 10px; /* Space above the title */
 }
 
 .loginContainer {
   max-width: 400px;
-  margin: 20px; /* Reduced margin for better spacing */
-  padding: 30px; /* Increased padding for a more spacious feel */
-  border: none; /* Removed border for a cleaner look */
-  border-radius: 12px; /* More rounded corners */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
-  background-color: #ffffff; /* White background for the form */
+  margin: 20px;
+  padding: 30px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  margin-right: 70%;
+  margin-top: 20px;
 }
-
-.title {
-  text-align: center;
-  color: #333;
-  font-size: 24px; /* Larger font size for the title */
-  margin-bottom: 20px; /* Space below the title */
-}
-
 .input {
   width: 100%;
   padding: 12px; /* Increased padding */

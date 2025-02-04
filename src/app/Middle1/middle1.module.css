@@ -41,6 +41,8 @@
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+
+
 }
 .image:hover {
   transform: scale(1.05); /* Slight zoom on hover */
@@ -48,12 +50,28 @@
 .imageDescription {
   margin-top: 8px;
   font-size: 14px;
-  color: #555;
+  color: #000000;
   color: white;
-  background-color: #555;
+  background-color: #6a7678;
   border-radius: 5px;
+  flex-wrap: wrap;
+  max-width: 300px; /* Adjust this based on your layout */
+  word-wrap: break-word;
+  line-height: 1.5; /* Adjust for better readability */
 
 }
 .imageDescription:hover{
-  transform: scale(1.1);
+  transform: scale(1.005);
+}
+.imageDescription span {
+  flex: 1 0 45%; /* This allows for equal distribution of words */
+  margin-right: 5%; /* Adjust spacing as needed */
+}
+
+.imageDescription span:nth-child(odd) {
+  margin-right: 0; /* Remove right margin for odd children */
+}
+.countryName {
+  color: black; /* Set the color to black */
+  font-weight: bold; /* Optional: make it bold */
 }

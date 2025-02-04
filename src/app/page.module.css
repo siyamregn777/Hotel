@@ -105,6 +105,10 @@
   max-width: 300px; /* Maximum width for the button */
   margin: 0 auto; /* Center the button horizontally */
   text-align: center; /* Center text within the button */
+  transition: background-color 0.3s ease; /* Smooth background transition */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Drop shadow */
+  z-index: 2; /* Ensure overlay is above the image */
+  
 }
 
 .wrapper button:hover {

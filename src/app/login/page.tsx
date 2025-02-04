@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './login.module.css';
 import { useUser } from '@/context/userContext'; // Import the user context
-
 export default function Login() {
   const { setUser } = useUser(); // Get setUser from UserContext
   const [email, setEmail] = useState('');

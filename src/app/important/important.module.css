@@ -30,6 +30,7 @@
   border-radius: 10px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+  margin-bottom: 20px; /* Add space between list items */
 }
 
 .imageItem:hover {
@@ -49,7 +50,10 @@
 }
 .imageDescription{
   color: black;
-  /* background-color: black; */
+  margin-bottom: 10px; /* Add space below the description */
+  margin-left: 10px;
+  
+    /* background-color: black; */
 }
 .button{
   color: black;
@@ -57,6 +61,12 @@
   border-radius: 20px;
   background-color: rgb(14, 150, 93);
   padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 50%;
+
+
 }
 .button:hover{
   background-color: #000000;
