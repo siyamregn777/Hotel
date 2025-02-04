@@ -1,12 +1,16 @@
 import styles from './gallary.module.css';
-import image1 from '../../../public/back/pexels-julia-volk-5111049.jpg';
-import image2 from '../../../public/back/pexels-stephanlouis-19213653.jpg';
-import image3 from '../../../public/back/pexels-shukran-1534548.jpg';
-import image4 from '../../../public/back/pexels-rdne-7894899.jpg';
-import image5 from '../../../public/back/pexels-sergey-pesterev-69811391-14578422.jpg';
-import image6 from '../../../public/back/pexels-quang-vuong-724225078-29854247.jpg';
-import image7 from '../../../public/back/pexels-quang-nguyen-vinh-222549-26742943.jpg';
-import image8 from '../../../public/back/pexels-julien-goettelmann-44396125-19453661.jpg';
+import image1 from '../../../public/gallary/africa-1283673_1280.jpg';
+import image2 from '../../../public/gallary/africa-5135407_1280.jpg';
+import image3 from '../../../public/gallary/birds-1099071_1280.jpg';
+import image4 from '../../../public/gallary/dog-8246868_1280.jpg';
+import image5 from '../../../public/gallary/duiker-island-2076042_1280.jpg';
+import image6 from '../../../public/gallary/giraffes-1330814_1280.jpg';
+import image7 from '../../../public/gallary/group-3137670_1280.jpg';
+import image8 from '../../../public/gallary/man-7771583_1280.jpg';
+import image9 from '../../../public/gallary/meerkat-8345747_1280.jpg';
+import image10 from '../../../public/gallary/morocco-4030733_1280.jpg';
+import image11 from '../../../public/gallary/namibia-2049203_1280.jpg';
+import image12 from '../../../public/gallary/penguins-4668754_1280.jpg';
 import Image from 'next/image';
 const images=[
     { src:image1,alt:"image1",width:300,height:200,},
@@ -17,6 +21,11 @@ const images=[
     {src:image6,alt:"image4",width:300,height:200,},
     {src:image7,alt:"image4",width:300,height:200,},
     {src:image8,alt:"image4",width:300,height:200,},
+    {src:image9,alt:"image4",width:300,height:200,},
+    {src:image10,alt:"image4",width:300,height:200,},
+    {src:image11,alt:"image4",width:300,height:200,},
+    {src:image12,alt:"image4",width:300,height:200,},
+ 
 ]
 const Gallary =()=>{
     return(

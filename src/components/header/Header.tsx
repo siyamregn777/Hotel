@@ -13,7 +13,7 @@ const Header = () => {
         className={styles.logo}
       />
       <h1 className={styles.title}>Journey</h1>
-      <Navbar /> {/* Include Navbar here */}
+      <Navbar /> 
     </header>
   );
 };

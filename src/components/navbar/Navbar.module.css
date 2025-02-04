@@ -3,7 +3,8 @@
   /* background-color: #1d8177; Dark background color */
   padding: 0.5rem 1rem; /* Padding on the navbar */
   display: flex;
-  justify-content: flex-start; /* Align the navbar items to the left */
+  justify-content: center; /* Align the navbar items to the left */
+  width: 100%; /* Ensure navbar takes full width */
 }
 
 .navList {
@@ -15,13 +16,15 @@
 
 .navItem {
   margin-right: 15px; /* Spacing between the navigation items */
-  position: relative;
+  /* position: relative; */
 }
 
 .navItem:first-child {
   margin-left: 0; /* Remove margin for the first item */
 }
-
+.navItem:last-child {
+  margin-right: 0; /* Remove margin for the last item */
+}
 .navItem a {
   color: white; /* White text color */
   text-decoration: none; /* Remove underline */
@@ -41,13 +44,11 @@
   color: white; /* White text color */
   cursor: pointer; /* Pointer cursor */
 }
+.logoutButton:hover{
+  color: #f39c12;
+  text-decoration: underline; /* Underline text on hover */
 
-
-
-
-
-
-
+}
 .dropdownMenu {
   position: absolute; /* Position it absolutely */
   top: 100%; /* Align it below the parent item */

@@ -1,96 +1,155 @@
-.back {
-  background-color: #f0f4f8; /* Light background color */
-  padding: 20px;
-  min-height: 100vh; /* Full height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
-.words{
-  color: black;
-  position: absolute;
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%); 
-  color: white; 
-  font-size: 3rem;
-  text-align: center;
-  z-index: 10; 
-  font-weight: bold;
-}
-.image11{
-  position: relative;
-  width: 100%;
-  margin-right: 10px;
-}
-.imageback{
-  height: 10%;
-  width: 100%;
-  margin-right: 10px;
-}
 .container {
-  background-color: #ffffff; /* White background for the form */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  width: 100%;
-  max-width: 500px; /* Max width for the form */
-}
-.container p{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   color: black;
+  background-color: #fff;
 }
-.ha {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #333;
-}
-.activityForm {
-  display: flex;
-  flex-direction: column; /* Align items vertically */
-}
-.label {
-  margin-bottom: 15px; /* Space between form fields */
-}
-.input,
-.textarea {
-  width: 100%; /* Full width */
-  padding: 10px;
-  border: 1px solid #ccc; /* Light border */
-  border-radius: 4px;
-  font-size: 16px;
-  transition: border-color 0.3s; /* Smooth transition for border color */
-  margin-bottom: 10px;
-  color: black;
-}
-.input:focus,
-.textarea:focus {
-  border-color: #007bff; /* Change border color on focus */
-  outline: none; /* Remove default outline */
-}
-.textarea {
-  resize: vertical; /* Allow vertical resizing */
-  min-height: 100px; /* Minimum height */
-}
-.submitButton {
-  background-color: #007bff; /* Primary button color */
-  color: white; /* Text color */
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer; /* Pointer cursor on hover */
-  font-size: 16px;
-  transition: background-color 0.3s; /* Smooth transition for background color */
-}
-.submitButton:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
-@media (max-width: 600px) {
-  .container {
-    padding: 20px; /* Adjust padding for smaller screens */
-  }
 
-  .ha {
-    font-size: 20px; /* Slightly smaller title */
-  }
+.bookingInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #e3f2fd;
+  border-radius: 5px;
 }
+
+.price {
+  font-size: 1.5rem;
+  color: #ff5722;
+}
+
+.imageGallery {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.image {
+  width: 24%;
+  border-radius: 5px;
+}
+
+.details {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.details h2 {
+  margin-top: 20px;
+}
+
+.reviews {
+  margin-top: 10px;
+}
+
+.review {
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer form {
+  margin-top: 10px;
+}
+
+.input {
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.submitButton {
+  padding: 10px 15px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #e64a19;
+}
+
+.textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.reviews {
+  margin-top: 10px;
+}
+
+.review {
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer form {
+  margin-top: 10px;
+}
+
+.details {
+  margin: 20px 0;
+}
+
+.details h2 {
+  margin-top: 20px;
+}
+
+.details ul {
+  margin: 10px 0;
+  padding-left: 20px; /* Indent list items */
+}
+
+.details li {
+  margin: 5px 0; /* Space between list items */
+}
+
+.details li::before {
+  content: "• "; /* Dot symbol */
+  color: #ff5722; /* Change color if needed */
+  font-weight: bold; /* Make it bold */
+  margin-right: 5px; /* Space between dot and text */
+}
+.review {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.submitButton {
+  margin-top: 10px;
+}
+

@@ -3,111 +3,154 @@
 import { useState } from 'react';
 import styles from './activities.module.css'; // Assuming you have CSS in a separate file
 import Image from 'next/image';
-import image1 from '../../../public/back/imag2.jpg'
-export default function Activities() {
-  const [formData, setFormData] = useState({
-    name: '',
-    description: '',
-    price: '',
-    duration: '',
-  });
+import image1 from '../../../public/back/g1.jpg';
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+interface Review {
+  comment: string;
+  rating: number; // Now this can be a decimal
+}
+
+export default function Activities() {
+  const [email, setEmail] = useState('');
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [comment, setComment] = useState('');
+  const [rating, setRating] = useState<number>(0); // 0-5 rating, allowing decimals
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleEmailSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    alert(`Subscribed with email: ${email}`);
+    setEmail('');
+  };
+
+  const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setComment(e.target.value);
+  };
+
+  const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRating(parseFloat(e.target.value));
+  };
+
+  const handleReviewSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("/api/activities", { 
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        alert("Activity added successfully!");
-      } else {
-        alert("Something went wrong, please try again.");
-      }
-    } catch (error) {
-      console.error("Error sending activity:", error);
-      alert("An error occurred, please try again.");
+    if (!comment || rating < 0 || rating > 5) {
+      alert('Please provide a valid comment and rating (0-5).');
+      return;
     }
-    setFormData({
-      name: '',
-      description: '',
-      price: '',
-      duration: '',
-    });
+
+    setReviews([...reviews, { comment, rating }]);
+    setComment('');
+    setRating(0); // Reset rating
   };
 
   return (
-    <div className={styles.back}>
-      <div className={styles.image11}>
-         <Image src={image1}
-         alt="image1"
-         width={200}
-         height={150}
-         className={styles.imageback}
-         />
-         <h1 className={styles.words}>Add Your Experiance For Others</h1>
+    <div className={styles.container}>
+      <h1>Vintage Double Decker Bus Tour & Thames River Cruise</h1>
+      <div className={styles.imageGallery}>
+        <Image src={image1} alt="Tour Image 1" width={200} height={150} className={styles.image} />
+        <p>Imagine a vibrant scene of a vintage double-decker bus cruising through the heart of London. The iconic red bus, adorned with colorful advertisements, glides past historic landmarks bathed in warm sunlight. In the background, the majestic silhouette of Big Ben towers over the bustling streets, while the lush greenery of nearby parks invites a sense of tranquility.</p>
       </div>
-        <div className={styles.container}>
-          <h1 className={styles.ha}>Add Activity</h1>
-          <p>Provide the details of the new activity!</p>
-          <form onSubmit={handleSubmit} className={styles.activityForm}>
-            <label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Activity Name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className={styles.input}
-              />
-            </label>
-            <label>
-              <textarea
-                name="description"
-                placeholder='Activity Description'
-                value={formData.description}
-                onChange={handleChange}
-                required
-                className={styles.textarea}
-              />
-            </label>
-            <label>
-              <input
-                type="text"
-                name="price"
-                placeholder='Price'
-                value={formData.price}
-                onChange={handleChange}
-                required
-                className={styles.input}
-              />
-            </label>
-            <label>
-              <input
-                type="text"
-                name="duration"
-                placeholder='Duration (in Days)'
-                value={formData.duration}
-                onChange={handleChange}
-                required
-                className={styles.input}
-              />
-            </label>
-            <button type="submit" className={styles.submitButton}>Add Activity</button>
-          </form>
+
+      <div className={styles.details}>
+        <h2>Description</h2>
+        <p>
+          See the highlights of London via two classic modes of transport on this half-day adventure. First, you will enjoy great views of Westminster Abbey, the Houses of Parliament, and the London Eye, as you meander through the historic streets on board a vintage double-decker bus.
+        </p>
+        <p>
+          Continue to see St. Paul’s Cathedral, where Admirals Nelson and Wellington are buried, and Princess Diana and Prince Charles got married. Then, visit the Tower of London, built nearly 1,000 years ago during the reign of William the Conqueror.
+        </p>
+        <p>
+          Home to the Crown Jewels, the Tower is protected by the famous Beefeaters. Your guide will take you to Traitors Gate, where prisoners entered the Tower for the last time. Next, take a short trip along the River Thames, passing Shakespeare’s Globe, Cleopatra’s Needle, and London Bridge, before arriving at Westminster Pier.
+        </p>
+        <p>
+          Rejoin the bus and head for Buckingham Palace. Make your way to the perfect spot to watch the world-famous Changing of the Guard ceremony.
+        </p>
+
+        <h2>What You Will Do</h2>
+        <ul>
+          <li>Discover London on board a classic Routemaster vintage double-decker bus</li>
+          <li>Cruise down the River Thames</li>
+          <li>See the Changing of the Guard</li>
+          <li>Visit Westminster Abbey</li>
+          <li>Listen to the chimes of Big Ben and see the Houses of Parliament</li>
+        </ul>
+
+        <h2>What’s Included</h2>
+        <p>Includes:</p>
+        <ul>
+          <li>Double-decker Routemaster tour</li>
+          <li>Short trip along the River Thames</li>
+          <li>Changing of the Guard</li>
+          <li>Gratuities</li>
+        </ul>
+        <p>Not Includes:</p>
+        <ul>
+          <li>Double-decker Routemaster tour</li>
+          <li>Short trip along the River Thames</li>
+          <li>Changing of the Guard</li>
+          <li>Gratuities</li>
+        </ul>
+
+        <h2>Safety</h2>
+        <ul>
+          <li>All required protective equipment is provided</li>
+          <li>All areas that customers touch are frequently cleaned</li>
+          <li>You must keep social distance while in vehicles</li>
+          <li>The number of visitors is limited to reduce crowds</li>
+        </ul>
+
+        <h2>Customer Reviews</h2>
+        <div className={styles.reviews}>
+          {reviews.map((review, index) => (
+            <div key={index} className={styles.review}>
+              <p><strong>{review.rating.toFixed(1)}</strong> ★★★★☆</p>
+              <p>“{review.comment}”</p>
+            </div>
+          ))}
         </div>
+      </div>
+
+      <div className={styles.footer}>
+        <h2>Add Your Review</h2>
+        <form onSubmit={handleReviewSubmit}>
+          <textarea
+            placeholder="Add Your experience"
+            value={comment}
+            onChange={handleCommentChange}
+            required
+            className={styles.textarea}
+          />
+          <div>
+            <label>Rating:</label>
+            <input
+              type="number"
+              min="0"
+              max="5"
+              step="0.1" 
+              value={rating}
+              onChange={handleRatingChange}
+              required
+            />
+          </div>
+          <button type="submit" className={styles.submitButton}>Submit Review</button>
+        </form>
+        <h2>Join The Newsletter</h2>
+        <form onSubmit={handleEmailSubmit}>
+          <input
+            type="email"
+            placeholder="Your email"
+            value={email}
+            onChange={handleEmailChange}
+            required
+            className={styles.input}
+          />
+          <button type="submit" className={styles.submitButton}>Subscribe</button>
+        </form>
+      </div>
     </div>
   );
 }

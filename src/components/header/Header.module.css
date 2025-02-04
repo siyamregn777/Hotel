@@ -3,25 +3,26 @@
   display: flex; /* Use flexbox layout */
   align-items: center; /* Center items vertically */
   justify-content: space-between; /* Space between title and navbar */
-  background-color: #28302d; /* Dark background color */
-  color: white; /* White text color */
+  background-color: #3d4c54; /* Dark background color */
+  color: rgb(255, 255, 255); /* White text color */
   padding: 1rem; /* Padding around the header */
 }
 
 .title {
-  background-color: rgb(19, 41, 66); /* Darker background for title */
-  font-size: 1.5rem; /* Font size for the hotel name */
+  background-color: rgb(0, 0, 0); /* Darker background for title */
+  font-size: 1.5rem; /* Font size for the title */
   border-radius: 10px;
-  margin-right: 0; /* Adjust margin for spacing */
-  padding: 10px;
+  margin-right: 10%; /* Reduced margin for spacing */
+  padding: 5px 10px; /* Adjusted padding */
 }
 
 .title:hover {
-  background-color: rgb(8, 8, 8); /* Darker hover effect */
+  background-color: rgb(0, 245, 188); /* Darker hover effect */
 }
 
 .logo {
-  width: 50px; /* Logo width */
+  width: 50px; /* Reduced logo width */
   height: auto; /* Maintain aspect ratio */
-  margin-right: 10px; /* Gap between the logo and title */
+  margin-right: 20px;
+   /* Reduced gap between the logo and title */
 }
