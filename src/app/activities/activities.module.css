@@ -129,7 +129,7 @@
   content: "• "; /* Dot symbol */
   color: #ff5722; /* Change color if needed */
   font-weight: bold; /* Make it bold */
-  margin-right: 5px; /* Space between dot and text */
+  margin-right: 5px; 
 }
 .review {
   margin: 10px 0;
