@@ -7,7 +7,7 @@ import image1 from '../../../public/back/g1.jpg';
 
 interface Review {
   comment: string;
-  rating: number; // Now this can be a decimal
+  rating: number; // Now this can be a decima
 }
 
 export default function Activities() {
