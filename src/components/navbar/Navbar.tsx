@@ -1,24 +1,26 @@
-// src/components/navbar/Navbar.tsx
-
 'use client';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useUser } from '@/context/userContext'; // Import the User Context
+import { useUser } from '@/context/userContext';
 import styles from './Navbar.module.css';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  isVisible: boolean;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ isVisible }) => {
   const router = useRouter();
-  const { user, setUser } = useUser(); // Access user context
+  const { user, setUser } = useUser();
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Clear the token
-    setUser({ email: null, isAuthenticated: false, role: null }); // Update context
-    router.push('/login'); // Redirect to login page
+    localStorage.removeItem('token');
+    setUser({ email: null, isAuthenticated: false, role: null });
+    router.push('/login');
   };
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={`${styles.navbar} ${isVisible ? styles.visible : ''}`}>
       <ul className={styles.navList}>
         <li className={styles.navItem}>
           <Link href="/">Home</Link>
@@ -41,15 +43,12 @@ const Navbar: React.FC = () => {
               <Link href="/booking">Booking</Link>
             </li>
             <li className={styles.navItem}>
-                <Link href="/destinations">Destinations</Link> 
-              </li>
+              <Link href="/destinations">Destinations</Link>
+            </li>
             {user.role === 'admin' && (
-              
-                <li className={styles.navItem}>
-                <Link href="/adminDashboard">AdminDashboard</Link> 
-                </li>
-              
-              
+              <li className={styles.navItem}>
+                <Link href="/adminDashboard">AdminDashboard</Link>
+              </li>
             )}
             <li className={styles.navItem}>
               <Link href="/payments">Payment</Link>

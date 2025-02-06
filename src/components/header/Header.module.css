@@ -1,28 +1,48 @@
-/* src/components/header/Header.module.css */
 .header {
-  display: flex; /* Use flexbox layout */
-  align-items: center; /* Center items vertically */
-  justify-content: space-between; /* Space between title and navbar */
-  background-color: #3d4c54; /* Dark background color */
-  color: rgb(255, 255, 255); /* White text color */
-  padding: 1rem; /* Padding around the header */
+  background-color: #3d4c54;
+  color: rgb(255, 255, 255);
+  padding: 1rem;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .title {
-  background-color: rgb(0, 0, 0); /* Darker background for title */
-  font-size: 1.5rem; /* Font size for the title */
+  background-color: rgb(0, 0, 0);
+  font-size: 1.5rem;
   border-radius: 10px;
-  margin-right: 10%; /* Reduced margin for spacing */
-  padding: 5px 10px; /* Adjusted padding */
+  padding: 5px 10px;
 }
 
 .title:hover {
-  background-color: rgb(0, 245, 188); /* Darker hover effect */
+  background-color: rgb(0, 245, 188);
 }
 
 .logo {
-  width: 50px; /* Reduced logo width */
-  height: auto; /* Maintain aspect ratio */
+  width: 50px;
+  height: auto;
   margin-right: 20px;
-   /* Reduced gap between the logo and title */
+}
+
+.hamburger {
+  display: none; /* Hide by default */
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* Show hamburger on mobile */
+  }
+
+  .title {
+    margin-right: 0; /* Remove margin for smaller screens */
+  }
 }
