@@ -1,135 +1,23 @@
+
 .wrapper {
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Stack children vertically */
-  height: 100%; /* Full height of the parent */
-  padding-bottom: 100px; /* Space at the bottom for footer */
-  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the wrapper takes at least the full viewport height */
+  overflow: hidden;
   background-color: #f0f0f0;
 }
+
 .main {
-  flex: 1; /* Allow main content to grow and take available space */
-  padding: 0; /* Space around the main content */
-  text-align: center; /* Center text within the main area */
-  position: relative; /* Positioning context for overlay */
+  flex: 1;
+  position: relative;
+  height: 100vh; /* Ensure main takes the full viewport height */
 }
-.imageContainer {
-  position: relative; /* Positioning context for overlay */
-  width: 100%; /* Full width of the parent */
-  height: 100vh; /* Full viewport height */
-  overflow: hidden; /* Hide overflow to prevent scrollbars */
-}
-.overlay {
-  position: absolute; /* Position overlay on top of video */
-  top: 0; /* Align to the top */
-  left: 0; /* Align to the left */
-  right: 0; /* Align to the right */
-  bottom: 0; /* Align to the bottom */
-  display: flex; /* Use flexbox for centering child elements */
-  flex-direction: column; /* Stack text and button vertically */
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  color: rgb(0, 0, 0); /* Text color for visibility */
-  z-index: 2; /* Ensure overlay is above the video */
-  /* background-color: rgba(186, 168, 168, 0.5); Optional: semi-transparent background for contrast */
-}
-.overlay h1{
-  font-size: 2.5rem;
-}
-.overlay p{
-  font-size: 1.5rem;
-}
-.Home {
-  width: 100%; /* Full width of the parent */
-  padding: 20px; /* Padding for the section */
-  text-align: center; /* Center text */
-}
-
-.Home_beauty {
-  width: 100%; /* Full width of the parent */
-  display: flex; /* Use flexbox for layout */
-  justify-content: space-between; /* Space between items */
-  align-items: center; /* Center items vertically */
-  margin-bottom: 20px; /* Space below this section */
-}
-
-.Home_beauty h2 {
-  font-size: 1.2rem; /* Font size for headings */
-  font-weight: bold; /* Bold text */
-  border-radius: 10px; /* Rounded corners */
-  padding: 30px; /* Padding around the text */
-}
-.Home_beauty h3 {
-  font-size: 1.2rem; /* Font size for headings */
-  font-weight: bold; /* Bold text */
-  border-radius: 10px; /* Rounded corners */
-  padding: 20px; /* Padding around the text */
-  /* text-align: center; */
-}
-.Home_beauty h2 {
-  color: aqua; /* Color for the heading */
-  background-color: #513b3b; /* Dark background color */
-}
-
-.Home_beauty h2:hover {
-  background-color: rgb(45, 45, 202); /* Change background on hover */
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform: scale(1.1);
-  color: black;
-  background-color: aliceblue;
-  opacity: 0.8;
-}
-
-.Home_beauty h3 {
-  color: aqua;
-  background-color: rgb(94, 80, 62); /* Background color */
-  text-align: right; /* Align text to the right */
-  margin-left: 65%; /* Space from the left */
-}
-
-.Home_beauty h3:hover {
-  background-color: rgb(186, 186, 232); /* Change background on hover */
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform: scale(1.1);
-  color: black;
-  opacity: 0.8;
-}
-
-.wrapper button {
-  background-color: #da5112; /* Button background color */
-  padding: 10px 20px; /* Padding for the button */
-  font-size: 1rem; /* Font size for the button text */
-  color: azure; /* Text color */
-  cursor: pointer; /* Change cursor on hover */
-  display: block; /* Block display */
-  border-radius: 10px; /* Rounded corners */
-  max-width: 300px; /* Maximum width for the button */
-  margin: 0 auto; /* Center the button horizontally */
-  text-align: center; /* Center text within the button */
-  transition: background-color 0.3s ease; /* Smooth background transition */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Drop shadow */
-  z-index: 2; /* Ensure overlay is above the image */
-  
-}
-
-.wrapper button:hover {
-  background-color: #4b0cb0; /* Change button color on hover */
-}
-
-
-
-
-
-
-
 
 .imageContainer {
   position: relative;
   width: 100%;
-  height: 500px; /* Adjust the height as needed */
+  height: 100vh; /* Full viewport height */
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .image {
@@ -150,11 +38,94 @@
   align-items: center;
   color: white;
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  z-index: 2; /* Ensure that overlay appears above the image */
+  z-index: 2;
   padding: 20px;
   text-align: center;
 }
 
+.overlay h1 {
+  font-size: 2.5rem; /* Larger font size for visibility */
+  max-width: 90%;
+  text-align: center;
+}
+
+.overlay p {
+  font-size: 1.2rem;
+  max-width: 90%;
+  text-align: center;
+}
+
+.Home {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.Home_beauty {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically on small screens */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.Home_beauty h2, .Home_beauty h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.Home_beauty h2:hover {
+  background-color: rgb(45, 45, 202);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: scale(1.1);
+  color: black;
+  background-color: aliceblue;
+  opacity: 0.8;
+}
+
+.Home_beauty h3 {
+  color: aqua;
+  background-color: rgb(94, 80, 62);
+  text-align: center; /* Center text on small screens */
+}
+
+.Home_beauty h3:hover {
+  background-color: rgb(186, 186, 232);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform: scale(1.1);
+  color: black;
+  opacity: 0.8;
+}
+
+.wrapper button {
+  background-color: #da5112;
+  padding: 12px 24px;
+  font-size: 1rem;
+  color: azure;
+  cursor: pointer;
+  display: block;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 300px;
+  min-width: 120px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  position: absolute; /* Add absolute positioning */
+  bottom: 20px; /* Move the button 20px from the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for centering */
+}
+
+.wrapper button:hover {
+  background-color: #4b0cb0;
+}
 
 .dotsContainer {
   display: flex;
@@ -178,4 +149,26 @@
 
 .dot.active {
   background-color: #555;
+}
+
+@media (min-width: 768px) {
+  .Home_beauty {
+    flex-direction: row; /* Row layout for larger screens */
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 500px) {
+  .overlay h1 {
+    font-size: 1.8rem; /* Adjust font size for mobile */
+  }
+
+  .overlay p {
+    font-size: 1rem;
+  }
+
+  .dot {
+    width: 18px;
+    height: 18px;
+  }
 }

@@ -32,6 +32,7 @@ export default function Home() {
             src={images[currentIndex].src} // Display the current image
             alt={images[currentIndex].alt}
             className={styles.image}
+            priority // Ensure the image loads quickly
           />
           <div className={styles.overlay}>
             <h1>Welcome to Africa</h1>
