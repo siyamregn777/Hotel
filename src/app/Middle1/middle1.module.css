@@ -3,75 +3,111 @@
   padding: 20px;
   background-color: rgb(255, 255, 255);
 }
-.middle1 h2{
+
+.middle1 h2 {
   font-size: 2rem;
   background-color: #555;
-  margin-left: 35%;
-  margin-right: 35%;
-  margin-bottom: 10px;
+  margin: 0 auto 10px auto; /* Center the heading */
+  padding: 10px;
   border-radius: 10px;
+  max-width: 80%; /* Limit width for better readability */
 }
-.middle1 h6{
+
+.middle1 h6 {
   font-size: 1rem;
   background-color: #5f3c3c;
-  margin-bottom: 10px;
-  margin-left: 45%;
-  margin-right: 45%;
-  margin-bottom: 10px;
+  margin: 0 auto 10px auto; /* Center the subheading */
+  padding: 10px;
   border-radius: 10px;
+  max-width: 80%; /* Limit width for better readability */
 }
+
 .middle {
   display: flex;
   justify-content: center;
   gap: 20px;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
+
 .imageList {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   justify-content: center;
-  gap: 20px; /* Space between items */
-  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
+
 .imageItem {
-  text-align: center; /* Center the text under each image */
+  text-align: center;
+  flex: 1 1 300px; /* Allow items to grow and shrink, with a base width of 300px */
+  max-width: 100%; /* Ensure items don't exceed container width */
 }
+
 .image {
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-
-
+  width: 100%; /* Make images responsive */
+  height: auto; /* Maintain aspect ratio */
 }
+
 .image:hover {
   transform: scale(1.05); /* Slight zoom on hover */
 }
+
 .imageDescription {
   margin-top: 8px;
   font-size: 14px;
-  color: #000000;
   color: white;
   background-color: #6a7678;
   border-radius: 5px;
-  flex-wrap: wrap;
-  max-width: 300px; /* Adjust this based on your layout */
+  padding: 10px; 
   word-wrap: break-word;
-  line-height: 1.5; /* Adjust for better readability */
-
+  line-height: 1.5;
 }
-.imageDescription:hover{
+
+.imageDescription:hover {
   transform: scale(1.005);
 }
-.imageDescription span {
-  flex: 1 0 45%; /* This allows for equal distribution of words */
-  margin-right: 5%; /* Adjust spacing as needed */
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .middle1 h2 {
+    font-size: 1.5rem; 
+    max-width: 90%; /* Increase width for better fit */
+  }
+
+  .middle1 h6 {
+    font-size: 0.9rem; /* Reduce font size for smaller screens */
+    max-width: 90%; /* Increase width for better fit */
+  }
+
+  .imageList {
+    flex-direction: column; /* Stack items vertically on mobile */
+    gap: 10px; /* Reduce gap between items */
+  }
+
+  .imageItem {
+    flex: 1 1 100%; /* Allow items to take full width on mobile */
+  }
+
+  .imageDescription {
+    font-size: 12px; /* Reduce font size for smaller screens */
+  }
 }
 
-.imageDescription span:nth-child(odd) {
-  margin-right: 0; /* Remove right margin for odd children */
-}
-.countryName {
-  color: black; /* Set the color to black */
-  font-weight: bold; /* Optional: make it bold */
+@media (max-width: 480px) {
+  .middle1 h2 {
+    font-size: 1.2rem; /* Further reduce font size for very small screens */
+  }
+
+  .middle1 h6 {
+    font-size: 0.8rem; /* Further reduce font size for very small screens */
+  }
+
+  .imageDescription {
+    font-size: 10px; /* Further reduce font size for very small screens */
+  }
 }
