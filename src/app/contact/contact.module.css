@@ -187,3 +187,14 @@
   z-index: 10; /* Ensure the heading is above the image */
 }
 
+
+@media (max-width: 768px) {
+  .contactHeading {
+    font-size: 2rem;
+  }
+
+  .horizontalGroup {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

@@ -1,74 +1,108 @@
 .imageContainer {
-    /* list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px; */
-    margin: 0%;
-    margin-bottom: 0%;
-    margin-top: 0%;
+  margin: 0;
+}
+
+.imageWrapper {
+  position: relative; /* Enables positioning for child elements */
+  width: 100%;
+  height: 100vh; /* Corrected to use 'vh' for viewport height */
+}
+
+.imageWrapper h1 {
+  background-color: darkblue;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  margin-left: 35%;
+  margin-right: 40%;
+  border-radius: 10px;
+  padding-left: 4%;
+  padding: 10px;
+  font-size: 1.5rem; /* Adjust font size */
+  text-align: center; /* Ensure text is centered */
+}
+
+/* Image Styling */
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Overlay Content Styling */
+.overlayContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.3s ease;
+}
+
+.imageWrapper:hover .overlayContent {
+  opacity: 1; /* Show overlay on hover */
+}
+
+.text {
+  font-size: 1rem; /* Adjust font size for better readability */
+  margin-bottom: 10px;
+}
+
+/* Button Styling */
+.overlayButton {
+  padding: 10px 20px;
+  font-size: 1rem; /* Slightly bigger button font */
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.overlayButton:hover {
+  background-color: #005bb5;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .imageWrapper h1 {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 1.25rem; /* Adjust for smaller screens */
   }
-  
-  .imageWrapper {
-    position: relative; /* Enables positioning for child elements */
-    width: 100%;
-    height: 100vp;
-  }
-  .imageWrapper h1{
-    background-color: darkblue;
-    margin-bottom:2%;
-    margin-top: 2%;
-    margin-left: 40%;
-    margin-right: 40%;
-    border-radius: 10px;
-    padding-left: 4%;
-    padding: 10px;
-  }
-  .image {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px; /* Optional: Add rounded corners */
-    object-fit: cover;
-  }
-  
-  .overlayContent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    color: white;
-    text-align: center;
-    opacity: 0; /* Start hidden */
-    transition: opacity 0.3s ease; /* Smooth transition */
-  }
-  
-  .imageWrapper:hover .overlayContent {
-    opacity: 1; /* Show overlay on hover */
-  }
-  
+
   .text {
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 0.9rem; /* Smaller text on smaller screens */
   }
-  
+
   .overlayButton {
-    padding: 8px 16px;
-    font-size: 14px;
-    background-color: #0070f3; /* Next.js blue */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+    padding: 8px 16px; /* Adjust button padding for smaller screens */
+    font-size: 0.9rem; /* Smaller button font */
   }
-  
-  .overlayButton:hover {
-    background-color: #005bb5; /* Darker blue on hover */
+}
+
+@media (max-width: 480px) {
+  .imageWrapper h1 {
+    font-size: 1.1rem; /* Smaller font for extra small screens */
+    margin-left: 20%;
+    margin-right: 20%;
   }
-  
+
+  .text {
+    font-size: 0.8rem; /* Smaller text for extra small screens */
+  }
+
+  .overlayButton {
+    padding: 6px 12px; /* Further adjust padding */
+    font-size: 0.8rem; /* Smaller button font */
+  }
+}

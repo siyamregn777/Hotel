@@ -1,74 +1,98 @@
-.middle1{
+.middle1 {
   background-color: #f8f9fa;
-  margin: 0;
-  padding: 0;
   padding: 20px;
-  background-color: #f8f9fa; /* Light background */
+  overflow: hidden; /* Prevent horizontal overflow */
 }
-.middle1 h2{
+
+.middle1 h2 {
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   font-size: 2rem;
   font-weight: bold;
+  text-align: center;
 }
-.middle{
+
+.middle {
   display: flex;
   justify-content: center;
+  max-width: 100%; /* Ensure it doesn't exceed viewport width */
+  overflow: hidden; /* Prevent horizontal overflow */
 }
+
 .imageList {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid; /* Use grid layout for better control */
-  grid-template-columns: repeat(4, 1fr); /* 4 images per row */
-  gap: 20px; /* Space between items */
-  justify-content: center; /* Center grid content */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  max-width: 100%; /* Ensure it doesn't exceed viewport width */
+  width: 100%;
+  box-sizing: border-box; /* Include padding and border in element's total width */
 }
+
 .imageItem {
-  position: relative; /* For hover effect positioning */
-  overflow: hidden; /* Ensure hover effects stay within bounds */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
-  margin-bottom: 20px; /* Add space between list items */
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+  width: 100%; /* Ensure it takes full width of its container */
 }
 
 .imageItem:hover {
-  transform: scale(1.05); /* Slight zoom effect */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.imageItem img {
-  border-radius: 10px; /* Ensure the image matches the container's rounded corners */
-  width: 100%; /* Set to full width of the container */
-  height: auto; /* Maintain aspect ratio */
+.imageContainer {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
 }
 
-
-.imageItem:hover::after {
-  opacity: 1; /* Show the caption on hover */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.imageDescription{
+
+.imageDescription {
   color: black;
-  margin-bottom: 10px; /* Add space below the description */
-  margin-left: 10px;
-  
-    /* background-color: black; */
-}
-.button{
-  color: black;
-  margin-left: 40%;
-  border-radius: 20px;
-  background-color: rgb(14, 150, 93);
   padding: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 10px;
-  width: 50%;
-
-
+  font-size: 0.9rem;
+  line-height: 1.4;
+  text-align: center;
 }
-.button:hover{
+
+.button {
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: rgb(14, 150, 93);
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
   background-color: #000000;
-  color: rgb(255, 255, 255);
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .imageList {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .imageDescription {
+    font-size: 0.8rem;
+  }
 }
