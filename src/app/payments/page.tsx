@@ -1,110 +1,93 @@
-'use client';
-import styles from './payments.module.css';
+"use client";
 import { useState } from "react";
-import ProtectedPageWrapper from '../../components/ProtectedPageWrapper';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import styles from "./payments.module.css";
 
-export default function Payments() {
-    const [booking_id, setBooking_id] = useState('');
-    const [amount, setAmount] = useState('');
-    const [payment_date, setPayment_date] = useState('');
-    const [payment_method, setPayment_method] = useState('');
-    const [status, setStatus] = useState('');
+const PaymentPage = () => {
+  const [selectedOption, setSelectedOption] = useState<"paypal" | "bank" | null>(null);
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const response = await fetch('/api/payments', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                booking_id,
-                amount,
-                payment_date,
-                payment_method,
-                status,
-            }),
-        });
-        const data = await response.json();
-        console.log(data);
-    };
-
-    return (
-        <ProtectedPageWrapper>
-        <div>
-            <div className={styles.payments}>
-                <h1 className={styles.payment}>Payment</h1>
-                <form onSubmit={handleSubmit} className={styles.payment}>
-                    <div className={styles.formGroup}>
-                        <label htmlFor="booking_id" className={styles.label}>Booking ID</label>
-                        <input
-                            id="booking_id"
-                            type="text"
-                            value={booking_id}
-                            onChange={(e) => setBooking_id(e.target.value)}
-                            placeholder="Enter Booking ID"
-                            required
-                            className={styles.input}
-                        />
-                    </div>
-
-                    <div className={styles.formGroup}>
-                        <label htmlFor="amount" className={styles.label}>Amount</label>
-                        <input
-                            id="amount"
-                            type="text"
-                            value={amount}
-                            onChange={(e) => setAmount(e.target.value)}
-                            placeholder="Enter Amount"
-                            required
-                            className={styles.input}
-                        />
-                    </div>
-
-                    <div className={styles.formGroup}>
-                        <label htmlFor="payment_date" className={styles.label}>Payment Date</label>
-                        <input
-                            id="payment_date"
-                            type="date"
-                            value={payment_date}
-                            onChange={(e) => setPayment_date(e.target.value)}
-                            required
-                            className={styles.input}
-                        />
-                    </div>
-
-                    <div className={styles.formGroup}>
-                        <label htmlFor="payment_method" className={styles.label}>Payment Method</label>
-                        <input
-                            id="payment_method"
-                            type="text"
-                            value={payment_method}
-                            onChange={(e) => setPayment_method(e.target.value)}
-                            placeholder="Enter Payment Method"
-                            required
-                            className={styles.input}
-                        />
-                    </div>
-
-                    <div className={styles.formGroup}>
-                        <label htmlFor="status" className={styles.label}>Status</label>
-                        <input
-                            id="status"
-                            type="text"
-                            value={status}
-                            onChange={(e) => setStatus(e.target.value)}
-                            placeholder="Enter Payment Status"
-                            required
-                            className={styles.input}
-                        />
-                    </div>
-
-                    <button type="submit" className={styles.button}>
-                        Submit Payment
-                    </button>
-                </form>
-            </div>
-        </div>
-        </ProtectedPageWrapper>
+  // Handle bank payment (display bank details)
+  const handleBankPayment = () => {
+    alert(
+      "Please transfer the payment to the following bank account:\n\n" +
+        "Bank Name: Example Bank\n" +
+        "Account Number: 123456789\n" +
+        "Routing Number: 987654321\n" +
+        "Please include your booking ID as the reference."
     );
-}
+  };
+
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Payment Options</h1>
+      <div className={styles.paymentOptions}>
+        {/* PayPal Option */}
+        <div
+          className={`${styles.option} ${selectedOption === "paypal" ? styles.selected : ""}`}
+          onClick={() => setSelectedOption("paypal")}
+        >
+          <h2>Pay with PayPal</h2>
+          <p>Secure and fast payment through PayPal.</p>
+          {selectedOption === "paypal" && (
+            <PayPalScriptProvider
+              options={{
+                clientId: "AY3cVdkPkRGUIXNJTrN4Sb0wegu8acxT6nVsU5K52Q5pOuJwf1JCyJ7j4Y0bRD87-X5ZpWINJVD-fY04", // Replace with your PayPal client ID
+                currency: "USD",
+              }}
+            >
+              <PayPalButtons
+                style={{ layout: "vertical" }} 
+                createOrder={(data, actions) => {
+                  return actions.order.create({
+                    intent: "CAPTURE",
+                    purchase_units: [
+                      {
+                        amount: {
+                          value: "100.00", // Replace with the actual amount
+                          currency_code: "USD",
+                        },
+                        description: "Payment for Booking",
+                      },
+                    ],
+                  });
+                }}
+                onApprove={(data, actions) => {
+                  // Ensure actions.order is defined
+                  if (!actions.order) {
+                    return Promise.reject("Order not found");
+                  }
+                  
+                  // Handle successful payment
+                  return actions.order.capture().then((details) => {
+                    alert(`Payment completed by ${details.payer?.name?.given_name || "a user"}`);
+                    console.log("Payment details:", details);
+                  });
+                }}
+                onError={(error) => {
+                  console.error("PayPal error:", error);
+                  alert("An error occurred during payment. Please try again.");
+                }}
+              />
+            </PayPalScriptProvider>
+          )}
+        </div>
+
+        {/* Bank Transfer Option */}
+        <div
+          className={`${styles.option} ${selectedOption === "bank" ? styles.selected : ""}`}
+          onClick={() => setSelectedOption("bank")}
+        >
+          <h2>Pay via Bank Transfer</h2>
+          <p>Make a direct transfer to our bank account.</p>
+          {selectedOption === "bank" && (
+            <button className={styles.payButton} onClick={handleBankPayment}>
+              View Bank Details
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PaymentPage;

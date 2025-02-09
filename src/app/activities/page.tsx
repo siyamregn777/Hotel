@@ -7,7 +7,7 @@ import image1 from '../../../public/back/g1.jpg';
 
 interface Review {
   comment: string;
-  rating: number; // Now this can be a decima
+  rating: number; // Now this can be a decimal
 }
 
 export default function Activities() {
@@ -31,7 +31,12 @@ export default function Activities() {
   };
 
   const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRating(parseFloat(e.target.value));
+    const value = parseFloat(e.target.value);
+    if (value >= 0 && value <= 5) {
+      setRating(value);
+    } else {
+      alert('Rating must be between 0 and 5.');
+    }
   };
 
   const handleReviewSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,13 +52,17 @@ export default function Activities() {
     setRating(0); // Reset rating
   };
 
+  // Helper function to display rating as stars
+  const renderRatingStars = (rating: number) => {
+    const fullStars = '★'.repeat(Math.floor(rating));
+    const emptyStars = '☆'.repeat(5 - Math.ceil(rating));
+    return fullStars + emptyStars;
+  };
+
   return (
     <div className={styles.container}>
-      <h1>Vintage Double Decker Bus Tour & Thames River Cruise</h1>
-      <div className={styles.imageGallery}>
-        <Image src={image1} alt="Tour Image 1" width={200} height={150} className={styles.image} />
-        <p>Imagine a vibrant scene of a vintage double-decker bus cruising through the heart of London. The iconic red bus, adorned with colorful advertisements, glides past historic landmarks bathed in warm sunlight. In the background, the majestic silhouette of Big Ben towers over the bustling streets, while the lush greenery of nearby parks invites a sense of tranquility.</p>
-      </div>
+      <h1>Share Your Experience To Others</h1>
+      
 
       <div className={styles.details}>
         <h2>Description</h2>
@@ -107,7 +116,7 @@ export default function Activities() {
         <div className={styles.reviews}>
           {reviews.map((review, index) => (
             <div key={index} className={styles.review}>
-              <p><strong>{review.rating.toFixed(1)}</strong> ★★★★☆</p>
+              <p><strong>{renderRatingStars(review.rating)}</strong> ({review.rating.toFixed(1)})</p>
               <p>“{review.comment}”</p>
             </div>
           ))}
@@ -130,7 +139,7 @@ export default function Activities() {
               type="number"
               min="0"
               max="5"
-              step="0.1" 
+              step="0.1"
               value={rating}
               onChange={handleRatingChange}
               required

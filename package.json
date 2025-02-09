@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@paypal/react-paypal-js": "^8.8.2",
     "bcrypt": "^5.1.1",
     "hotel": "file:",
     "jsonwebtoken": "^9.0.2",

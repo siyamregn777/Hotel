@@ -5,29 +5,21 @@
   color: black;
   background-color: #fff;
 }
-
-.bookingInfo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #e3f2fd;
-  border-radius: 5px;
+.container h1{
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
 }
-
-.price {
-  font-size: 1.5rem;
-  color: #ff5722;
-}
-
 .imageGallery {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 20px;
 }
 
 .image {
-  width: 24%;
+  width: 100%;
+  max-width: 600px;
   border-radius: 5px;
 }
 
@@ -40,6 +32,22 @@
 
 .details h2 {
   margin-top: 20px;
+}
+
+.details ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.details li {
+  margin: 5px 0;
+}
+
+.details li::before {
+  content: "• ";
+  color: #ff5722;
+  font-weight: bold;
+  margin-right: 5px;
 }
 
 .reviews {
@@ -56,16 +64,13 @@
   text-align: center;
 }
 
-.footer form {
-  margin-top: 10px;
-}
-
 .input {
   padding: 10px;
-  width: 200px;
+  width: 100%;
+  max-width: 300px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .submitButton {
@@ -90,66 +95,13 @@
   margin-bottom: 10px;
 }
 
-.reviews {
-  margin-top: 10px;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .imageGallery {
+    flex-direction: column;
+  }
 
-.review {
-  border-top: 1px solid #ccc;
-  padding: 10px 0;
+  .image {
+    width: 100%;
+  }
 }
-
-.footer {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.footer form {
-  margin-top: 10px;
-}
-
-.details {
-  margin: 20px 0;
-}
-
-.details h2 {
-  margin-top: 20px;
-}
-
-.details ul {
-  margin: 10px 0;
-  padding-left: 20px; /* Indent list items */
-}
-
-.details li {
-  margin: 5px 0; /* Space between list items */
-}
-
-.details li::before {
-  content: "• "; /* Dot symbol */
-  color: #ff5722; /* Change color if needed */
-  font-weight: bold; /* Make it bold */
-  margin-right: 5px; 
-}
-.review {
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.footer {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.textarea {
-  width: 100%;
-  height: 100px;
-  margin-bottom: 10px;
-}
-
-.submitButton {
-  margin-top: 10px;
-}
-

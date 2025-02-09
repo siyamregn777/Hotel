@@ -1,0 +1,80 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .paymentOptions {
+    display: flex;
+    gap: 20px;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .option {
+    flex: 1;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .option:hover {
+    border-color: #007bff;
+    transform: translateY(-5px);
+  }
+  
+  .option.selected {
+    border-color: #007bff;
+    background-color: #f1f8ff;
+  }
+  
+  .option h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #007bff;
+  }
+  
+  .option p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .payButton {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .payButton:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 768px) {
+    .paymentOptions {
+      flex-direction: column;
+    }
+  
+    .option {
+      width: 100%;
+    }
+  }
