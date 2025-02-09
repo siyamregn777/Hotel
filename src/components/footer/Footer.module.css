@@ -1,47 +1,90 @@
 .footer {
-    background-color: #241e1e; /* Dark background */
-    color: white; /* White text */
-    text-align: center; /* Center text */
-    padding: 1rem; /* Padding */
-    width: 100%; /* Full width */
-    margin-top: 0%;
+  background-color: #241e1e; /* Dark background */
+  color: white; /* White text */
+  text-align: center; /* Center text */
+  padding: 1rem; /* Padding */
+  width: 100%; /* Full width */
+  margin-top: 0%;
+}
+
+.footer_content {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+}
+
+.footer_content div {
+  width: 30%; /* Default width for desktop */
+  margin-bottom: 20px; /* Add space between stacked columns on mobile */
+}
+
+.footlink ul,
+.footsocial ul {
+  list-style: none;
+  padding: 0;
+}
+.footlink ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.footlink li,
+.footsocial li {
+  margin-bottom: 10px;
+}
+
+.footlink a,
+.footsocial a {
+  color: rgb(222, 222, 232);
+  text-decoration: none;
+}
+
+.footlink a:hover,
+.footsocial a:hover {
+  color: fuchsia;
+}
+
+.footinfo p {
+  margin: 5px 0;
+}
+
+.footbotm {
+  font-size: 12px;
+  margin-top: 20px;
+  font-family: sans-serif;
+}
+
+/* Media Queries for Responsive Design */
+
+/* For tablets */
+@media (max-width: 768px) {
+  .footer_content div {
+    width: 48%; /* Two columns per row */
   }
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
   .footer_content {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    flex-direction: column; /* Stack columns vertically */
   }
-  .footer_content div{
-    width: 30%;
-  }
-  .footlink ul,
-  .footsocial ul{
-    list-style: none;
-    padding: 0%;
+
+  .footer_content div {
+    width: 100%; /* Full width for each column */
   }
 
   .footlink li,
   .footsocial li {
-    margin-bottom: 10px;
+    margin-bottom: 8px; /* Reduce margin for smaller screens */
   }
 
-  .footlink a,
-  .footsocial a {
-    color: rgb(222, 222, 232);
-    text-decoration: none;
+  .footinfo p {
+    font-size: 14px; /* Slightly larger text for readability */
   }
 
-  .footlink a:hover,
-  .footsocial a:hover{
-    color: fuchsia;
+  .footbotm {
+    font-size: 10px; /* Smaller text for the bottom message */
   }
-
-  .footinfo p{
-    margin: 5px 0;
-  }
-  
-  .footbotm{
-    font-size: 12px;
-    margin-top: 20px;
-    font-family:  sans-serif;
-  }
+}

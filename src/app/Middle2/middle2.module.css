@@ -1,81 +1,152 @@
+/* General Styling */
 .middle2 {
   position: relative;
   width: 100%;
-  height: 500px; /* Adjust height as needed */
+  height: 500px; /* Default height */
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Background Image */
 .backgroundImage {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* Keep it as the background */
+  z-index: 1;
 }
 
+/* Overlay Container */
 .overlayContainer {
   position: relative;
-  z-index: 2; /* Bring content above the background */
+  z-index: 2;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
 }
 
+/* Top-left section */
 .topLeft {
   position: absolute;
-  top: 20px; /* Distance from the top */
-  left: 20px; /* Distance from the left */
-  z-index: 3; /* Ensure it is above the background */
+  top: 5%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .topLeft h3 {
   color: black;
-  margin-left: 25%;
-  margin-top: 10%;
   background-color: aliceblue;
-  margin-right: 35%;
   border-radius: 10px;
-  padding: 2px;
+  padding: 5px 10px;
+  text-align: center;
+  margin-top: 10px;
 }
-.topLeft h3:hover{
+.overlayImage{
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+.topLeft h3:hover {
   background-color: black;
   color: white;
 }
 
-.overlayImage {
-  max-width: 100%; /* Ensure image fits within the container */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 8px; /* Optional: add rounded corners */
-}
-
+/* Bottom-right section */
 .bottomRight {
   position: absolute;
-  bottom: 20px; /* Distance from the bottom */
-  right: 20px; /* Distance from the right */
-  text-align: right; /* Align text to the right */
-  color: white; /* Text color */
-  background-color: rgba(0, 0, 0, 0.5); /* Optional: semi-transparent background for contrast */
-  padding: 20px; 
-  border-radius: 10px; /* Rounded corners */
+  bottom: 5%;
+  right: 5%;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 300px;
 }
 
 .bottomRight h1 {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin-bottom: 10px;
-  margin-left: 0;
-  padding: auto;
-  text-align: center;
 }
 
 .bottomRight p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
-.bottom{
-  text-align: center;
-  font-size: medium;
-  margin-right: 30%;
-  padding: auto;
-  margin-top: 50%;
+.bottom {
+  display: block;
+  margin-top: 10px;
+  font-size: 1rem;
   color: burlywood;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .middle2 {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .topLeft {
+    position: static;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .bottomRight {
+    position: static;
+    width: 100%;
+    text-align: center;
+  }
+  .overlayImage{
+    width: 50%;
+    max-width: 200px;
+    height: auto;
+    margin-right: 50%;
+
+
+  }
+}
+
+@media (max-width: 480px) {
+  .middle2 {
+    height: 70vh; /* Adjust height for mobile */
+  }
+
+  .overlayContainer {
+    padding: 10px;
+  }
+
+  .topLeft h3 {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .bottomRight h1 {
+    font-size: 1.2rem;
+  }
+
+  .bottomRight p {
+    font-size: 0.9rem;
+  }
+
+  .bottom {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+  .bottomRight{
+    width: 50%;
+    max-width: 200px;
+    height: auto;
+    margin-left: 50%;
+  }
 }

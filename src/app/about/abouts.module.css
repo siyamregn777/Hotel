@@ -27,9 +27,11 @@
   background-color: white;
   padding: 20px;
 }
-.container p{
+
+.container p {
   color: black;
 }
+
 .container h1 {
   color: black;
   text-align: center;
@@ -66,8 +68,8 @@
 
 /* First section with image on the left and text on the right */
 .firstSection {
-  flex-direction: row;
   display: flex;
+  flex-direction: row;
   margin: 20px 0;
 }
 
@@ -81,8 +83,8 @@
 
 /* Second section with image on the right and text on the left */
 .secondSection {
-  flex-direction: row-reverse;
   display: flex;
+  flex-direction: row-reverse;
   margin: 20px 0;
 }
 
@@ -179,4 +181,57 @@
 .imageli:hover .description {
   background-color: rgba(0, 0, 0, 0.9);
   color: #fff;
+}
+
+/* Media Queries for Responsive Design */
+
+/* For tablets */
+@media (max-width: 768px) {
+  .image3 {
+    font-size: 2rem; /* Reduce font size for tablets */
+  }
+
+  .firstSection,
+  .secondSection {
+    flex-direction: column; /* Stack sections vertically */
+  }
+
+  .aboutImage,
+  .image2 {
+    width: 100%; /* Full width for images */
+    margin: 0 0 20px 0; /* Adjust margins */
+  }
+
+  .textSection {
+    width: 100%; /* Full width for text sections */
+    padding: 0; /* Remove padding */
+  }
+
+  .guide {
+    font-size: 2rem; /* Reduce font size for tablets */
+  }
+
+  .immage {
+    justify-content: center; /* Center images on tablets */
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
+  .image3 {
+    font-size: 1.5rem; /* Further reduce font size for mobile */
+  }
+
+  .guide {
+    font-size: 1.5rem; /* Further reduce font size for mobile */
+  }
+
+  .imageli {
+    width: 150px; /* Reduce size of circular images */
+    height: 150px;
+  }
+
+  .description {
+    font-size: 0.8rem; /* Reduce font size for descriptions */
+  }
 }

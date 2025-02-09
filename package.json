@@ -1,49 +1,34 @@
 {
   "name": "hotel",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Create a website for tourists to visit countries",
+  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "bcryptjs": "^2.4.3",
-    "cloudinary": "^2.5.1",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "formidable": "^3.5.2",
     "hotel": "file:",
     "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.13.0",
-    "mongoose": "^8.9.6",
+    "mongoose": "^8.10.0",
     "next": "^15.1.6",
-    "next-video": "^1.4.0",
-    "next-videos": "^1.4.1",
-    "punycode": "^2.3.1",
+    "next-video": "^2.0.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-player": "^2.16.0"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@types/bcrypt": "^5.0.2",
-    "@types/formidable": "^3.4.5",
-    "@types/jsonwebtoken": "^9.0.7",
-    "@types/mongodb": "^4.0.0",
-    "@types/mongoose": "^5.11.96",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9.16.0",
-    "eslint-config-next": "15.1.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "postcss": "^8",
-    "prettier": "^3.4.2",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5.7.2"
+    "@tailwindcss/postcss": "^4.0.5",
+    "@types/postcss-import": "^14.0.3",
+    "@types/react": "19.0.8",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "postcss-import": "^16.1.0",
+    "tailwindcss": "^4.0.5",
+    "typescript": "5.7.3"
   }
 }
