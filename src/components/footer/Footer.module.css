@@ -5,6 +5,8 @@
   padding: 1rem; /* Padding */
   width: 100%; /* Full width */
   margin-top: 0%;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .footer_content {
@@ -12,11 +14,13 @@
   justify-content: space-between;
   margin-bottom: 20px;
   flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .footer_content div {
   width: 30%; /* Default width for desktop */
   margin-bottom: 20px; /* Add space between stacked columns on mobile */
+  box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .footlink ul,
@@ -24,8 +28,13 @@
   list-style: none;
   padding: 0;
 }
-.footlink ul {
-  list-style: none; /* Remove bullet points */
+.footlink ul li{
+  list-style: none; 
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+.footsocial ul li{
+  list-style: none; 
   padding: 0; /* Remove default padding */
   margin: 0; /* Remove default margin */
 }
@@ -39,6 +48,8 @@
 .footsocial a {
   color: rgb(222, 222, 232);
   text-decoration: none;
+  word-wrap: break-word; /* Break long words if necessary */
+  white-space: normal; /* Allow text to wrap */
 }
 
 .footlink a:hover,
@@ -69,10 +80,13 @@
 @media (max-width: 480px) {
   .footer_content {
     flex-direction: column; /* Stack columns vertically */
+    align-items: center; /* Center-align content */
+    text-align: center; /* Center-align text */
   }
 
   .footer_content div {
     width: 100%; /* Full width for each column */
+    padding: 0 10px; /* Add padding to prevent edge overflow */
   }
 
   .footlink li,
@@ -86,5 +100,8 @@
 
   .footbotm {
     font-size: 10px; /* Smaller text for the bottom message */
+  }
+  .footsocial{
+    margin-bottom: auto;
   }
 }
