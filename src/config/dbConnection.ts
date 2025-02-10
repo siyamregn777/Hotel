@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const db1Connection = mongoose.createConnection(
-  'mongodb+srv://admin:Siyamr42553335%24@cluster0.ujpsc.mongodb.net/Database?retryWrites=true&w=majority'
+  'mongodb+srv://siyamregn:root@cluster0.pfw35.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 );
 
 export default db1Connection;

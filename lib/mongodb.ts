@@ -22,25 +22,21 @@ const connectToDatabase = async (dbName: string): Promise<typeof mongoose> => {
   }
 
   try {
-    // Configure Mongoose connection options
     const options = {
-      dbName, // Specify the database name
-      serverSelectionTimeoutMS: 30000, // Increase server selection timeout to 30 seconds
-      socketTimeoutMS: 45000, // Increase socket timeout to 45 seconds
-      maxPoolSize: 10, // Increase connection pool size
+      dbName, 
+      serverSelectionTimeoutMS: 30000, 
+      socketTimeoutMS: 45000, 
+      maxPoolSize: 10, 
     };
 
-    // Attempt to connect to MongoDB
     await mongoose.connect(uri, options);
     isConnected = true;
     console.log(`Connected to database: ${dbName}`);
 
-    // Add graceful shutdown handler
     process.on('SIGINT', gracefulShutdown);
-    process.on('SIGTERM', gracefulShutdown); // Handle SIGTERM for process managers
+    process.on('SIGTERM', gracefulShutdown); 
   } catch (error) {
     console.error("MongoDB connection error:", error);
-    // Reset the connection state on error
     isConnected = false;
     throw error;
   }
