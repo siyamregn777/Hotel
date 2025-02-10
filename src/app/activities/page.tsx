@@ -1,9 +1,7 @@
 'use client'; // Marking this file as a client component
 
 import { useState } from 'react';
-import styles from './activities.module.css'; // Assuming you have CSS in a separate file
-import Image from 'next/image';
-import image1 from '../../../public/back/g1.jpg';
+import styles from './activities.module.css'; 
 
 interface Review {
   comment: string;

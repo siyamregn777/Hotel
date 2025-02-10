@@ -14,6 +14,7 @@
   "dependencies": {
     "@paypal/react-paypal-js": "^8.8.2",
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "hotel": "file:",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.10.0",
@@ -24,9 +25,13 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.5",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.8",
     "@types/postcss-import": "^14.0.3",
     "@types/react": "19.0.8",
     "autoprefixer": "^10.4.20",
+    "eslint": "^9.20.0",
+    "eslint-config-next": "^15.1.6",
     "postcss": "^8.5.1",
     "postcss-import": "^16.1.0",
     "tailwindcss": "^4.0.5",

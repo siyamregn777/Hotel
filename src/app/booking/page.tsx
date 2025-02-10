@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import bgImage from '../../../public/back/pexels-cachi290-29831643 (1).jpg'; // Background image
 import ProtectedPageWrapper from '../../components/ProtectedPageWrapper';
 import Link from 'next/link';
+
 type ActivityType = 'hiking' | 'sightseeing' | 'diving';
 type RoomType = 'vip' | 'normal';
 
@@ -83,7 +84,7 @@ const BookingPage = () => {
         }
     };
 
-    const validateRoomNumber = () => {
+    const validateRoomNumber = useCallback(() => {
         const roomNumber = parseInt(formData.roomNumber, 10);
         if (formData.roomType === 'normal' && (roomNumber < 30 || roomNumber > 50)) {
             setError("Room number must be between 30 and 50 for Normal Room.");
@@ -93,7 +94,7 @@ const BookingPage = () => {
             return false;
         }
         return true;
-    };
+    }, [formData.roomNumber, formData.roomType]);
 
     const calculateTotalPrice = useCallback(() => {
         const activityPrice = activityPrices[formData.activity as ActivityType] || 0;
@@ -144,7 +145,7 @@ const BookingPage = () => {
     // Check if all fields are filled
     const isFormValid = useMemo(() => {
         return Object.values(formData).every(value => value !== '') && validateRoomNumber();
-    }, [formData]);
+    }, [formData, validateRoomNumber]); // Added validateRoomNumber to dependencies
 
     return (
         <ProtectedPageWrapper>

@@ -54,6 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ isVisible }) => {
               <Link href="/payments">Payment</Link>
             </li>
             <li className={styles.navItem}>
+              
               <button onClick={handleLogout} className={styles.logoutButton}>
                 Logout
               </button>

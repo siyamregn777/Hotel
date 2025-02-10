@@ -35,7 +35,14 @@
   color: white;
   cursor: pointer;
 }
-
+.logoutButton{
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: large;
+  font-weight: bold;
+}
 .logoutButton:hover {
   color: #f39c12;
   text-decoration: underline;
