@@ -10,10 +10,18 @@ export interface IUser extends Document {
 
 // Create the schema for the User model
 const UserSchema: Schema = new Schema({
+  firstName: {
+     type: String, 
+     required: true
+     },
+    lastName: {
+       type: String, 
+       required: true
+       },
   username: {
     type: String,
     required: true,
-    unique: true, // Ensure usernames are unique
+    unique: true, 
     trim: true,
   },
   email: {

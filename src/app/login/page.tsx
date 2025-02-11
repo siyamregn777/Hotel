@@ -1,13 +1,16 @@
+// src/app/login/page.tsx
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './login.module.css';
 import { useUser } from '@/context/userContext'; // Import the user context
+
 export default function Login() {
   const { setUser } = useUser(); // Get setUser from UserContext
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState(''); // Use username instead of email
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -17,40 +20,49 @@ export default function Login() {
     setError('');
     setLoading(true);
 
-    const response = await fetch('/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }), // Send username instead of email
+      });
 
-    setLoading(false);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Something went wrong!');
+      }
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      setError(errorData.message || 'Something went wrong!');
-      return;
-    }
+      const data = await response.json();
+      const { token, role } = data;
 
-    const data = await response.json();
-    const { token, role } = data;
+      // Save the token and role in localStorage or cookies
+      localStorage.setItem('token', token);
+      localStorage.setItem('role', role); // Save the role to manage redirection
 
-    // Save the token and role in localStorage or cookies
-    localStorage.setItem('token', token);
-    localStorage.setItem('role', role); // Save the role to manage redirection
+      // Update user context
+      setUser({ email, isAuthenticated: true, role }); // Include role when updating the user context
 
-    setUser({ email, isAuthenticated: true, role }); // Include role when updating the user context
+      console.log('Login successful, redirecting...');
+      setUsername('');
+      setPassword('');
+      setEmail('');
 
-    console.log('Login successful, redirecting...');
-    setEmail('');
-    setPassword('');
-
-    // Redirect based on the role (admin or user)
-    if (role === 'admin') {
-      router.push('/adminDashboard'); // Redirect admin to the dashboard
-    } else {
-      router.push('/'); // Redirect regular user to home page
+      // Redirect based on the role (admin or user)
+      if (role === 'admin') {
+        router.push('/adminDashboard'); // Redirect admin to the dashboard
+      } else {
+        router.push('/'); // Redirect regular user to home page
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message || 'An error occurred during login.');
+      } else {
+        setError('An unexpected error occurred.');
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,10 +71,10 @@ export default function Login() {
       <h1 className={styles.title}>Login</h1>
       <form onSubmit={handleSubmit} className={styles.loginContainer}>
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          type="text" // Use text instead of email for username
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username" // Change placeholder to "Username"
           required
           className={styles.input}
         />

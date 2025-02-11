@@ -1,4 +1,4 @@
-//src/app/signup/page.tsx
+// src/app/signup/page.tsx
 
 'use client';
 import { useState } from "react";
@@ -6,6 +6,8 @@ import styles from "./signup.module.css";
 import { useRouter } from "next/navigation";
 
 export default function Signup() {
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -22,22 +24,37 @@ export default function Signup() {
         }
         setError('');
         setSuccess('');
-        const response = await fetch('/api/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, email, password }),
-        });
-        const data = await response.json();
-        if (response.ok) {
-            setSuccess("Signup successful! Please log in.");
-            setTimeout(() => {
-                router.push('/login');
-            }, 2000);
-        } else {
-            setError(data.message || "Signup failed. Please try again.");
+        
+        try {
+            // Send request to the API
+            const response = await fetch('/api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ firstName, lastName, username, email, password }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                setSuccess("Signup successful! Please log in.");
+                setTimeout(() => {
+                    router.push('/login');
+                }, 2000);
+            } else {
+                // Handle errors gracefully
+                setError(data.message || "Signup failed. Please try again.");
+            }
         }
+        
+        catch (error) {
+            if (error instanceof Error) {
+              setError(error.message || '"There was a problem connecting to the server. Please try again later."');
+            } else {
+              setError('An unexpected error occurred.');
+            }
+          }
+        
     };
 
     return (
@@ -47,6 +64,32 @@ export default function Signup() {
                 <form onSubmit={handleSubmit} className={styles.signupForm}>
                     {error && <p className={styles.error}>{error}</p>}
                     {success && <p className={styles.success}>{success}</p>}
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="firstName" className={styles.label}>First Name</label>
+                        <input
+                            id="firstName"
+                            type="text"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            placeholder="Enter your first name"
+                            required
+                            className={styles.input}
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="lastName" className={styles.label}>Last Name</label>
+                        <input
+                            id="lastName"
+                            type="text"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            placeholder="Enter your last name"
+                            required
+                            className={styles.input}
+                        />
+                    </div>
 
                     <div className={styles.formGroup}>
                         <label htmlFor="username" className={styles.label}>Username</label>
@@ -60,6 +103,7 @@ export default function Signup() {
                             className={styles.input}
                         />
                     </div>
+
                     <div className={styles.formGroup}>
                         <label htmlFor="email" className={styles.label}>Email</label>
                         <input
