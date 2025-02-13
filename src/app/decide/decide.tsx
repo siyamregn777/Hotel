@@ -16,7 +16,7 @@ const decide =() =>{
           />
           <div className={styles.overlayContent}>
             <p className={styles.text}>Do you decide to visit? If yes, let`s go!</p>
-            <Link href="/about">
+            <Link href="/important">
               <button type="button" className={styles.overlayButton}>Go</button>
             </Link>
           </div>
