@@ -1,0 +1,91 @@
+.settingsContainer {
+    max-width: 450px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .section input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .saveButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #27ae60;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .saveButton:hover {
+    background-color: #219150;
+  }
+  
+  .toggleButton {
+    padding: 10px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .toggleButton:hover {
+    background-color: #d68910;
+  }
+  
+  .linkButton {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .linkButton.linked {
+    background-color: #e74c3c;
+  }
+  
+  .linkButton:hover {
+    background-color: #2980b9;
+  }
+  
+  .linkButton.linked:hover {
+    background-color: #c0392b;
+  }
+  
