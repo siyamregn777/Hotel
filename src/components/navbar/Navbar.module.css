@@ -36,8 +36,8 @@
 .profileImage{
   border-radius: 50%;
   cursor: pointer;
-  width: 80%;
-  height: 60%;
+  width: 100%;
+  height: 40%;
   transition: transform 0.3 ease-in-out;
 }
 .profileImage:hover{
