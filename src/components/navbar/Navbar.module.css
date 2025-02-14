@@ -29,24 +29,64 @@
   text-decoration: underline;
 }
 
+.dropdown{
+  position: relative;
+  cursor: pointer;
+}
+.profileImage{
+  border-radius: 50%;
+  cursor: pointer;
+  width: 80%;
+  height: 60%;
+  transition: transform 0.3 ease-in-out;
+}
+.profileImage:hover{
+  transform: scale(1.1);
+}
+.dropDownMenu {
+  position: absolute;
+  top: 25%;
+  right: 12%;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  z-index: 1000; 
+  list-style: none;
+
+}
+.dropDownMenu .navItem {
+  padding: 10px;
+  text-align: left;
+}
+
+.dropDownMenu .navItem a {
+  color: black;
+  text-decoration: none;
+}
+
+.dropDownMenu .navItem:hover {
+  background: #f4f4f4;
+}
+
 .logoutButton {
   background: none;
   border: none;
-  color: white;
-  cursor: pointer;
-}
-.logoutButton{
-  background: none;
-  border: none;
-  color: white;
+  color: red;
   cursor: pointer;
   font-size: large;
   font-weight: bold;
+  width: 100%;
+  text-align: left;
 }
+
 .logoutButton:hover {
-  color: #f39c12;
-  text-decoration: underline;
+  color: darkred;
 }
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {
