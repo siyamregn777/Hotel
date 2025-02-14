@@ -89,19 +89,13 @@ const Navbar: React.FC<NavbarProps> = ({ isVisible }) => {
                     <Link href="/profile">Profile</Link>
                   </li>
                   <li className={styles.navItem}>
-                    <Link href="/favorites">Favorites</Link>
+                    <Link href="/activitty">Activity</Link>
                   </li>
                   <li className={styles.navItem}>
-                    <Link href="/history">History</Link>
+                    <Link href="/preferences">Preferences</Link>
                   </li>
                   <li className={styles.navItem}>
-                    <Link href="/settings">Settings</Link>
-                  </li>
-                  <li className={styles.navItem}>
-                    <Link href="/notifications">Notifications</Link>
-                  </li>
-                  <li className={styles.navItem}>
-                    <Link href="/messages">Messages</Link>
+                    <Link href="/accountSettings">Settings</Link>
                   </li>
                   <li className={styles.navItem}>
                     <Link href="/help">Help</Link>
