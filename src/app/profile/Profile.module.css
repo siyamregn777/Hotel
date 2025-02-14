@@ -1,0 +1,90 @@
+.profileContainer {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .imageContainer {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .profileImage {
+    border-radius: 50%;
+    border: 3px solid #ddd;
+  }
+  
+  .fileInput {
+    display: none;
+  }
+  
+  .uploadButton {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .uploadButton:hover {
+    background-color: #2980b9;
+  }
+  
+  .infoContainer {
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  .infoItem {
+    margin-bottom: 15px;
+  }
+  
+  .infoItem label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .infoItem input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .infoItem input:disabled {
+    background: #f4f4f4;
+    cursor: not-allowed;
+  }
+  
+  .saveButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #27ae60;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .saveButton:hover {
+    background-color: #219150;
+  }
+  
