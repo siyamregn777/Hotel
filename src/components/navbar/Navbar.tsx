@@ -20,7 +20,7 @@ const Navbar: React.FC<NavbarProps> = ({ isVisible }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    setUser({ email: null, isAuthenticated: false, role: null });
+    setUser({ userId: null, email: null, isAuthenticated: false, role: null });
     router.push('/login');
   };
 
@@ -102,7 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({ isVisible }) => {
                   </li>
                   <li className={styles.navItem}>
                     <button onClick={handleLogout} className={styles.logoutButton}>
-                      Logout
+                      Log out
                     </button>
                   </li>
                 </ul>
