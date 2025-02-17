@@ -1,3 +1,11 @@
+.doma{
+  background-color: #eff6fa;
+  padding: 0%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .settingsContainer {
     max-width: 450px;
     margin: auto;
@@ -6,6 +14,9 @@
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: black;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 3%;
   }
   
   .title {

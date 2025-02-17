@@ -42,7 +42,7 @@ export default function Login() {
       localStorage.setItem('role', role); // Save the role to manage redirection
 
       // Update user context
-      setUser({ email, isAuthenticated: true, role }); // Include role when updating the user context
+      setUser({ userId: data.userId, email, isAuthenticated: true, role });
 
       console.log('Login successful, redirecting...');
       setUsername('');

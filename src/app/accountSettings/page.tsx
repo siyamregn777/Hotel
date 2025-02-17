@@ -2,39 +2,64 @@
 
 import { useState } from 'react';
 import styles from './AccountSettings.module.css';
+import { useUser } from '../../context/userContext'; // Adjust the import path as needed
 
 const AccountSettings = () => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [is2FAEnabled, setIs2FAEnabled] = useState(false);
-  const [linkedAccounts, setLinkedAccounts] = useState({
-    google: false,
-    facebook: false,
-  });
 
-  const handlePasswordChange = () => {
+  const { user } = useUser(); // Access the user context
+
+  const handlePasswordChange = async () => {
     if (newPassword !== confirmPassword) {
       alert('New password and confirm password do not match!');
       return;
     }
-    alert('Password updated successfully!');
-    setCurrentPassword('');
-    setNewPassword('');
-    setConfirmPassword('');
-  };
 
-  const handle2FAToggle = () => {
-    setIs2FAEnabled(!is2FAEnabled);
-    alert(is2FAEnabled ? '2FA Disabled' : '2FA Enabled');
-  };
+    try {
+      // Use the userId from the context
+      const userId = user.userId;
 
-  const handleLinkAccount = (provider: 'google' | 'facebook') => {
-    setLinkedAccounts({ ...linkedAccounts, [provider]: !linkedAccounts[provider] });
-    alert(`${provider.charAt(0).toUpperCase() + provider.slice(1)} ${linkedAccounts[provider] ? 'Unlinked' : 'Linked'} Successfully!`);
+      if (!userId) {
+        throw new Error('User ID is missing. Please log in again.');
+      }
+
+      const response = await fetch('/api/change-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          currentPassword,
+          newPassword,
+          confirmPassword,
+          userId,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to update password.');
+      }
+
+      alert(data.message || 'Password updated successfully!');
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+    } catch (error) {
+      // Handle the error properly
+      if (error instanceof Error) {
+        alert(error.message || 'Failed to update password. Please try again.');
+      } else {
+        alert('An unknown error occurred. Please try again.');
+      }
+    }
   };
 
   return (
+    <div className={styles.doma}>
     <div className={styles.settingsContainer}>
       <h2 className={styles.title}>Account Settings</h2>
 
@@ -59,33 +84,11 @@ const AccountSettings = () => {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button className={styles.saveButton} onClick={handlePasswordChange}>Update Password</button>
-      </div>
-
-      {/* Two-Factor Authentication */}
-      <div className={styles.section}>
-        <h3>Two-Factor Authentication</h3>
-        <button className={styles.toggleButton} onClick={handle2FAToggle}>
-          {is2FAEnabled ? 'Disable 2FA' : 'Enable 2FA'}
+        <button className={styles.saveButton} onClick={handlePasswordChange}>
+          Update Password
         </button>
       </div>
-
-      {/* Linked Accounts */}
-      <div className={styles.section}>
-        <h3>Linked Accounts</h3>
-        <button
-          className={`${styles.linkButton} ${linkedAccounts.google ? styles.linked : ''}`}
-          onClick={() => handleLinkAccount('google')}
-        >
-          {linkedAccounts.google ? 'Unlink Google' : 'Link Google'}
-        </button>
-        <button
-          className={`${styles.linkButton} ${linkedAccounts.facebook ? styles.linked : ''}`}
-          onClick={() => handleLinkAccount('facebook')}
-        >
-          {linkedAccounts.facebook ? 'Unlink Facebook' : 'Link Facebook'}
-        </button>
-      </div>
+    </div>
     </div>
   );
 };
