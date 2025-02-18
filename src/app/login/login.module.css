@@ -29,7 +29,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
   margin-right: 70%;
-  margin-top: 20px;
+  margin-top: -10%;
 }
 .input {
   width: 100%;
