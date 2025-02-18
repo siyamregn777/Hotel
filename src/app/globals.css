@@ -22,6 +22,8 @@ body {
 }
 
 html, body {
+  background-color: #ffffff;
+
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Prevent horizontal scroll */
