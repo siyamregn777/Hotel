@@ -18,7 +18,7 @@ const UserSchema: Schema = new Schema({
   username: { type: String, required: true, unique: true, trim: true },
   email: { type: String, required: true, unique: true, lowercase: true, match: /.+\@.+\..+/ },
   password: { type: String, required: true, minlength: 6 },
-  image: { type: String, default: '../../public/back/images.png' }, 
+  image: { type: String, default: '/uploads/default.png' }, // Default image path
 }, {
   timestamps: true,
 });
