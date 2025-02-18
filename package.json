@@ -15,6 +15,7 @@
     "@paypal/react-paypal-js": "^8.8.2",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "formidable": "^3.5.2",
     "hotel": "file:",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.10.0",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.5",
     "@types/bcrypt": "^5.0.2",
+    "@types/formidable": "^3.4.5",
     "@types/jsonwebtoken": "^9.0.8",
     "@types/postcss-import": "^14.0.3",
     "@types/react": "19.0.8",
