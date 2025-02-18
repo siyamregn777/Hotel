@@ -28,6 +28,7 @@ const connectToDatabase = async (dbName: string): Promise<typeof mongoose> => {
       socketTimeoutMS: 45000, 
       maxPoolSize: 10, 
     };
+    mongoose.set("bufferCommands", false); 
 
     await mongoose.connect(uri, options);
     isConnected = true;
