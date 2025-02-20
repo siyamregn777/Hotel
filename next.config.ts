@@ -1,11 +1,10 @@
-//next.config.ts
 import { withNextVideo } from "next-video/process";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ['drive.google.com'], 
+    domains: ['drive.google.com', 'res.cloudinary.com'], // Add Cloudinary to allowed domains
   },
 };
 

@@ -5,31 +5,21 @@ interface IDestination extends Document {
   description: string;
   region: string;
   country: string;
-  imagePath: string; // Image data stored as base64
+  imagePath?: string; // Cloudinary URL or fallback image
   createdAt: Date;
 }
 
 const destinationSchema = new Schema<IDestination>({
-  name: { 
-    type: String,
-    required: true 
-},
-  description: {
-     type: String,
-      required: true 
-    },
-  region: { 
-    type: String, 
-    required: true
- },
-  country: { 
-    type: String, 
-    required: true
- },
+  name: { type: String, required: true, trim: true },
+  description: { type: String, required: true, trim: true },
+  region: { type: String, required: true, trim: true },
+  country: { type: String, required: true, trim: true },
+  imagePath: { type: String, required: false }, // Stores Cloudinary URL
   createdAt: { type: Date, default: Date.now },
 });
 
-// Ensure to export the model
-const Destination = mongoose.models.Destination || mongoose.model<IDestination>('Destination', destinationSchema);
+const Destination =
+  mongoose.models.Destination ||
+  mongoose.model<IDestination>('Destination', destinationSchema);
 
 export default Destination;
