@@ -24,8 +24,6 @@
     }
   },
   "include": [
-    "video.d.ts",
-    "video.d.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
@@ -34,8 +32,14 @@
     "lib/**/*",
     "src/app/layout.js",
     "src/lib/mongodb.ts",
-    "src/pages/api/users.js", 
+    "src/pages/api/users.js",
     "next.config.ts",
-    "global.d.ts", "src/app/api/upload/route.tsx", "src/app/api/destinations/route.ts", "postcss.config.js", "src/app/profile"   ],
+    "global.d.ts",
+    "src/app/api/upload/route.tsx",
+    "src/app/api/destinations/route.ts",
+    "postcss.config.js",
+    "src/app/profile",
+    "types/**/*"  // Include the 'types' folder if you added it
+  ],
   "exclude": ["node_modules"]
 }
