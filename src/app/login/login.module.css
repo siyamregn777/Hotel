@@ -27,7 +27,7 @@
   border: none;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  background-color: rgba(255, 255, 255, 0.4); /* Semi-transparent background */
   margin-right: 70%;
   margin-top: -10%;
 }
@@ -48,7 +48,7 @@
 }
 
 .donot {
-  color: black;
+  color: rgb(0, 0, 0);
   display: flex;
   justify-content: center; /* Center the text */
   flex-direction: column; /* Stack elements vertically */
@@ -56,7 +56,7 @@
 }
 
 .signup {
-  color: rgb(57, 107, 160);
+  color: rgb(43, 44, 74);
   text-decoration: underline;
 }
 
