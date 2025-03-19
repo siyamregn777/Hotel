@@ -1,102 +1,181 @@
-.doma{
+.doma {
   background-color: #eff6fa;
-  padding: 0%;
-  height: 100vh;
+  padding: 40px 20px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.introSection,
+.footerSection {
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.introSection h1,
+.footerSection h3 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.introSection p,
+.footerSection p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
 .settingsContainer {
-    max-width: 450px;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    color: black;
-    transition: background-color 0.3s ease-in-out;
-    margin-top: 3%;
+  max-width: 500px;
+  width: 100%;
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.section {
+  margin-bottom: 25px;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.formGroup input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.saveButton {
+  width: 100%;
+  padding: 12px;
+  background-color: #27ae60;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.saveButton:hover {
+  background-color: #219150;
+}
+
+.passwordTips {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  color: #555;
+  text-align: left;
+}
+
+.passwordTips li {
+  margin-bottom: 10px;
+}
+
+.supportLink {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.supportLink:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .introSection h1,
+  .footerSection h3 {
+    font-size: 24px;
   }
-  
+
+  .introSection p,
+  .footerSection p {
+    font-size: 14px;
+  }
+
+  .settingsContainer {
+    padding: 20px;
+  }
+
   .title {
     font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 15px;
   }
-  
-  .section {
-    margin-bottom: 20px;
-    text-align: left;
+
+  .formGroup input {
+    font-size: 13px;
   }
-  
-  .section h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .section input {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
+
   .saveButton {
-    width: 100%;
+    font-size: 14px;
     padding: 10px;
-    background-color: #27ae60;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
   }
-  
-  .saveButton:hover {
-    background-color: #219150;
+}
+
+@media (max-width: 480px) {
+  .introSection h1,
+  .footerSection h3 {
+    font-size: 20px;
   }
-  
-  .toggleButton {
-    padding: 10px;
-    background-color: #f39c12;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
+
+  .introSection p,
+  .footerSection p {
+    font-size: 13px;
   }
-  
-  .toggleButton:hover {
-    background-color: #d68910;
+
+  .settingsContainer {
+    padding: 15px;
   }
-  
-  .linkButton {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+
+  .title {
+    font-size: 20px;
   }
-  
-  .linkButton.linked {
-    background-color: #e74c3c;
+
+  .formGroup input {
+    font-size: 12px;
   }
-  
-  .linkButton:hover {
-    background-color: #2980b9;
+
+  .saveButton {
+    font-size: 13px;
+    padding: 8px;
   }
-  
-  .linkButton.linked:hover {
-    background-color: #c0392b;
-  }
-  
+}

@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import connectToDatabase from '../../../../lib/mongodb';
 
-export async function GET() {  // Removed 'req' since it's unused
+export async function GET() {  
   try {
-    const dbName = 'your_database_name'; // Provide your actual database name
+    const dbName = 'myDatabase'; 
     const mongoose = await connectToDatabase(dbName);
     const db = mongoose.connection;
 
@@ -20,3 +20,4 @@ export async function GET() {  // Removed 'req' since it's unused
     return NextResponse.json({ success: false, message: 'An unexpected error occurred' }, { status: 500 });
   }
 }
+

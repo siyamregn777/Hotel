@@ -1,20 +1,53 @@
+.profil {
+  background-color: #eff6fa;
+  padding: 40px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.introSection,
+.footerSection {
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.introSection h1,
+.footerSection h3 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.introSection p,
+.footerSection p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
 .profileContainer {
   max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  width: 100%;
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+  margin-bottom: 30px;
 }
 
 .title {
   font-size: 24px;
   font-weight: bold;
-  color: #333;
   margin-bottom: 20px;
+  text-align: center;
+  color: #2c3e50;
 }
 
 .imageContainer {
@@ -100,19 +133,83 @@
   background-color: #388e3c;
 }
 
+.profileTips {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+  color: #555;
+  text-align: left;
+}
+
+.profileTips li {
+  margin-bottom: 10px;
+}
+
+.supportLink {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.supportLink:hover {
+  text-decoration: underline;
+}
+
 /* Responsive Design */
-@media (max-width: 600px) {
-  .profileContainer {
-    width: 90%;
-    padding: 15px;
+@media (max-width: 768px) {
+  .introSection h1,
+  .footerSection h3 {
+    font-size: 24px;
   }
 
-  .profileImage {
-    width: 100px;
-    height: 100px;
+  .introSection p,
+  .footerSection p {
+    font-size: 14px;
+  }
+
+  .profileContainer {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .infoItem input {
+    font-size: 13px;
   }
 
   .saveButton {
     font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .introSection h1,
+  .footerSection h3 {
+    font-size: 20px;
+  }
+
+  .introSection p,
+  .footerSection p {
+    font-size: 13px;
+  }
+
+  .profileContainer {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .infoItem input {
+    font-size: 12px;
+  }
+
+  .saveButton {
+    font-size: 13px;
+    padding: 8px;
   }
 }

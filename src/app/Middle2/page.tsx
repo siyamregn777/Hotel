@@ -7,7 +7,7 @@ import Link from 'next/link';
 const Middle2 = () => {
   return (
     <div className={styles.middle2}>
-      {/* Background image */}
+      {/* Background image with animation */}
       <div className={styles.backgroundImage}>
         <Image
           src={image2}
@@ -29,18 +29,18 @@ const Middle2 = () => {
             height={300}
             className={styles.overlayImage}
           />
-          <Link href="/important"> <h3>Visit Africa</h3></Link>
-          
-
+          <Link href="/important">
+            <h3>Visit Africa</h3>
+          </Link>
         </div>
 
         {/* Bottom-right text */}
         <div className={styles.bottomRight}>
-          <h1>This is africa</h1>
-          <p>Visit  And Enjoy The Moment</p>
-            <Link href="/gallary" className={styles.bottom}>
-              Show Our Gallary
-            </Link>
+          <h1>This is Africa</h1>
+          <p>Visit and Enjoy the Moment</p>
+          <Link href="/gallary" className={styles.bottom}>
+            Show Our Gallery
+          </Link>
         </div>
       </div>
     </div>

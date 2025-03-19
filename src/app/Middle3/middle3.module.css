@@ -1,46 +1,128 @@
 .middle3 {
-    background-color: aliceblue;
+  background-color: #f9f9f9;
+  padding: 40px 20px;
+  text-align: center;
 }
-  .middle3 h2 {
-    font-size: 2rem; /* Size for main title */
-    margin-bottom: 10px; /* Space below the title */
-    color: black;
-    margin-left: 30%;
-  }
-  .middle3 h5 {
-    font-size: 1.2rem; /* Size for subtitle */
-    color: #130e0e; /* Subtle color for the subtitle */
-    margin-bottom: 20px; /* Space below the subtitle */
-    color: black;
 
+.middle3 h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.middle3 h5 {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.middle3 p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.faqContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.faqItem:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.question {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  padding: 20px;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.question::after {
+  content: '▼';
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.faqItem.open .question::after {
+  transform: rotate(180deg);
+}
+
+.answer {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  padding: 0 20px 20px 20px;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faqItem.open .answer {
+  max-height: 200px; /* Adjust based on your content */
+  padding-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .middle3 h2 {
+    font-size: 2rem;
   }
-  .middle3  p {
-    font-size: 1rem; /* Size for the paragraph text */
-    color: #666; /* Gray color for the text */
-    margin-bottom: 20px; /* Space below the paragraph */
-    color: black;
+
+  .middle3 h5 {
+    font-size: 1.3rem;
   }
-  .faqContainer {
-    margin-top: 20px; /* Space above the FAQ section */
-    padding: 10px; /* Padding around the container */
-    border-radius: 8px; /* Rounded corners */
-    max-width: 900px; /* Limit the width of the FAQ section */
-    margin: 20px auto; /* Center the container */
+
+  .middle3 p {
+    font-size: 1rem;
   }
-  .faqItem {
-    background-color: #fff; /* White background for each FAQ item */
-    border: 1px solid #e3e3e3; /* Light border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 15px; /* Padding inside each FAQ item */
-    margin-bottom: 10px; /* Space below each FAQ item */
-    cursor: pointer; /* Change cursor to pointer on hover */
-  }
+
   .question {
-    font-size: 1.1rem; /* Slightly larger size for question */
-    margin: 0; /* Remove default margin */
-    color: #130e0e;
+    font-size: 1.1rem;
+    padding: 15px;
   }
+
   .answer {
-    margin-top: 5px; /* Space above the answer text */
-    color: #333; /* Dark color for the answer */
+    font-size: 0.9rem;
   }
+}
+
+@media (max-width: 480px) {
+  .middle3 h2 {
+    font-size: 1.8rem;
+  }
+
+  .middle3 h5 {
+    font-size: 1.1rem;
+  }
+
+  .middle3 p {
+    font-size: 0.9rem;
+  }
+
+  .question {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .answer {
+    font-size: 0.8rem;
+  }
+}

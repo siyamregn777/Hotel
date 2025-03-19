@@ -1,7 +1,7 @@
 "use client";
 import styles from './Booking.module.css';
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import bgImage from '../../../public/back/pexels-cachi290-29831643 (1).jpg'; // Background image
+// import bgImage from '../../../public/back/pexels-cachi290-29831643 (1).jpg'; // Background image
 import ProtectedPageWrapper from '../../components/ProtectedPageWrapper';
 import Link from 'next/link';
 
@@ -149,113 +149,125 @@ const BookingPage = () => {
 
     return (
         <ProtectedPageWrapper>
-            <div className={styles.container} style={{ backgroundImage: `url(${bgImage.src})` }}>
-                <div className={styles.header}>
-                    <h1 className={styles.title}>Adventure Booking</h1>
-                    <p className={styles.subtitle}>Plan your dream trip with us!</p>
+            <div className={styles.container}>
+                <div className={styles.imageSection}>
+                    <div className={styles.overlay}></div>
+                    <div className={styles.imageContent}>
+                        <h1 className={styles.title}>Adventure Booking</h1>
+                        <p className={styles.subtitle}>Plan your dream trip with us!</p>
+                    </div>
                 </div>
-                <div className={styles.bookingFormContainer}>
+                <div className={styles.bookingSection}>
                     <form onSubmit={handleSubmit} className={styles.bookingForm}>
-                        <label>
-                            Name:
-                            <input
-                                type="text"
-                                name="name"
-                                placeholder="Your Name"
-                                className={styles.inputField}
-                                value={formData.name}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </label>
-                        <label>
-                            Email:
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Your Email"
-                                className={styles.inputField}
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </label>
-                        <label>
-                            Check-In Date:
-                            <input
-                                type="date"
-                                name="checkInDate"
-                                className={styles.inputField}
-                                value={formData.checkInDate}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </label>
-                        <label>
-                            Check-Out Date:
-                            <input
-                                type="date"
-                                name="checkOutDate"
-                                className={styles.inputField}
-                                value={formData.checkOutDate}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </label>
-                        <label>
-                            Activity:
-                            <select
-                                name="activity"
-                                className={styles.inputField}
-                                value={formData.activity}
-                                onChange={handleInputChange}
-                                required
-                            >
-                                <option value="" disabled>Select an activity</option>
-                                <option value="hiking">Only Tour</option>
-                                <option value="sightseeing">Tour and Food</option>
-                            </select>
-                        </label>
-                        <label>
-                            Room Type:
-                            <select
-                                name="roomType"
-                                className={styles.inputField}
-                                value={formData.roomType}
-                                onChange={handleInputChange}
-                                required
-                            >
-                                <option value="" disabled>Select room type</option>
-                                <option value="vip">VIP</option>
-                                <option value="normal">Normal</option>
-                            </select>
-                        </label>
-                        <label>
-                            Room Number:
-                            <input
-                                type="number"
-                                name="roomNumber"
-                                className={styles.inputField}
-                                value={formData.roomNumber}
-                                onChange={handleRoomNumberChange}
-                                required
-                            />
-                            {formData.roomType && (
-                                <small>Room number should be between {formData.roomType === 'normal' ? '30 and 50' : '1 and 29'}.</small>
-                            )}
-                        </label>
-                        <label>
-                            Number of Participants:
-                            <input
-                                type="number"
-                                name="participants"
-                                className={styles.inputField}
-                                value={formData.participants}
-                                min="1"
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </label>
+                        <h2>Book Your Adventure</h2>
+                        <div className={styles.formGroup}>
+                            <label>
+                                Name:
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Your Name"
+                                    value={formData.name}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                            </label>
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label>
+                                Email:
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Your Email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                            </label>
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label>
+                                Check-In Date:
+                                <input
+                                    type="date"
+                                    name="checkInDate"
+                                    value={formData.checkInDate}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                            </label>
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label>
+                                Check-Out Date:
+                                <input
+                                    type="date"
+                                    name="checkOutDate"
+                                    value={formData.checkOutDate}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                            </label>
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label>
+                                Activity:
+                                <select
+                                    name="activity"
+                                    value={formData.activity}
+                                    onChange={handleInputChange}
+                                    required
+                                >
+                                    <option value="" disabled>Select an activity</option>
+                                    <option value="hiking">Only Tour</option>
+                                    <option value="sightseeing">Tour and Food</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label>
+                                Room Type:
+                                <select
+                                    name="roomType"
+                                    value={formData.roomType}
+                                    onChange={handleInputChange}
+                                    required
+                                >
+                                    <option value="" disabled>Select room type</option>
+                                    <option value="vip">VIP</option>
+                                    <option value="normal">Normal</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label>
+                                Room Number:
+                                <input
+                                    type="number"
+                                    name="roomNumber"
+                                    value={formData.roomNumber}
+                                    onChange={handleRoomNumberChange}
+                                    required
+                                />
+                                {formData.roomType && (
+                                    <small>Room number should be between {formData.roomType === 'normal' ? '30 and 50' : '1 and 29'}.</small>
+                                )}
+                            </label>
+                        </div>
+                        <div className={styles.formGroup}>
+                            <label>
+                                Number of Participants:
+                                <input
+                                    type="number"
+                                    name="participants"
+                                    value={formData.participants}
+                                    min="1"
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                            </label>
+                        </div>
                         {error && <p className={styles.errorMessage}>{error}</p>}
                         <button
                             type="button"
@@ -264,8 +276,8 @@ const BookingPage = () => {
                         >
                             Check Availability
                         </button>
-                        <p>{availability}</p>
-                        <p>Total Price: ${price.toFixed(2)}</p>
+                        <p className={styles.availability}>{availability}</p>
+                        <p className={styles.price}>Total Price: <span>${price.toFixed(2)}</span></p>
                         <Link 
                             href={isFormValid ? "/payments" : "#"} 
                             className={`${styles.submitButton} ${!isFormValid ? styles.disabled : ''}`}

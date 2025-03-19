@@ -12,41 +12,43 @@ import image10 from '../../../public/gallary/morocco-4030733_1280.jpg';
 import image11 from '../../../public/gallary/namibia-2049203_1280.jpg';
 import image12 from '../../../public/gallary/penguins-4668754_1280.jpg';
 import Image from 'next/image';
-const images=[
-    { src:image1,alt:"image1",width:300,height:200,},
-    {src:image2,alt:"image2",width:300,height:200,},
-    {src:image3,alt:"image3",width:300,height:200,},
-    {src:image4,alt:"image4",width:300,height:200,},
-    {src:image5,alt:"image4",width:300,height:200,},
-    {src:image6,alt:"image4",width:300,height:200,},
-    {src:image7,alt:"image4",width:300,height:200,},
-    {src:image8,alt:"image4",width:300,height:200,},
-    {src:image9,alt:"image4",width:300,height:200,},
-    {src:image10,alt:"image4",width:300,height:200,},
-    {src:image11,alt:"image4",width:300,height:200,},
-    {src:image12,alt:"image4",width:300,height:200,},
- 
-]
-const Gallary =()=>{
-    return(
+
+const images = [
+  { src: image1, alt: 'Africa Landscape', width: 300, height: 200 },
+  { src: image2, alt: 'African Wildlife', width: 300, height: 200 },
+  { src: image3, alt: 'Birds in Africa', width: 300, height: 200 },
+  { src: image4, alt: 'Dog in Africa', width: 300, height: 200 },
+  { src: image5, alt: 'Duiker Island', width: 300, height: 200 },
+  { src: image6, alt: 'Giraffes', width: 300, height: 200 },
+  { src: image7, alt: 'Group of People', width: 300, height: 200 },
+  { src: image8, alt: 'Man in Africa', width: 300, height: 200 },
+  { src: image9, alt: 'Meerkat', width: 300, height: 200 },
+  { src: image10, alt: 'Morocco Landscape', width: 300, height: 200 },
+  { src: image11, alt: 'Namibia Landscape', width: 300, height: 200 },
+  { src: image12, alt: 'Penguins', width: 300, height: 200 },
+];
+
+const Gallary = () => {
+  return (
     <div className={styles.middle1}>
-      <h2>Our Gallary</h2>
+      <h2>Our Gallery</h2>
       <div className={styles.middle}>
         <ul className={styles.imageList}>
           {images.map((image, index) => (
             <li key={index} className={styles.imageItem}>
-                <Image 
-                  src={image.src} 
-                  alt={image.alt} 
-                  width={image.width} 
-                  height={image.height} 
-                  className={styles.image} 
-                />
+              <Image
+                src={image.src}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+                className={styles.image}
+              />
             </li>
           ))}
         </ul>
       </div>
     </div>
-    )
-}
+  );
+};
+
 export default Gallary;

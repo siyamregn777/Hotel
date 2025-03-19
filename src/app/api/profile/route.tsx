@@ -1,7 +1,5 @@
 import { NextResponse, NextRequest } from 'next/server';
 import connectToDatabase from '../../../../lib/mongodb';
-import fs from 'fs';
-import path from 'path';
 import User from '../../../models/User'; // Import User model
 
 export const config = {
@@ -83,18 +81,26 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'No file uploaded' }, { status: 400 });
     }
 
-    const uploadDir = path.join(process.cwd(), 'public/uploads');
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
+    // Step 1: Upload image to Cloudinary
+    const cloudinaryFormData = new FormData();
+    cloudinaryFormData.append('file', file);
+    cloudinaryFormData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET!); // Use your Cloudinary upload preset
+    cloudinaryFormData.append('cloud_name', process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME!); // Use your Cloudinary cloud name
 
-    const filePath = path.join(uploadDir, file.name);
-    const buffer = Buffer.from(await file.arrayBuffer());
-    fs.writeFileSync(filePath, buffer);
+    const cloudinaryResponse = await fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+      {
+        method: 'POST',
+        body: cloudinaryFormData,
+      }
+    );
 
-    const imageUrl = `/uploads/${file.name}`;
+    const cloudData = await cloudinaryResponse.json();
+    if (!cloudinaryResponse.ok) throw new Error(cloudData.error.message);
 
-    // Update user image URL in the database
+    const imageUrl = cloudData.secure_url; // Get the uploaded image URL
+
+    // Step 2: Update user image URL in the database
     await User.updateOne(
       { email },
       { $set: { image: imageUrl, updatedAt: new Date() } }

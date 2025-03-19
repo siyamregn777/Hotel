@@ -1,8 +1,7 @@
-
 .wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure the wrapper takes at least the full viewport height */
+  min-height: 100vh;
   overflow: hidden;
   background-color: #f0f0f0;
 }
@@ -10,13 +9,13 @@
 .main {
   flex: 1;
   position: relative;
-  height: 100vh; /* Ensure main takes the full viewport height */
+  height: 100vh;
 }
 
 .imageContainer {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -24,6 +23,21 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 100%; /* Start off-screen to the right */
+  opacity: 0; /* Start with the image invisible */
+  transition: left 1s ease-in-out, opacity 1s ease-in-out; /* Smooth transition for left and opacity */
+}
+
+.image.active {
+  left: 0; /* Move to the center */
+  opacity: 1; /* Make the active image visible */
+}
+
+.image.previous {
+  left: -100%; /* Move off-screen to the left */
+  opacity: 0; /* Fade out */
 }
 
 .overlay {
@@ -37,22 +51,23 @@
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 2;
   padding: 20px;
   text-align: center;
 }
 
 .overlay h1 {
-  font-size: 2.5rem; /* Larger font size for visibility */
-  max-width: 90%;
-  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .overlay p {
-  font-size: 1.2rem;
-  max-width: 90%;
-  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .Home {
@@ -62,113 +77,96 @@
 }
 
 .Home_beauty {
-  width: 100%;
   display: flex;
-  flex-direction: column; /* Stack elements vertically on small screens */
-  justify-content: center;
-  align-items: center;
+  flex-direction: row; /* Align children side by side */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  gap: 20px; /* Add space between the h2 and h3 */
+  width: 100%;
   margin-bottom: 20px;
 }
 
-.Home_beauty h2, .Home_beauty h3 {
-  font-size: 1.2rem;
-  font-weight: bold;
+.Home_beauty h2,
+.Home_beauty h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
   border-radius: 10px;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
-  width: 100%;
+  margin: 0; /* Remove default margin */
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .Home_beauty h2:hover {
-  background-color: rgb(45, 45, 202);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform: scale(1.1);
-  color: black;
-  background-color: aliceblue;
-  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #2c3e50;
+  transform: scale(1.05);
 }
 
 .Home_beauty h3 {
-  color: aqua;
-  background-color: rgb(94, 80, 62);
-  text-align: center; /* Center text on small screens */
+  background-color: rgba(94, 80, 62, 0.8);
+  color: #00ffff;
 }
 
 .Home_beauty h3:hover {
-  background-color: rgb(186, 186, 232);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform: scale(1.1);
-  color: black;
-  opacity: 0.8;
+  background-color: rgba(186, 186, 232, 0.9);
+  color: #2c3e50;
+  transform: scale(1.05);
 }
 
-.wrapper button {
+.getStartedButton {
   background-color: #da5112;
   padding: 12px 24px;
-  font-size: 1rem;
-  color: azure;
+  font-size: 1.2rem;
+  color: white;
   cursor: pointer;
-  display: block;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 300px;
-  min-width: 120px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  z-index: 2;
-  position: absolute; /* Add absolute positioning */
-  bottom: 20px; /* Move the button 20px from the bottom */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Adjust for centering */
+  border-radius: 25px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.wrapper button:hover {
+.getStartedButton:hover {
   background-color: #4b0cb0;
+  transform: translateX(-50%) scale(1.05);
 }
 
-.dotsContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .overlay h1 {
+    font-size: 2rem;
+  }
 
-.dot {
-  width: 12px;
-  height: 12px;
-  margin: 0 5px;
-  background-color: #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+  .overlay p {
+    font-size: 1.2rem;
+  }
 
-.dot:hover {
-  background-color: #888;
-}
+  .Home_beauty h2,
+  .Home_beauty h3 {
+    font-size: 1.2rem;
+  }
 
-.dot.active {
-  background-color: #555;
-}
-
-@media (min-width: 768px) {
-  .Home_beauty {
-    flex-direction: row; /* Row layout for larger screens */
-    justify-content: space-between;
+  .getStartedButton {
+    font-size: 1rem;
+    padding: 10px 20px;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 480px) {
   .overlay h1 {
-    font-size: 1.8rem; /* Adjust font size for mobile */
+    font-size: 1.8rem;
   }
 
   .overlay p {
     font-size: 1rem;
   }
 
-  .dot {
-    width: 18px;
-    height: 18px;
+  .Home_beauty h2,
+  .Home_beauty h3 {
+    font-size: 1rem;
   }
 }

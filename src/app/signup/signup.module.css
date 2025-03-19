@@ -1,71 +1,190 @@
-.sign{
-    background-color: white;
-}
-.signupContainer {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.signupTitle {
+.sign {
+    background-color: #f8f9fa; /* Light background for the page */
+    min-height: 100vh; /* Ensure the page takes at least the full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Add padding to prevent overlap with navbar and footer */
+  }
+  
+  .signupContainer {
+    max-width: 500px; /* Slightly wider for better spacing */
+    width: 100%; /* Full width for responsiveness */
+    padding: 30px;
+    background-color: white; /* White background for the form */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .signupTitle {
     text-align: center;
-    font-size: 24px;
+    font-size: 2rem; /* Larger font size */
+    font-weight: 700; /* Bold text */
     margin-bottom: 20px;
-    color: #333;
-}
-
-.signupForm {
+    color: #2c3e50; /* Dark blue color */
+  }
+  
+  .signupForm {
     display: flex;
     flex-direction: column;
-}
-
-.formGroup {
+    gap: 16px; /* Add space between form groups */
+  }
+  
+  .formGroup {
     margin-bottom: 16px;
-    color: black;
-}
-
-.label {
-    font-size: 14px;
-    margin-bottom: 4px;
-    color: #000000;
-}
-
-.input {
+  }
+  
+  .label {
+    font-size: 0.9rem;
+    font-weight: 600; /* Bold labels */
+    margin-bottom: 8px;
+    color: #333; /* Dark text color */
+  }
+  
+  .input {
     width: 100%;
-    padding: 10px;
+    padding: 12px; /* Increased padding */
     border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    color: black;
-}
-
-.button {
-    padding: 10px 20px;
-    background-color: #007BFF;
+    border-radius: 6px; /* Rounded corners */
+    font-size: 1rem;
+    color: #333; /* Dark text color */
+    outline: none; /* Remove outline on focus */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+  }
+  
+  .input:focus {
+    border-color: #007BFF; /* Highlight border on focus */
+  }
+  
+  .button {
+    padding: 12px 20px; /* Increased padding */
+    background-color: #007BFF; /* Blue background */
     color: white;
     border: none;
-    border-radius: 4px;
-    font-size: 16px;
+    border-radius: 6px; /* Rounded corners */
+    font-size: 1rem;
+    font-weight: 600; /* Bold text */
     cursor: pointer;
-}
-
-.button:hover {
-    background-color: #0056b3;
-}
-
-.error {
-    color: red;
-    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  }
+  
+  .button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+  
+  .button:disabled {
+    background-color: #ccc; /* Gray background when disabled */
+    cursor: not-allowed; /* Change cursor when disabled */
+  }
+  
+  .error {
+    color: #ff4d4d; /* Red color for error messages */
+    font-size: 0.9rem;
     margin-bottom: 10px;
     text-align: center;
-}
-
-.success {
-    color: green;
-    font-size: 14px;
+  }
+  
+  .success {
+    color: #28a745; /* Green color for success messages */
+    font-size: 0.9rem;
     margin-bottom: 10px;
     text-align: center;
-}
+  }
+  
+  .loginLink {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.9rem;
+    color: #333; /* Dark text color */
+  }
+  
+  .loginLink a {
+    color: #007BFF; /* Blue color for the link */
+    text-decoration: none; /* Remove underline */
+    font-weight: 600; /* Bold text */
+    transition: color 0.3s ease; /* Smooth transition for color */
+  }
+  
+  .loginLink a:hover {
+    color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .socialLogin {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Space between social buttons */
+    margin-top: 20px;
+  }
+  
+  .socialButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px; /* Increased padding */
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Rounded corners */
+    font-size: 1rem;
+    font-weight: 600; /* Bold text */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  }
+  
+  .socialButton.google {
+    background-color: #ffffff; /* White background for Google */
+    color: #333; /* Dark text color */
+  }
+  
+  .socialButton.google:hover {
+    background-color: #f1f1f1; /* Light gray on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+  
+  .socialButton.linkedin {
+    background-color: #0077b5; /* LinkedIn blue background */
+    color: white; /* White text color */
+  }
+  
+  .socialButton.linkedin:hover {
+    background-color: #005f8d; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+  }
+  
+  .socialButton img {
+    width: 20px; /* Icon size */
+    height: 20px;
+    margin-right: 10px; /* Space between icon and text */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .signupContainer {
+      padding: 20px; /* Reduce padding for smaller screens */
+    }
+  
+    .signupTitle {
+      font-size: 1.8rem; /* Slightly smaller font size */
+    }
+  
+    .input {
+      padding: 10px; /* Reduce padding for smaller screens */
+    }
+  
+    .button {
+      padding: 10px 16px; /* Reduce padding for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .signupTitle {
+      font-size: 1.5rem; /* Smaller font size for mobile */
+    }
+  
+    .input {
+      font-size: 0.9rem; /* Smaller font size for mobile */
+    }
+  
+    .button {
+      font-size: 0.9rem; /* Smaller font size for mobile */
+    }
+  }

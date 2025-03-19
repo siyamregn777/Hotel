@@ -10,7 +10,7 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ success: false, message: 'Image ID is required.' }, { status: 400 });
     }
 
-    const dbName = 'your_database_name';  // Specify your database name
+    const dbName = 'mydatabase';  // Specify your database name
     const mongoose = await connectToDatabase(dbName);
     const db = mongoose.connection;
 

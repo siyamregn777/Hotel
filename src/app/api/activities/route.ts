@@ -1,35 +1,67 @@
-import { NextResponse } from "next/server";
-import connectToDatabase from '../../../../lib/mongodb'; // Ensure you import your database connection
-import Activity from '../../../models/Activity'; // Import the Activity model
+import { NextResponse } from 'next/server';
+import connectToDatabase from '../../../../lib/mongodb'; // Adjust the path to your MongoDB connection
+import Activity from '@/models/Activity'; // Path to your Activity model
 
-export async function POST(req: Request) {
-  await connectToDatabase('Database'); // Connect to the 'Database'
-
+// Handle GET request to fetch activities and reviews
+export async function GET(req: Request) {
   try {
-    // Parse request body
-    const { name, description, price, duration } = await req.json();
+    const { searchParams } = new URL(req.url);
+    const activityId = searchParams.get('activityId');
 
-    // Create a new activity document using the Mongoose model
-    const newActivity = new Activity({
-      name,
-      description,
-      price: Number(price),
-      duration: Number(duration),
-    });
+    await connectToDatabase('myDatabase'); // Replace with your database name
 
-    // Save the activity data to the database
-    await newActivity.save();
+    if (activityId) {
+      // Fetch a single activity with reviews
+      const activity = await Activity.findById(activityId);
+      if (!activity) {
+        return NextResponse.json({ success: false, message: 'Activity not found' }, { status: 404 });
+      }
+      return NextResponse.json({ success: true, activity });
+    } else {
+      // Fetch all activities
+      const activities = await Activity.find();
+      return NextResponse.json({ success: true, activities });
+    }
+  } catch (error) {
+    console.error('Error fetching activities:', error);
+    return NextResponse.json({ success: false, message: 'Error fetching activities' }, { status: 500 });
+  }
+}
+
+// Handle POST request to add a review
+export async function POST(req: Request) {
+  try {
+    const { activityId, userName, comment, rating } = await req.json();
+
+    // Validate input
+    if (!activityId || !userName || !comment || rating < 0 || rating > 5) {
+      return NextResponse.json({ success: false, message: 'Invalid review data' }, { status: 400 });
+    }
+
+    await connectToDatabase('myDatabase'); // Replace with your database name
+
+    // Update the activity with the new review
+    const updatedActivity = await Activity.findByIdAndUpdate(
+      activityId,
+      {
+        $push: {
+          reviews: { userName, comment, rating, createdAt: new Date() },
+        },
+      },
+      { new: true }
+    );
+
+    if (!updatedActivity) {
+      return NextResponse.json({ success: false, message: 'Activity not found' }, { status: 404 });
+    }
 
     return NextResponse.json({
       success: true,
-      message: "Activity added successfully!",
-      id: newActivity._id, // Return the inserted ID
+      message: 'Review added successfully!',
+      reviews: updatedActivity.reviews,
     });
   } catch (error) {
-    console.error("Error processing activity:", error);
-    return NextResponse.json(
-      { success: false, message: "Error processing the activity" },
-      { status: 500 }
-    );
+    console.error('Error processing review:', error);
+    return NextResponse.json({ success: false, message: 'Error processing the review' }, { status: 500 });
   }
 }
