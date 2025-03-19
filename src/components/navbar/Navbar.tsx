@@ -58,9 +58,9 @@ const Navbar: React.FC<NavbarProps> = ({ isVisible }) => {
             <li className={styles.navItem}>
               <Link href="/activities">Activities</Link>
             </li>
-            <li className={styles.navItem}>
+            {/* <li className={styles.navItem}>
               <Link href="/booking">Booking</Link>
-            </li>
+            </li> */}
             <li className={styles.navItem}>
               <Link href="/destinations">Destinations</Link>
             </li>
@@ -69,17 +69,17 @@ const Navbar: React.FC<NavbarProps> = ({ isVisible }) => {
                 <Link href="/adminDashboard">AdminDashboard</Link>
               </li>
             )}
-            <li className={styles.navItem}>
+            {/* <li className={styles.navItem}>
               <Link href="/payments">Payment</Link>
-            </li>
-            
+            </li> */}
+
             {/* Profile Dropdown */}
             <li className={styles.dropDown} ref={dropdownRef}>
               <Image
                 src={image1}
                 alt="Profile"
-                height={50}
-                width={50}
+                height={40}
+                width={40}
                 className={styles.profileImage}
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               />
@@ -88,7 +88,6 @@ const Navbar: React.FC<NavbarProps> = ({ isVisible }) => {
                   <li className={styles.navItem}>
                     <Link href="/profile">Profile</Link>
                   </li>
-
                   <li className={styles.navItem}>
                     <Link href="/accountSettings">Settings</Link>
                   </li>
