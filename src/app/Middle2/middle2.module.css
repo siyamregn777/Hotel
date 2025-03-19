@@ -9,7 +9,7 @@
   justify-content: center;
 }
 
-/* Background Image */
+/* Background Image with Animation */
 .backgroundImage {
   position: absolute;
   top: 0;
@@ -17,6 +17,19 @@
   width: 100%;
   height: 100%;
   z-index: 1;
+  animation: moveBackground 3s linear infinite; /* Background animation */
+}
+
+@keyframes moveBackground {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Overlay Container */
@@ -31,7 +44,7 @@
   padding: 20px;
 }
 
-/* Top-left section */
+/* Top-left section with animation */
 .topLeft {
   position: absolute;
   top: 5%;
@@ -39,24 +52,44 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: moveLeftRight 5s linear infinite; /* Animation for left-right movement */
+}
+
+@keyframes moveLeftRight {
+  0% {
+    transform: translateX(0); /* Start at original position */
+  }
+  50% {
+    transform: translateX(100px); /* Move 100px to the right */
+  }
+  100% {
+    transform: translateX(0); /* Return to original position */
+  }
 }
 
 .topLeft h3 {
-  color: black;
-  background-color: aliceblue;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 10px 20px;
   text-align: center;
   margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.overlayImage{
+
+.topLeft h3:hover {
+  background-color: white;
+  color: black;
+}
+
+.overlayImage {
   width: 100%;
   max-width: 300px;
   height: auto;
-}
-.topLeft h3:hover {
-  background-color: black;
-  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Bottom-right section */
@@ -66,34 +99,46 @@
   right: 5%;
   text-align: center;
   color: white;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
   border-radius: 10px;
   max-width: 300px;
 }
 
 .bottomRight h1 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 10px;
+  font-weight: 700;
 }
 
 .bottomRight p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.5;
+  margin-bottom: 15px;
 }
 
 .bottom {
-  display: block;
+  display: inline-block;
   margin-top: 10px;
   font-size: 1rem;
-  color: burlywood;
+  color: #f39c12;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bottom:hover {
+  background-color: white;
+  color: black;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .middle2 {
-    height: auto;
-    flex-direction: column;
+    height: 400px; /* Adjust height for tablets */
   }
 
   .topLeft {
@@ -105,21 +150,20 @@
   .bottomRight {
     position: static;
     width: 100%;
-    text-align: center;
+    max-width: none;
+    margin: 20px auto;
   }
-  .overlayImage{
+
+  .overlayImage {
     width: 50%;
     max-width: 200px;
     height: auto;
-    margin-right: 50%;
-
-
   }
 }
 
 @media (max-width: 480px) {
   .middle2 {
-    height: 70vh; /* Adjust height for mobile */
+    height: 300px; /* Adjust height for mobile */
   }
 
   .overlayContainer {
@@ -127,12 +171,12 @@
   }
 
   .topLeft h3 {
-    font-size: 0.9rem;
-    padding: 8px;
+    font-size: 1rem;
+    padding: 8px 16px;
   }
 
   .bottomRight h1 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 
   .bottomRight p {
@@ -142,11 +186,5 @@
   .bottom {
     font-size: 0.9rem;
     padding: 8px 16px;
-  }
-  .bottomRight{
-    width: 50%;
-    max-width: 200px;
-    height: auto;
-    margin-left: 50%;
   }
 }
