@@ -9,28 +9,26 @@
   flex-direction: column; /* Center content vertically */
 }
 
-
-
 .title {
   text-align: center;
   color: white; /* Make the title white for better contrast */
-  font-size: 36px; /* Larger font size */
-  font-weight: bold; /* Bold text */
-  margin-bottom: 30px; /* Space below the title */
-  margin-top: 10px; /* Space above the title */
+  font-size: 2.5rem; /* Larger font size */
+  font-weight: 700; /* Bold text */
+  margin-bottom: 20px; /* Space below the title */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Add shadow for better readability */
 }
 
 .loginContainer {
   max-width: 400px;
-  margin: 20px;
+  width: 90%; /* Responsive width */
   padding: 30px;
   border: none;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  background-color: rgba(255, 255, 255, 0.4); /* Semi-transparent background */
-  margin-right: 70%;
-  margin-top: -10%;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Add blur effect for a modern look */
 }
+
 .input {
   width: 100%;
   padding: 12px; /* Increased padding */
@@ -38,7 +36,7 @@
   border: 1px solid #ccc;
   border-radius: 6px; /* Slightly more rounded corners */
   box-sizing: border-box;
-  color: black;
+  color: #333; /* Darker text color */
   outline: none; /* Remove outline on focus */
   transition: border-color 0.3s ease; /* Smooth transition for border color */
 }
@@ -48,16 +46,23 @@
 }
 
 .donot {
-  color: rgb(0, 0, 0);
+  color: #333; /* Darker text color */
   display: flex;
   justify-content: center; /* Center the text */
   flex-direction: column; /* Stack elements vertically */
   gap: 5px;
+  margin-top: 15px; /* Add space above the "Don’t have an account?" section */
 }
 
 .signup {
-  color: rgb(43, 44, 74);
-  text-decoration: underline;
+  color: #007BFF; /* Blue color for the link */
+  text-decoration: none; /* Remove underline */
+  font-weight: 600; /* Bold text */
+  transition: color 0.3s ease; /* Smooth transition for color */
+}
+
+.signup:hover {
+  color: #0056b3; /* Darker blue on hover */
 }
 
 .createAccountLink {
@@ -66,22 +71,29 @@
   padding: 12px 20px; /* Increased padding */
   color: #fff; /* White text color */
   background-color: #007BFF; /* Blue background */
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 1rem;
+  font-weight: 600; /* Bold text */
   border: none; /* No border for a cleaner button */
   border-radius: 6px; /* More rounded corners */
   text-align: center;
   transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform transition */
   cursor: pointer;
+  width: 100%; /* Full width button */
 }
 
 .createAccountLink:hover {
-  background-color: #adbecf; /* Dark blue background on hover */
+  background-color: #0056b3; /* Dark blue background on hover */
   transform: translateY(-2px); /* Slight lift effect */
 }
 
+.createAccountLink:disabled {
+  background-color: #ccc; /* Gray background when disabled */
+  cursor: not-allowed; /* Change cursor when disabled */
+}
+
 .error {
-  color: red; /* Error message color */
+  color: #ff4d4d; /* Red color for error messages */
   text-align: center; /* Center error messages */
   margin: 10px 0; /* Space around error messages */
+  font-size: 0.9rem; /* Smaller font size for error messages */
 }

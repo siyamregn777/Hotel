@@ -1,151 +1,173 @@
-// src/app/signup/page.tsx
-
 'use client';
 import { useState } from "react";
 import styles from "./signup.module.css";
 import { useRouter } from "next/navigation";
-
+import Link from "next/link";
+import Image from "next/image";
 export default function Signup() {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
-    const router = useRouter();
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const router = useRouter();
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        if (password !== confirmPassword) {
-            setError("Passwords do not match!");
-            return;
-        }
-        setError('');
-        setSuccess('');
-        
-        try {
-            // Send request to the API
-            const response = await fetch('/api/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ firstName, lastName, username, email, password }),
-            });
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setError("Passwords do not match!");
+      return;
+    }
+    setError('');
+    setSuccess('');
 
-            const data = await response.json();
-            if (response.ok) {
-                setSuccess("Signup successful! Please log in.");
-                setTimeout(() => {
-                    router.push('/login');
-                }, 2000);
-            } else {
-                // Handle errors gracefully
-                setError(data.message || "Signup failed. Please try again.");
-            }
-        }
-        
-        catch (error) {
-            if (error instanceof Error) {
-              setError(error.message || '"There was a problem connecting to the server. Please try again later."');
-            } else {
-              setError('An unexpected error occurred.');
-            }
-          }
-        
-    };
+    try {
+      // Send request to the API
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ firstName, lastName, username, email, password }),
+      });
 
-    return (
-        <div className={styles.sign}>
-            <div className={styles.signupContainer}>
-                <h1 className={styles.signupTitle}>Sign Up</h1>
-                <form onSubmit={handleSubmit} className={styles.signupForm}>
-                    {error && <p className={styles.error}>{error}</p>}
-                    {success && <p className={styles.success}>{success}</p>}
+      const data = await response.json();
+      if (response.ok) {
+        setSuccess("Signup successful! Please log in.");
+        setTimeout(() => {
+          router.push('/login');
+        }, 2000);
+      } else {
+        // Handle errors gracefully
+        setError(data.message || "Signup failed. Please try again.");
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message || "There was a problem connecting to the server. Please try again later.");
+      } else {
+        setError('An unexpected error occurred.');
+      }
+    }
+  };
 
-                    <div className={styles.formGroup}>
-                        <label htmlFor="firstName" className={styles.label}>First Name</label>
-                        <input
-                            id="firstName"
-                            type="text"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                            placeholder="Enter your first name"
-                            required
-                            className={styles.input}
-                        />
-                    </div>
+  return (
+    <div className={styles.sign}>
+      <div className={styles.signupContainer}>
+        <h1 className={styles.signupTitle}>Sign Up</h1>
+        <form onSubmit={handleSubmit} className={styles.signupForm}>
+          {error && <p className={styles.error}>{error}</p>}
+          {success && <p className={styles.success}>{success}</p>}
 
-                    <div className={styles.formGroup}>
-                        <label htmlFor="lastName" className={styles.label}>Last Name</label>
-                        <input
-                            id="lastName"
-                            type="text"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
-                            placeholder="Enter your last name"
-                            required
-                            className={styles.input}
-                        />
-                    </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="firstName" className={styles.label}>First Name</label>
+            <input
+              id="firstName"
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              placeholder="Enter your first name"
+              required
+              className={styles.input}
+            />
+          </div>
 
-                    <div className={styles.formGroup}>
-                        <label htmlFor="username" className={styles.label}>Username</label>
-                        <input
-                            id="username"
-                            type="text"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            placeholder="Enter your username"
-                            required
-                            className={styles.input}
-                        />
-                    </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="lastName" className={styles.label}>Last Name</label>
+            <input
+              id="lastName"
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              placeholder="Enter your last name"
+              required
+              className={styles.input}
+            />
+          </div>
 
-                    <div className={styles.formGroup}>
-                        <label htmlFor="email" className={styles.label}>Email</label>
-                        <input
-                            id="email"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Enter your email"
-                            required
-                            className={styles.input}
-                        />
-                    </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="username" className={styles.label}>Username</label>
+            <input
+              id="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
+              required
+              className={styles.input}
+            />
+          </div>
 
-                    <div className={styles.formGroup}>
-                        <label htmlFor="password" className={styles.label}>Password</label>
-                        <input
-                            id="password"
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            placeholder="Enter your password"
-                            required
-                            className={styles.input}
-                        />
-                    </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="email" className={styles.label}>Email</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              required
+              className={styles.input}
+            />
+          </div>
 
-                    <div className={styles.formGroup}>
-                        <label htmlFor="confirmPassword" className={styles.label}>Confirm Password</label>
-                        <input
-                            id="confirmPassword"
-                            type="password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            placeholder="Confirm your password"
-                            required
-                            className={styles.input}
-                        />
-                    </div>
+          <div className={styles.formGroup}>
+            <label htmlFor="password" className={styles.label}>Password</label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              required
+              className={styles.input}
+            />
+          </div>
 
-                    <button type="submit" className={styles.button}>Sign Up</button>
-                </form>
-            </div>
-        </div>
-    );
+          <div className={styles.formGroup}>
+            <label htmlFor="confirmPassword" className={styles.label}>Confirm Password</label>
+            <input
+              id="confirmPassword"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm your password"
+              required
+              className={styles.input}
+            />
+          </div>
+
+          <button type="submit" className={styles.button}>Sign Up</button>
+
+          <div className={styles.loginLink}>
+            Already have an account? <Link href="/login">Login</Link>
+          </div>
+
+          <div className={styles.socialLogin}>
+            <button type="button" className={`${styles.socialButton} ${styles.google}`}>
+            <Image 
+            src="/public/papa/360_F_391792593_BYfEk8FhvfNvXC5ERCw166qRFb8mYWya.jpg"
+             alt="google" 
+             width={20} 
+             height={20}  
+             />
+            Sign up with Google
+          
+            </button>
+            <button type="button" className={`${styles.socialButton} ${styles.linkedin}`}>
+                <Image 
+                src="/public/papa/free-blue-linkedin-logo-icon-15916-thumb.png" 
+                alt="LinkedIn" 
+                width={20} 
+                height={20} 
+                />
+              Sign up with LinkedIn
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }
