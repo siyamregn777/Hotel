@@ -61,7 +61,7 @@ const Profile = () => {
 
         const data = await response.json();
         if (response.ok) {
-          setImage(data.imageUrl); // Update the image state with the new URL
+          setImage(data.imageUrl); // Update the image state with the new URL from Cloudinary
           alert('Profile image updated successfully!');
         } else {
           console.error('Failed to update profile image:', data.message);
@@ -101,40 +101,74 @@ const Profile = () => {
   };
 
   return (
-  <div className={styles.profil}>
-      
-    <div className={styles.profileContainer}>
-      <h2 className={styles.title}>Profile Information</h2>
-
-      {/* Profile Image Upload */}
-      <div className={styles.imageContainer}>
-        <Image src={image} alt="Profile" width={120} height={120} className={styles.profileImage} />
-        <input type="file" id="fileInput" className={styles.fileInput} onChange={handleImageChange} />
-        <label htmlFor="fileInput" className={styles.uploadButton}>Change Photo</label>
+    <div className={styles.profil}>
+      {/* Additional Text Outside the Container */}
+      <div className={styles.introSection}>
+        <h1>Your Profile</h1>
+        <p>
+          Your profile is your personal space on our platform. Here, you can update your information, change your
+          profile picture, and ensure your details are up to date. Keeping your profile updated helps us provide you
+          with a better experience.
+        </p>
+        <p>
+          If you have any questions or need assistance, feel free to reach out to our support team at{' '}
+          <a href="siyamregnyeshidagna777@gmail.com" className={styles.supportLink}>
+          siyamregnyeshidagna777@gmail.com
+          </a>
+          .
+        </p>
       </div>
 
-      {/* Profile Details */}
-      <div className={styles.infoContainer}>
-        <div className={styles.infoItem}>
-          <label>Name:</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      {/* Profile Container */}
+      <div className={styles.profileContainer}>
+        <h2 className={styles.title}>Profile Information</h2>
+
+        {/* Profile Image Upload */}
+        <div className={styles.imageContainer}>
+          <Image src={image} alt="Profile" width={120} height={120} className={styles.profileImage} />
+          <input type="file" id="fileInput" className={styles.fileInput} onChange={handleImageChange} />
+          <label htmlFor="fileInput" className={styles.uploadButton}>Change Photo</label>
         </div>
 
-        <div className={styles.infoItem}>
-          <label>Username:</label>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </div>
+        {/* Profile Details */}
+        <div className={styles.infoContainer}>
+          <div className={styles.infoItem}>
+            <label>Name:</label>
+            <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          </div>
 
-        <div className={styles.infoItem}>
-          <label>Email:</label>
-          <input type="email" value={email} disabled />
-        </div>
+          <div className={styles.infoItem}>
+            <label>Username:</label>
+            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+          </div>
 
-        <button className={styles.saveButton} onClick={handleSaveChanges}>Save Changes</button>
+          <div className={styles.infoItem}>
+            <label>Email:</label>
+            <input type="email" value={email} disabled />
+          </div>
+
+          <button className={styles.saveButton} onClick={handleSaveChanges}>Save Changes</button>
+        </div>
+      </div>
+
+      {/* Additional Text Outside the Container */}
+      <div className={styles.footerSection}>
+        <h3>Profile Best Practices</h3>
+        <p>
+          To ensure your profile remains secure and up to date, follow these best practices:
+        </p>
+        <ul className={styles.profileTips}>
+          <li>Use a clear and recognizable profile picture.</li>
+          <li>Keep your name and username consistent with your identity.</li>
+          <li>Ensure your email address is accurate to receive important updates.</li>
+          <li>Regularly review and update your profile information.</li>
+        </ul>
+        <p>
+          Remember to keep your profile information confidential and never share it with anyone. If you suspect any
+          unauthorized access to your account, contact our support team immediately.
+        </p>
       </div>
     </div>
-  
-  </div>  
   );
 };
 

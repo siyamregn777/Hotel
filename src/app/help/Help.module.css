@@ -1,70 +1,162 @@
+/* General Styling */
 .helpContainer {
-    max-width: 100%;
-    margin: auto;
-    padding: 5px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    color: black;
-    min-height: 100vh; /* Ensure the page takes up at least the full viewport height */
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.content {
+  max-width: 800px;
+  width: 100%;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #2c3e50;
+}
+
+.faqItem {
+  margin-bottom: 20px;
+}
+
+.faqItem h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.faqItem p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.faqButton {
+  display: block;
+  width: auto;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  margin-right: 70%;
+  margin-left: 5%;
+}
+
+.faqButton:hover {
+  background-color: #0056b3;
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section ul li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.section ul li::before {
+  content: "•";
+  color: #007bff;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    padding: 20px;
   }
-  .remian{
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 10px;
-    background: aliceblue;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    color: black;
-    min-height: 100vh; /* Ensure the page takes up at least the full viewport height */
-    margin-top: 100px; /* Add some spacing above the help content */
-    display: flex;
-    justify-content: space-between;
-  }
-  
+
   .title {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
+    font-size: 1.8rem;
   }
-  
-  .section {
-    margin-bottom: 25px;
+
+  .section h3 {
+    font-size: 1.3rem;
   }
-  
-  .faqItem {
-    margin-bottom: 15px;
-  }
-  .faqq{
-    color: black;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    background-color: #f1f8ff;
-    border-radius: 5px;
-    padding: 10px 20px;
-    border: none;
-    font-style: italic;
-  }
+
   .faqItem h4 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-size: 1.1rem;
   }
-  
-  .section ul {
-    list-style: none;
-    padding: 0;
+
+  .faqItem p {
+    font-size: 0.95rem;
   }
-  
+
+  .faqButton {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
   .section ul li {
-    margin-bottom: 5px;
-    font-size: 16px;
+    font-size: 0.95rem;
   }
-  
-  .helpContainer p {
-    font-size: 16px;
-    line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 15px;
   }
-  
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .section h3 {
+    font-size: 1.2rem;
+  }
+
+  .faqItem h4 {
+    font-size: 1rem;
+  }
+
+  .faqItem p {
+    font-size: 0.9rem;
+  }
+
+  .faqButton {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .section ul li {
+    font-size: 0.9rem;
+  }
+}
