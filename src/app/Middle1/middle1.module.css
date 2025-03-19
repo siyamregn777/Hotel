@@ -1,27 +1,20 @@
 .middle1 {
   text-align: center;
-  padding: 20px;
-  background-color: rgb(255, 255, 255);
+  padding: 40px 20px;
+  background-color: #ffffff;
 }
 
 .middle1 h2 {
-  font-size: 2rem;
-  background-color: #555;
-  margin-left: 35%;
-  margin-right: 35%;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
   margin-bottom: 10px;
-  border-radius: 10px;
-  color: white; /* Ensure text is readable */
 }
 
 .middle1 h6 {
-  font-size: 1rem;
-  background-color: #5f3c3c;
-  margin-bottom: 10px;
-  margin-left: 45%;
-  margin-right: 45%;
-  border-radius: 10px;
-  color: white; /* Ensure text is readable */
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 30px;
 }
 
 .middle {
@@ -34,67 +27,85 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* Space between items */
-  flex-wrap: nowrap; /* Prevent wrapping for desktop */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .imageItem {
-  text-align: center; /* Center the text under each image */
-  flex: 1 1 auto; /* Allow items to grow and shrink */
-  max-width: 300px; /* Limit the maximum width of each item */
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imageItem:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .image {
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
   transition: transform 0.3s ease;
-  width: 100%; /* Ensure the image takes up the full width of its container */
-  height: auto; /* Maintain aspect ratio */
 }
 
-.image:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
+.imageItem:hover .image {
+  transform: scale(1.1);
 }
 
 .imageDescription {
-  margin-top: 8px;
-  font-size: 14px;
-  color: white;
-  background-color: #6a7678;
-  border-radius: 5px;
-  padding: 10px; /* Add padding for better readability */
-  line-height: 1.5; /* Adjust for better readability */
-  word-wrap: break-word; /* Ensure long words don't overflow */
+  padding: 20px;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  border-radius: 0 0 12px 12px;
 }
 
-.imageDescription:hover {
-  transform: scale(1.005);
-}
-
-/* Media Queries for Responsive Design */
-
-/* For tablets */
+/* Responsive Design */
 @media (max-width: 768px) {
+  .middle1 h2 {
+    font-size: 2rem;
+  }
+
+  .middle1 h6 {
+    font-size: 1rem;
+  }
+
   .imageList {
-    flex-wrap: wrap; /* Allow wrapping for tablets */
-  }
-
-  .imageItem {
-    flex: 1 1 45%; /* Two items per row on tablets */
-    max-width: 45%; /* Limit the maximum width of each item */
-  }
-}
-
-/* For mobile devices */
-@media (max-width: 480px) {
-  .imageItem {
-    flex: 1 1 100%; /* One item per row on mobile */
-    max-width: 100%; /* Full width for each item */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
   }
 
   .imageDescription {
-    font-size: 12px; /* Reduce font size for better readability on small screens */
+    font-size: 0.9rem;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .middle1 h2 {
+    font-size: 1.8rem;
+  }
+
+  .middle1 h6 {
+    font-size: 0.9rem;
+  }
+
+  .imageList {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .imageDescription {
+    font-size: 0.8rem;
+    padding: 10px;
   }
 }
