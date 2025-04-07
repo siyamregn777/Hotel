@@ -5,7 +5,7 @@ import Middle1 from './Middle1/page';
 import Middle2 from './Middle2/page';
 import Middle3 from './Middle3/page';
 import Image from 'next/image';
-import image1 from '../../public/back/Africa_(orthographic_projection).svg.png';
+// import image1 from '../../public/back/Africa_(orthographic_projection).svg.png';
 import image4 from '../../public/papa/pexels-dibert-1301172.jpg';
 import image5 from '../../public/papa/pexels-distoreal-3689863.jpg';
 import image6 from '../../public/papa/pexels-droosmo-2945595.jpg';
@@ -21,7 +21,7 @@ import image15 from '../../public/papa/pexels-vika-glitter-392079-31166906.jpg';
 import Gallary from './gallary/page';
 
 const images = [
-  { src: image1, alt: 'Image 1' },
+  // { src: image1, alt: 'Image 1' },
   { src: image4, alt: 'Image 4' },
   { src: image5, alt: 'Image 5' },
   { src: image6, alt: 'Image 6' },
